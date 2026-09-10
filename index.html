@@ -176,7 +176,7 @@
       padding: 0.6rem 0.75rem 4.5rem;
     }
 
-    /* PRIMARY MANTRA CARD - SPARSE, CLEAN, UNDERSTATED */
+    /* PRIMARY MANTRA CARD */
     .mantra-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -283,7 +283,7 @@
       cursor: pointer;
     }
 
-    /* COMPLETE SANSKRIT SECTION */
+    /* SANSKRIT SECTION */
     .section-micro-label {
       font-size: 0.68rem;
       font-weight: 600;
@@ -365,7 +365,215 @@
       color: #fed7aa;
     }
 
-    /* COLLAPSIBLE DETAILS (SPARSE) */
+    /* =========================================================
+       ANIMATED ĀCAMANAM TRAINER (24 KEŚAVA NĀMĀNI)
+       ========================================================= */
+    .acamanam-animator-card {
+      display: none;
+      margin-top: 0.85rem;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+
+    .acamanam-animator-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .acamanam-animator-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .acamanam-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    @media (min-width: 580px) {
+      .acamanam-stage {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    /* SVG Silhouette */
+    .acamanam-svg-wrap {
+      width: 140px;
+      height: 180px;
+      margin: 0 auto;
+      flex-shrink: 0;
+      position: relative;
+      background: rgba(0,0,0,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .body-contour {
+      fill: none;
+      stroke: var(--text-muted);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.55;
+    }
+
+    .target-node {
+      fill: #d4d4d8;
+      stroke: #a1a1aa;
+      stroke-width: 0.8;
+      transition: all 0.3s ease;
+    }
+    .target-node.active {
+      fill: var(--primary);
+      stroke: #ffffff;
+      stroke-width: 1.5;
+    }
+
+    .pulse-ring {
+      display: none;
+    }
+    .pulse-ring.active {
+      display: block;
+      animation: locusRipple 1.6s infinite ease-out;
+    }
+    @keyframes locusRipple {
+      0% { r: 5; opacity: 0.9; stroke-width: 2; }
+      100% { r: 18; opacity: 0; stroke-width: 0.5; }
+    }
+
+    /* Action Details Panel */
+    .acamanam-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .action-counter-pill {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .acamanam-mantra-box {
+      background: rgba(0,0,0,0.025);
+      border-left: 2.5px solid var(--primary);
+      border-radius: 0 6px 6px 0;
+      padding: 0.4rem 0.6rem;
+    }
+    [data-theme="evening"] .acamanam-mantra-box {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .acamanam-sanskrit {
+      font-family: 'Yatra One', serif;
+      font-size: 1.05rem;
+      color: var(--sanskrit-color);
+      line-height: 1.3;
+    }
+
+    .acamanam-iast {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .acamanam-action-text {
+      font-size: 0.78rem;
+      line-height: 1.4;
+      color: var(--text-main);
+    }
+
+    .acamanam-mudra-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(154, 52, 18, 0.08);
+      color: var(--primary);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 1px solid rgba(154, 52, 18, 0.2);
+      width: fit-content;
+    }
+
+    .acamanam-meaning-text {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    /* Playback & Step Controls */
+    .acamanam-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .ac-ctrl-btn {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ac-ctrl-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* 24-Chips Jump Strip */
+    .ac-chips-strip {
+      display: flex;
+      gap: 3px;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--card-border);
+    }
+
+    .ac-chip {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.12rem 0.35rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .ac-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* COLLAPSIBLE DETAILS */
     .detail-accordion {
       margin-top: 0.75rem;
       display: flex;
@@ -396,6 +604,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 6px;
+      white-space: pre-wrap;
     }
 
     .accordion-content.open {
@@ -438,7 +647,7 @@
       font-weight: 600;
     }
 
-    /* TOOL MODES: PRĀṆĀYĀMA & JAPA (COMPACT) */
+    /* TOOL MODES */
     .tab-view {
       display: none;
     }
@@ -446,8 +655,7 @@
       display: block;
     }
 
-    /* PRĀṆĀYĀMA ORB (COMPACT) */
-    .pranayama-card {
+    .pranayama-card, .japa-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 10px;
@@ -475,15 +683,6 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.5s ease;
-    }
-
-    /* JAPA COUNTER (COMPACT) */
-    .japa-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1.15rem 0.85rem;
-      text-align: center;
     }
 
     .japa-big-number {
@@ -581,7 +780,7 @@
     <!-- VIEW 1: COMPLETE MANTRAS (PRIMARY) -->
     <section id="view-mantras" class="tab-view active">
 
-      <!-- 1. PRIMARY MANTRA CARD (FIRST ELEMENT) -->
+      <!-- 1. PRIMARY MANTRA CARD -->
       <div class="mantra-card">
         <div class="mantra-title-row">
           <span class="step-badge" id="stepTitleDisplay">1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)</span>
@@ -604,7 +803,7 @@
           </div>
         </div>
 
-        <!-- COMPLETE SANSKRIT DEVANĀGARĪ (REFINED & UNDERSTATED) -->
+        <!-- COMPLETE SANSKRIT DEVANĀGARĪ -->
         <div class="section-micro-label">सम्पूर्ण मन्त्रः (Complete Mantra)</div>
         <div class="sanskrit-box" id="sanskritDisplay"></div>
 
@@ -620,7 +819,86 @@
           <div class="pronunciation-body" id="iastDisplay"></div>
         </div>
 
-        <!-- COLLAPSIBLE DETAILS (SPARSE & CLEAN) -->
+        <!-- ANIMATED ĀCAMANAM ACTION TRAINER (DEDICATED TO STEP 2) -->
+        <div class="acamanam-animator-card" id="acamanamAnimator">
+          <div class="acamanam-animator-header">
+            <span class="acamanam-animator-title">✨ Ācamanam Action Guide (24 Keśava Nāmāni)</span>
+            <span style="font-size: 0.68rem; color: var(--text-muted);">Visual Touch Points</span>
+          </div>
+
+          <div class="acamanam-stage">
+            <!-- Minimal SVG Body Silhouette -->
+            <div class="acamanam-svg-wrap">
+              <svg viewBox="0 0 150 190" width="100%" height="100%">
+                <!-- Head & Torso Silhouette -->
+                <circle cx="75" cy="40" r="20" class="body-contour" />
+                <path d="M 68 59 L 68 70 L 32 86 L 24 135 L 34 136 L 42 95 L 56 94 L 56 145 L 94 145 L 94 94 L 108 95 L 116 136 L 126 135 L 118 86 L 82 70 L 82 59" class="body-contour" />
+                <!-- Feet contour line -->
+                <path d="M 60 178 Q 75 182 90 178" class="body-contour" />
+
+                <!-- 15 Subtle Target Loci Nodes -->
+                <circle id="node-crown" cx="75" cy="20" r="3.5" class="target-node" />
+                <circle id="node-right-ear" cx="54" cy="40" r="3" class="target-node" />
+                <circle id="node-left-ear" cx="96" cy="40" r="3" class="target-node" />
+                <circle id="node-right-eye" cx="69" cy="36" r="2.8" class="target-node" />
+                <circle id="node-left-eye" cx="81" cy="36" r="2.8" class="target-node" />
+                <circle id="node-right-nostril" cx="71" cy="44" r="2.5" class="target-node" />
+                <circle id="node-left-nostril" cx="79" cy="44" r="2.5" class="target-node" />
+                <circle id="node-lips" cx="75" cy="51" r="3" class="target-node" />
+                <circle id="node-chin" cx="75" cy="58" r="3" class="target-node" />
+                <circle id="node-right-shoulder" cx="36" cy="85" r="4" class="target-node" />
+                <circle id="node-left-shoulder" cx="114" cy="85" r="4" class="target-node" />
+                <circle id="node-heart" cx="75" cy="98" r="4" class="target-node" />
+                <circle id="node-navel" cx="75" cy="130" r="3.5" class="target-node" />
+                <circle id="node-hands" cx="75" cy="148" r="4.5" class="target-node" />
+                <circle id="node-feet" cx="75" cy="178" r="4" class="target-node" />
+
+                <!-- Animated Active Ping Ripple -->
+                <circle id="activePing" cx="75" cy="51" r="10" stroke="var(--primary)" fill="none" class="pulse-ring" />
+              </svg>
+            </div>
+
+            <!-- Details Panel -->
+            <div class="acamanam-details">
+              <div class="action-counter-pill">
+                <span id="acStepCounter">Action 1 of 25</span>
+                <span id="acTargetLocus">Brahmatīrtha (Sip 1)</span>
+              </div>
+
+              <div class="acamanam-mantra-box">
+                <div class="acamanam-sanskrit" id="acSanskrit">ॐ केशवाय स्वाहा ।</div>
+                <div class="acamanam-iast" id="acIast">oṁ keśavāya svāhā |</div>
+              </div>
+
+              <div class="acamanam-mudra-badge" id="acMudra">
+                <span>🖐️ Mudrā:</span> <span id="acMudraText">Gokarṇa-mudrā (Right Palm Base)</span>
+              </div>
+
+              <div class="acamanam-action-text" id="acActionText">
+                Sip water from the base of the right thumb (Brahmatīrtha).
+              </div>
+
+              <div class="acamanam-meaning-text" id="acMeaningText">
+                "Salutations to Lord Keśava (the Slayer of Keśī, Lord of Creation and Radiance). Svāhā!"
+              </div>
+
+              <!-- Controls -->
+              <div class="acamanam-controls">
+                <button class="ac-ctrl-btn" onclick="prevAcAction()">‹ Prev</button>
+                <button class="ac-ctrl-btn active" id="acAutoBtn" onclick="toggleAcAutoPlay()">▶ Auto Play</button>
+                <button class="ac-ctrl-btn" onclick="nextAcAction()">Next ›</button>
+                <button class="ac-ctrl-btn" onclick="speakAcAction()">🔊 Speak</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Jump Strip (25 Chips) -->
+          <div class="ac-chips-strip" id="acChipsStrip">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- COLLAPSIBLE DETAILS -->
         <div class="detail-accordion">
           <div class="accordion-header" onclick="toggleAccordion('actionContent')">
             <span>🤲 Physical Action & Posture</span>
@@ -636,7 +914,7 @@
         </div>
       </div>
 
-      <!-- 2. QUIET COMPANION NOTE (KEPT BELOW) -->
+      <!-- 2. QUIET COMPANION NOTE -->
       <div class="companion-bottom-note" onclick="triggerMascotBlessing()">
         <img src="assets/chibi_brahmachari.jpg" alt="Brahmachari Companion" class="companion-avatar-tiny" id="chibiCompanionThumb">
         <div class="companion-note-text">
@@ -646,7 +924,7 @@
       </div>
     </section>
 
-    <!-- VIEW 2: PRĀṆĀYĀMA RHYTHM PACER -->
+    <!-- VIEW 2: PRĀṆĀYĀMA -->
     <section id="view-pranayama" class="tab-view">
       <div class="pranayama-card">
         <h3 style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--primary);">Prāṇāyāma Rhythm</h3>
@@ -671,7 +949,7 @@
       </div>
     </section>
 
-    <!-- VIEW 3: FINGER JAPA TRAINER -->
+    <!-- VIEW 3: JAPA -->
     <section id="view-japa" class="tab-view">
       <div class="japa-card">
         <h3 style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--primary);">Finger Japa Counter</h3>
@@ -691,7 +969,7 @@
     </section>
   </main>
 
-  <!-- SLIM BOTTOM DOCK NAVIGATION -->
+  <!-- BOTTOM DOCK -->
   <nav class="bottom-dock">
     <button class="dock-btn active" id="dock-mantras" onclick="switchView('mantras')">
       <span>📖</span>
@@ -709,7 +987,286 @@
 
   <script>
     // 41 Complete Vedic Steps (Unabridged, Zero Ellipses)
-    const ALL_STEPS = [{"id": 1, "title": "1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)", "subtitle": "Bodily & Mental Purification", "posture": "Sitting Upright (East/West)", "actionType": "Water Sprinkle / Meditation", "sanskrit": "अपवित्रः पवित्रो वा सर्वावस्थाङ्गतोऽपि वा ।\nयः स्मरेत्पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥\nपुण्डरीकाक्ष ! पुण्डरीकाक्ष ! पुण्डरीकाक्षाय नमः ।", "iast": "apavitraḥ pavitro vā sarvāvasthāṅgato'pi vā |\nyaḥ smaretpuṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||\npuṇḍarīkākṣa ! puṇḍarīkākṣa ! puṇḍarīkākṣāya namaḥ |", "action": "Sit upright on your āsana facing East (Morning/Noon) or West (Evening). Meditate on Lord Puṇḍarīkākṣa (Viṣṇu). Take a drop of water with uddharaṇe and sprinkle over your head.", "meaning": "\"Whether one is impure or pure, or in whatever state of body and mind one may find oneself, whoever remembers the Lotus-Eyed Lord becomes purified both externally and internally. O Lotus-Eyed Lord! Salutations unto You!\""}, {"id": 2, "title": "2. आचमनम् (Ācamanam) — 24 Keśava Nāmāni", "subtitle": "Consecration of Limbs & Senses", "posture": "Sitting Cross-Legged (Gokarṇa-mudrā)", "actionType": "3 Sips + 21 Sense Touches", "sanskrit": "१. ॐ केशवाय स्वाहा । (आचम्य - १)\n२. ॐ नारायणाय स्वाहा । (आचम्य - २)\n३. ॐ माधवाय स्वाहा । (आचम्य - ३)\n\n४. ॐ गोविन्दाय नमः । (हस्तप्रक्षालनम्)\n५. ॐ विष्णवे नमः । (हस्तप्रक्षालनम्)\n६. ॐ मधुसूदनाय नमः । (अङ्गुष्ठेन ओष्ठपरिमार्जनम्)\n७. ॐ त्रिविक्रमाय नमः । (ओष्ठपरिमार्जनम्)\n८. ॐ वामनाय नमः । (शिरसि प्रोक्षणम्)\n९. ॐ श्रीधराय नमः । (सव्यपाणिमालभ्य)\n१०. ॐ हृषीकेशाय नमः । (पाणिप्रक्षालनम्)\n११. ॐ पद्मनाभाय नमः । (पादप्रोक्षणम्)\n१२. ॐ दामोदराय नमः । (शिरसि संस्पृश्य)\n१३. ॐ सङ्कर्षणाय नमः । (अङ्गुलीभिर्मुखमालभ्य)\n१४. ॐ वासुदेवाय नमः । (अङ्गुष्ठ-तर्जनीभ्यां दक्षिणनासिकाम्)\n१५. ॐ प्रद्युम्नाय नमः । (उत्तरनासिकाम्)\n१६. ॐ अनिरुद्धाय नमः । (अङ्गुष्ठानामिकाभ्यां दक्षिणनेत्रम्)\n१७. ॐ पुरुषोत्तमाय नमः । (उत्तरनेत्रम्)\n१८. ॐ अधोक्षजाय नमः । (अङ्गुष्ठतर्जनीभ्यां दक्षिणश्रोत्रम्)\n१९. ॐ नरसिंहाय नमः । (उत्तरश्रोत्रम्)\n२०. ॐ अच्युताय नमः । (अङ्गुष्ठकनिष्ठिकाभ्यां नाभिमालभ्य)\n२१. ॐ जनार्दनाय नमः । (हस्ततलेन हृदयमालभ्य)\n२२. ॐ उपेन्द्राय नमः । (सर्वाङ्गुलीभिः शिरसि)\n२३. ॐ हरये नमः । (दक्षिणबाहुमालभ्य)\n२४. ॐ श्रीकृष्णाय नमः । (उत्तरबाहुमालभ्य)\n\nॐ श्रीकृष्ण परब्रह्मणे नमो नमः ॥", "iast": "1. oṁ keśavāya svāhā | (sip 1)\n2. oṁ nārāyaṇāya svāhā | (sip 2)\n3. oṁ mādhavāya svāhā | (sip 3)\n4. oṁ govindāya namaḥ | (wash hands)\n5. oṁ viṣṇave namaḥ | (wash hands)\n6. oṁ madhusūdanāya namaḥ | (wipe lips)\n7. oṁ trivikramāya namaḥ | (wipe lips)\n8. oṁ vāmanāya namaḥ | (sprinkle head)\n9. oṁ śrīdharāya namaḥ | (touch left palm)\n10. oṁ hṛṣīkeśāya namaḥ | (sprinkle hands)\n11. oṁ padmanābhāya namaḥ | (touch feet)\n12. oṁ dāmodarāya namaḥ | (touch crown)\n13. oṁ saṅkarṣaṇāya namaḥ | (touch chin)\n14. oṁ vāsudevāya namaḥ | (touch right nostril)\n15. oṁ pradyumnāya namaḥ | (touch left nostril)\n16. oṁ aniruddhāya namaḥ | (touch right eye)\n17. oṁ puruṣottamāya namaḥ | (touch left eye)\n18. oṁ adhokṣajāya namaḥ | (touch right ear)\n19. oṁ narasiṃhāya namaḥ | (touch left ear)\n20. oṁ acyutāya namaḥ | (touch navel)\n21. oṁ janārdanāya namaḥ | (touch heart)\n22. oṁ upendrāya namaḥ | (touch crown)\n23. oṁ haraye namaḥ | (touch right shoulder)\n24. oṁ śrīkṛṣṇāya namaḥ | (touch left shoulder)\n\noṁ śrīkṛṣṇa parabrahmaṇe namo namaḥ ||", "action": "Sip water from Brahmatīrtha (palm base) for first 3 names. Consecrate senses by touching with specified fingers as marked.", "meaning": "\"Salutations to the 24 manifestations of the Supreme Lord Viṣṇu! Through this consecration, all organs of perception and action are divinized for sacred worship.\""}, {"id": 3, "title": "3. भूत-उच्चाटनम् (Bhūtocchāṭanam)", "subtitle": "Clearing the Sacred Space", "posture": "Sitting Upright", "actionType": "Sprinkle Water Left-Rear", "sanskrit": "उत्तिष्ठन्तु । भूत पिशाचाः । ये ते भूमिभारकाः ।\nये तेषामविरोधेन । ब्रह्मकर्म समारभे ।\nॐ भूर्भुवस्सुवः ।\n\n(विनियोगः)\nदैवी गायत्री छन्दः प्राणायामे विनियोगः ।", "iast": "uttiṣṭhantu | bhūta piśācāḥ | ye te bhūmibhārakāḥ |\nye teṣāmavirodhena | brahmakarma samārabhe |\noṁ bhūrbhuvassuvaḥ |\n\n(viniyogaḥ)\ndaivī gāyatrī chandaḥ prāṇāyāme viniyogaḥ |", "action": "Sprinkle a drop of water towards your left-rear side to dismiss discordant energies and establish a protected perimeter.", "meaning": "\"May all negative spirits and heavy earthly distractions depart! Free from their obstacle, I commence this contemplation of Brahman (Brahmakarma).\""}, {"id": 4, "title": "4. प्राणायामः (Prāṇāyāmaḥ)", "subtitle": "Sacred Breath Regulation", "posture": "Straight Spine, Prāṇāyāma Mudrā", "actionType": "Inhale (4s) - Hold (8s) - Exhale (4s)", "sanskrit": "ॐ भूः । ॐ भुवः । ॐ सुवः । ॐ महः । ॐ जनः । ॐ तपः । ॐ सत्यम् ।\nॐ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥\nॐ आपो ज्योती रसोऽमृतं ब्रह्म भूर्भुवस्सुवरोम् ॥", "iast": "oṁ bhūḥ | oṁ bhuvaḥ | oṁ suvaḥ | oṁ mahaḥ | oṁ janaḥ | oṁ tapaḥ | oṁ satyam |\noṁ tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||\noṁ āpo jyotī raso'mṛtaṃ brahma bhūrbhuvassuvarom ||", "action": "Hold nostrils with thumb and ring finger. Close right nostril, inhale left (Pūraka). Close both, hold breath and recite internally (Kumbhaka). Open right nostril, exhale slowly (Recaka).", "meaning": "\"The Supreme Brahman permeates the 7 cosmic planes (Earth to Satyam). We meditate on the adorable effulgence of Savitṛ; may He illuminate our intellect. Waters, Light, Nectar, Brahman pervading all realms—Om!\""}, {"id": 5, "title": "5. सङ्कल्पः (Saṅkalpaḥ)", "subtitle": "Solemn Declaration of Intention (Complete & Continuous)", "posture": "Sitting, Right Palm over Left on Knee", "actionType": "Saṅkalpa Mudrā", "sanskrit": "🌅 प्रातःकाल सङ्कल्पः (Morning Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं प्रातःसन्ध्याम् उपासिष्ये ॥\n\n☀️ मध्याह्न सङ्कल्पः (Noon Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं मध्याह्निक-सन्ध्याम् उपासिष्ये ॥\n\n🌇 सायङ्काल सङ्कल्पः (Evening Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं सायं-सन्ध्याम् उपासिष्ये ॥\n\n(विस्तृत देशकाल सङ्कल्प वाक्यम्):\nअद्य ब्रह्मणः द्वितीये परार्धे श्वेतवराहकल्पे वैवस्वतमन्वन्तरे अष्टाविंशतितमे कलियुगे प्रथमे पादे जम्बूद्वीपे भारतवर्षे भरतखण्डे मेरोः दक्षिणे पार्श्वे अस्मिन् वर्तमाने व्यावहारिक चान्द्रमानेन शुभ-संवत्सरे शुभ-अयने शुभ-ऋतौ शुभ-मासे शुभ-पक्षे शुभ-तिथौ शुभ-वासरे शुभ-नक्षत्रे शुभ-योगे शुभ-करणे एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं प्रातःसन्ध्याम् उपासिष्ये ॥", "iast": "Morning Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ prātaḥsandhyām upāsiṣye ||\n\nNoon Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ madhyāhnika-sandhyām upāsiṣye ||\n\nEvening Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ sāyaṃ-sandhyām upāsiṣye ||", "action": "Place left palm facing upward on right knee; cover with right palm facing downward (Saṅkalpa-mudrā). Recite the vow steadily with focused mind.", "meaning": "\"On this auspicious tithi endowed with divine celestial attributes, for the destruction of all accumulated sins and for the pleasure of the Supreme Lord Parameśvara, I undertake the performance of the [Morning / Noon / Evening] Sandhyā worship.\""}, {"id": 6, "title": "6. मार्जनम् (Mārjanam) — 9 Padas", "subtitle": "Purificatory Sprinkling", "posture": "Sitting Cross-Legged", "actionType": "Sprinkle on Head (Drops 1-6, 8-9) & Ground (7)", "sanskrit": "ॐ आपो हि ष्ठा मयोभुवः । (१)\nता न ऊर्जे दधातन । (२)\nमहे रणाय चक्षसे । (३)\nयो वः शिवतमो रसः । (४)\nतस्य भाजयतेह नः । (५)\nउशतीरिव मातरः । (६)\nतस्मा अरङ्ग माम वः । (७ - भूमौ/पादयोः)\nयस्य क्षयाय जिन्वथ । (८)\nआपो जनयथा च नः ॥ (९)\n\nइति शिरसि मार्जयेत् ।", "iast": "oṁ āpo hi ṣṭhā mayobhuvaḥ | (1)\ntā na ūrje dadhātana | (2)\nmahe raṇāya cakṣase | (3)\nyo vaḥ śivatamo rasaḥ | (4)\ntasya bhājayateha naḥ | (5)\nuśatīriva mātaraḥ | (6)\ntasmā araṅgamāma vaḥ | (7 - ground/feet)\nyasya kṣayāya jinvatha | (8)\nāpo janayathā ca naḥ || (9)\n\niti śirasi mārjayet |", "action": "Take water in left palm. Using right ring finger & thumb, sprinkle drops on head at each pada (pada 7 on ground/feet).", "meaning": "\"O Waters, you are source of joy! Bestow energy upon us for the supreme vision. Grant us your most auspicious nectar like loving mothers. Recreate us with divine wisdom!\""}, {"id": 7, "title": "7. मन्त्राचमनम् (Mantra-ācamanam)", "subtitle": "Inner Water Consecration (Time Specific)", "posture": "Sitting Upright", "actionType": "Single Consecrated Sip at 'Svāhā'", "sanskrit": "🌅 प्रातःकाल (Morning):\nसूर्यश्च मामन्युश्च मन्युपतयश्च मन्युकृतेभ्यः ।\nपापेभ्यो रक्षन्ताम् । यद्रात्र्या पापमकार्षम् । मनसा वाचा हस्ताभ्याम् ।\nपद्भ्यामुदरेण शिश्ना । रात्रिस्तदवलुम्पतु । यत्किञ्च दुरितं मयि ।\nइदमहं माममृतयोनौ । सूर्ये ज्योतिषि जुहोमि स्वाहा ॥\n\n☀️ मध्याह्न (Noon - TA 10.30):\nआपः पुनन्तु पृथिवीं पृथिवी पूता पुनातु माम् ।\nपुनन्तु ब्रह्मणस्पतिर्ब्रह्मा पूता पुनातु माम् ।\nयदुच्छिष्टमभोज्यं यद्वा दुश्चरितं मम ।\nसर्वं पुनन्तु मामापोऽसताञ्च प्रतिग्रहं स्वाहा ॥\n\n🌇 सायङ्काल (Evening):\nअग्निश्च मा मन्युश्च मन्युपतयश्च मन्युकृतेभ्यः ।\nपापेभ्यो रक्षन्ताम् । यदह्ना पापमकार्षम् ।\nमनसा वाचा हस्ताभ्याम् । पद्भ्यामुदरेण शिश्ना ।\nअहस्तदवलुम्पतु । यत्किञ्च दुरितं मयि ।\nइदमहं माममृतयोनौ । सत्ये ज्योतिषि जुहोमि स्वाहा ॥", "iast": "Morning (Prātaḥ):\nsūryaśca mā manyuśca manyupatayaśca manyukṛtebhyaḥ |\npāpebhyo rakṣantām | yadrātryā pāpamakārṣam | manasā vācā hastābhyām |\npadbhyāmudareṇa śiśnā | rātristadavalumpatu | yatkiñca duritaṃ mayi |\nidamahaṃ māmamṛtayonau | sūrye jyotiṣi juhomi svāhā ||\n\nNoon (Madhyāhna):\nāpaḥ punantu pṛthivīṃ pṛthivī pūtā punātu mām |\npunantu brahmaṇaspatirbrahmā pūtā punātu mām |\nyaducchiṣṭamabhojyaṃ yadvā duścaritaṃ mama |\nsarvaṃ punantu māmāpo'satāñca pratigrahaṃ svāhā ||\n\nEvening (Sāyaṃ):\nagniśca mā manyuśca manyupatayaśca manyukṛtebhyaḥ |\npāpebhyo rakṣantām | yadahnā pāpamakārṣam |\nmanasā vācā hastābhyām | padbhyāmudareṇa śiśnā |\nahastadavalumpatu | yatkiñca duritaṃ mayi |\nidamahaṃ māmamṛtayonau | satye jyotiṣi juhomi svāhā ||", "action": "Take a single spoon of water in palm, chant the mantra matching current sandhyā, sip at 'svāhā', then perform standard ācamana (Step 2).", "meaning": "\"May the presiding light (Sun in morning, Waters at noon, Fire at evening) forgive all lapses of the day/night and purify my body, words, and consciousness!\""}, {"id": 8, "title": "8. द्वितीय मार्जनम् (Dvitīya Mārjanam)", "subtitle": "Second Sprinkling (Complete Continuous Recitation)", "posture": "Sitting Upright", "actionType": "Sprinkle Water on Head", "sanskrit": "दधिक्राव्णो अकारिषम् । जिष्णोरश्वस्य वाजिनः ।\nसुरभिनो मुखाकरत्प्रण आयूँषि तारिषत् ॥\n\nॐ आपो हि ष्ठा मयोभुवः । (१)\nता न ऊर्जे दधातन । (२)\nमहे रणाय चक्षसे । (३)\nयो वः शिवतमो रसः । (४)\nतस्य भाजयतेह नः । (५)\nउशतीरिव मातरः । (६)\nतस्मा अरङ्ग माम वः । (७ - भूमौ/पादयोः)\nयस्य क्षयाय जिन्वथ । (८)\nआपो जनयथा च नः ॥ (९)", "iast": "dadhikrāvṇo akāriṣam | jiṣṇoraśvasya vājinaḥ |\nsurabhino mukhākaratpraṇa āyūm̐ṣi tāriṣat ||\n\noṁ āpo hi ṣṭhā mayobhuvaḥ | (1)\ntā na ūrje dadhātana | (2)\nmahe raṇāya cakṣase | (3)\nyo vaḥ śivatamo rasaḥ | (4)\ntasya bhājayateha naḥ | (5)\nuśatīriva mātaraḥ | (6)\ntasmā araṅgamāma vaḥ | (7 - ground/feet)\nyasya kṣayāya jinvatha | (8)\nāpo janayathā ca naḥ || (9)", "action": "Sprinkle water drops on head while chanting Dadhikrāvan and the complete 9 padas of Āpo hi ṣṭhā without interruption.", "meaning": "\"We praise Dadhikrāvan, the swift victorious divine steed of radiant vitality! May He make our senses fragrant and lengthen our lifespan! O Waters, source of delight, grant us spiritual nourishment and divine vision!\""}, {"id": 9, "title": "9. पुनर्मार्जनम् (Punarmārjanam)", "subtitle": "The 4 Golden Waters Hymns (Hiraṇyavarṇāḥ)", "posture": "Sitting Upright", "actionType": "Continuous Sprinkling on Head", "sanskrit": "हिरण्यवर्णाः शुचयः पावकाः यासु जातः कश्यपो यास्विन्द्रः ।\nअग्निं या गर्भं दधिरे विरूपास्तान आपः शं स्योना भवन्तु ॥ १ ॥\n\nयासां राजा वरुणो याति मध्ये सत्यानृते अवपश्यञ्जनानाम् ।\nमधुश्चुतः शुचयो याः पावकास्तान आपः शं स्योना भवन्तु ॥ २ ॥\n\nयासां देवा दिवि कृण्वन्ति भक्षं या अन्तरिक्षे बहुधा भवन्ति ।\nयाः पृथिवीं पयसोन्दन्ति शुक्रास्तान आपः शं स्योना भवन्तु ॥ ३ ॥\n\nयाः शिवेन मा चक्षुषा पश्यतापः शिवया तनुवोपस्पृशत त्वचं मे ।\nसर्वाग्नीँ रप्सुषदो हुवे वो मयि वर्चो बलमोजो निधत्त ॥ ४ ॥", "iast": "hiraṇyavarṇāḥ śucayaḥ pāvakāḥ yāsu jātaḥ kaśyapo yāsvindraḥ |\nagniṃ yā garbhaṃ dadhire virūpāstāna āpaḥ śaṃ syonā bhavantu || 1 ||\n\nyāsāṃ rājā varuṇo yāti madhye satyānṛte avapaśyañjanānām |\nmadhuścutaḥ śucayo yāḥ pāvakāstāna āpaḥ śaṃ syonā bhavantu || 2 ||\n\nyāsāṃ devā divi kṛṇvanti bhakṣaṃ yā antarikṣe bahudhā bhavanti |\nyāḥ pṛthivīṃ payasondanti śukrāstāna āpaḥ śaṃ syonā bhavantu || 3 ||\n\nyāḥ śivena mā cakṣuṣā paśyatāpaḥ śivayā tanuvopaspṛśata tvacaṃ me |\nsarvāgnīm̐ rapsuṣado huve vo mayi varco balamojo nidhatta || 4 ||", "action": "Sprinkle water drops over your head throughout the chanting of all 4 verses.", "meaning": "\"Golden, pure, sanctifying waters, wherein sages and gods were born—look upon me with gracious eyes, touch me with soothing grace, and bestow spiritual luster (varcas), vitality (bala), and strength (ojas)!\""}, {"id": 10, "title": "10. अघमर्षणम् (Aghamarṣaṇa)", "subtitle": "Rite of Sin-Cleansing", "posture": "Sitting Upright", "actionType": "Exhale via Nostril onto Water & Cast Left", "sanskrit": "द्रुपदादिव मुञ्चतु । द्रुपदादिवेन्मुमुचानः ।\nस्विन्नः स्नात्वी मलादिव ।\nपूतं पवित्रेणेवाज्यमापः शुन्दन्तु मैनसः ॥", "iast": "drupadādiva muñcatu | drupadādivenmumucānaḥ |\nsvinnaḥ snātvī malādiva |\npūtaṃ pavitreṇevājyamāpaḥ śundantu mainasaḥ ||", "action": "Hold water in right palm near right nostril with breath held. Meditate on sins leaving through breath into water. Cast water to left without looking. Perform ācamana and 3 prāṇāyāmas.", "meaning": "\"As one bound to a post is released, as one sweating is cleansed by a bath, as ghee is filtered through a purifier—may the Divine Waters wash away all my sins!\""}, {"id": 11, "title": "11. लघुसङ्कल्पः (Laghu-saṅkalpaḥ)", "subtitle": "Saṅkalpa for Arghya Oblation", "posture": "Sitting, Ready to Stand", "actionType": "Saṅkalpa Mudrā", "sanskrit": "🌅 प्रातःकाल (Morning):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं प्रातःसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥\n\n☀️ मध्याह्न (Noon):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं मध्याह्निकसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥\n\n🌇 सायङ्काल (Evening):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं सायंसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥", "iast": "Morning:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ prātaḥsandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||\n\nNoon:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ madhyāhnikasandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||\n\nEvening:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ sāyaṃsandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||", "action": "Hold palms together on lap and declare your intention to offer Arghya to the Sun without truncation.", "meaning": "\"For the eradication of my sins and to please the Supreme Lord, I now perform the sacred Arghya offering.\""}, {"id": 12, "title": "12. अर्घ्यप्रदानम् (Arghyapradānam)", "subtitle": "The Core Solar Water Oblations", "posture": "Morning/Noon: Standing | Evening: Seated/Squatting", "actionType": "Joined Cupped Palms Offering ×3", "sanskrit": "🌅 प्रातःकाल (Morning ×3 - Cast upwards towards Sun):\nॐ भूर्भुवस्सुवः ॥ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥ (×३)\n\n☀️ मध्याह्न (Noon - Haṃsavati TA 10.4):\nॐ हंसः शुचिषद्वसुरन्तरिक्षसद्धोता वेदिषदतिथिर्दुरोणसत् ।\nनृषद्वरसदृतसद्व्योमसदब्जा गोजा ऋतजा अद्रिजा ऋतम् बृहत् ॥\n\n🌇 सायङ्काल (Evening ×3 - Released downward):\nॐ भूर्भुवस्सुवः ॥ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥ (×३)", "iast": "Morning (Prātaḥ ×3):\noṁ bhūrbhuvassuvaḥ || tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt || (×3)\n\nNoon (Madhyāhna - Haṃsavati):\noṁ haṃsaḥ śuciṣadvasurantarikṣasaddhotā vediṣadatithirduroṇasat |\nnṛṣadvarasadṛtasadvyomasadabjā gojā ṛtajā adrijā ṛtam bṛhat ||\n\nEvening (Sāyaṃ ×3):\noṁ bhūrbhuvassuvaḥ || tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt || (×3)", "action": "Fill joined palms with water, elbows lifted. In morning, cast water upwards to rising sun 3 times. At noon, offer with Haṃsavati. In evening, release water downwards seated.", "meaning": "\"We offer water to empower the divine radiant Sun! 'He is the pure Swan in heaven, the vital air in the atmosphere, the truth supreme!'\""}, {"id": 13, "title": "13. कालातिक्रमण प्रायश्चित्तम् (Kālātīkrama-prāyaścittam)", "subtitle": "4th Expiatory Arghya for Delay (Complete)", "posture": "Standing (Morning/Noon) or Seated (Evening)", "actionType": "Conditional 4th Water Offering", "sanskrit": "पूर्वोक्त-कालातिक्रम-दोष-परिहारार्थं चतुर्थार्घ्य-प्रदानं करिष्ये ॥\n\nॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥", "iast": "pūrvokta-kālātikrama-doṣa-parihārārthaṃ caturthārghya-pradānaṃ kariṣye ||\n\noṁ bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt ||", "action": "If performing after the ideal transition time has lapsed, declare and offer a 4th Arghya with Gāyatrī mantra.", "meaning": "\"To atone for the fault of delayed timing, I offer this fourth compensatory Arghya.\""}, {"id": 14, "title": "14. सजल-प्रदक्षिणम् (Sajala-pradakṣiṇam)", "subtitle": "Contemplation of Sun as Brahman", "posture": "Standing, 360° Clockwise Circle", "actionType": "Trickle Water Around Yourself", "sanskrit": "ॐ उद्यन्तमस्तं यन्तमादित्यमभिध्यायन् कुर्वन् ब्राह्मणो विद्वान् सकलं भद्रमश्नुते ।\nअसावादित्यो ब्रह्मेति ॥\n\nब्रह्मैव सन् ब्रह्माप्येति य एवं वेद ॥ असावादित्यो ब्रह्म ॥", "iast": "oṁ udyantamastaṃ yantamādityamabhidhyāyan kurvan brāhmaṇo vidvān sakalaṃ bhadramaśnute |\nasāvādityo brahmeti ||\n\nbrahmaiva san brahmāpyeti ya evaṃ veda || asāvādityo brahma ||", "action": "Pour a thin stream of water in a complete circle around yourself clockwise, bowing to the Sun. Then sit, perform 2 ācamanas and 3 prāṇāyāmas.", "meaning": "\"The wise seeker who meditates on the rising and setting Sun attains all blessings! 'Yonder Sun is verily Brahman!' Realizing this, he merges with Brahman!\""}, {"id": 15, "title": "15. सन्ध्याङ्ग तर्पणम् (Sandhyāṅga Tarpaṇam)", "subtitle": "Water Libations to Deities", "posture": "Sitting Upright", "actionType": "Release Water via Fingertips (Devatīrtha)", "sanskrit": "🌅 प्रातःकाल (Morning):\n१. सन्ध्यां तर्पयामि ।\n२. गायत्रीं तर्पयामि ।\n३. ब्राह्मीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥\n\n☀️ मध्याह्न (Noon):\n१. सन्ध्यां तर्पयामि ।\n२. सावित्रीं तर्पयामि ।\n३. रौद्रीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥\n\n🌇 सायङ्काल (Evening):\n१. सन्ध्यां तर्पयामि ।\n२. सरस्वतीं तर्पयामि ।\n३. वैष्णवीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥", "iast": "Morning: sandhyāṃ tarpayāmi | gāyatrīṃ tarpayāmi | brāhmīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||\nNoon: sandhyāṃ tarpayāmi | sāvitrīṃ tarpayāmi | raudrīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||\nEvening: sandhyāṃ tarpayāmi | sarasvatīṃ tarpayāmi | vaiṣṇavīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||", "action": "Pour water spoonfuls through the tips of the 4 fingers into the vessel for each divine energy.", "meaning": "\"I offer sacred water libations to the Sandhyā deities presiding over creation, transformation, and preservation.\""}, {"id": 16, "title": "16. गायत्री आवाहनम् (Gāyatrī Āvāhanam)", "subtitle": "Welcoming Mother Gāyatrī", "posture": "Sitting Upright, Añjali Mudrā", "actionType": "Chanting with Folded Hands", "sanskrit": "(i) विनियोगः:\nॐ इत्येकाक्षरं ब्रह्म । अग्निर्देवता ब्रह्म इत्यार्षम् । गायत्रं छन्दः परमात्मं स्वरूपम् । सायुज्यं विनियोगम् ॥\n\n(ii) आवाहन मन्त्राः:\nआयातु वरदा देवी अक्षरं ब्रह्मसम्मितम् ।\nगायत्रीं छन्दसां मातेदं ब्रह्म जुषस्व मे ।\nयदह्नात्कुरुते पापं तदह्नात्प्रतिमुच्यते ।\nयद्रात्रियात्कुरुते पापं तद्रात्रियात्प्रतिमुच्यते ।\nसर्ववर्णे महादेवि सन्ध्याविद्ये सरस्वति ॥\n\nओजोऽसि सहोऽसि बलमसि भ्राजोऽसि देवानां धामनामसि विश्वमसि विश्वायुः सर्वमसि सर्वायुरभिभूरोम् ।\n\nगायत्रीमावाहयामि । सावित्रीमावाहयामि । सरस्वतीमावाहयामि । छन्दर्षीनावाहयामि । श्रियमावाहयामि ॥", "iast": "(i) viniyogaḥ:\noṁ ityekākṣaraṃ brahma | agnirdevatā brahma ityārṣam | gāyatraṃ chandaḥ paramātmaṃ svarūpam | sāyujyaṃ viniyogam ||\n\n(ii) āvāhana mantrāḥ:\nāyātu varadā devī akṣaraṃ brahmasammitam |\ngāyatrīṃ chandasāṃ mātedaṃ brahma juṣasva me |\nyadahnātkurute pāpaṃ tadahnātpratimucyate |\nyadrātriyātkurute pāpaṃ tadrātriyātpratimucyate |\nsarvavarṇe mahādevi sandhyāvidye sarasvati ||\n\nojo'si saho'si balamasi bhrājo'si devānāṃ dhāmanāmasi viśvamasi viśvāyuḥ sarvamasi sarvāyurabhibhūrom |\n\ngāyatrīmāvāhayāmi | sāvitrīmāvāhayāmi | sarasvatīmāvāhayāmi | chandarṣīnāvāhayāmi | śriyamāvāhayāmi ||", "action": "Join hands at chest in Añjali-mudrā, welcoming Mother Gāyatrī into your heart.", "meaning": "\"May the boon-bestowing Goddess arrive! O Mother of the Vedas, receive this prayer! You are vitality, endurance, strength, and radiance. I invoke Gāyatrī, Sāvitrī, Sarasvatī, the Vedic seers, and divine prosperity!\""}, {"id": 17, "title": "17. गायत्री-जप-सङ्कल्पः (Gāyatrī-japa-saङ्kalpaḥ)", "subtitle": "Declaration for Japa", "posture": "Sitting Upright", "actionType": "Saṅkalpa Mudrā", "sanskrit": "पूर्वोक्त एवङ्गुणविशेषणविशिष्ठायां शुभतिथौ ममोपात्तदुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं सन्ध्याङ्ग यथाशक्ति गायत्री महामन्त्रजपं करिष्ये ॥", "iast": "pūrvokta evaṅguṇaviśeṣaṇaviśiṣṭhāyāṃ śubhatithau mamopāttaduritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ sandhyāṅga yathāśakti gāyatrī mahāmantrajapaṃ kariṣye ||", "action": "Place right palm over left palm on thigh, making solemn vow for Gāyatrī japa.", "meaning": "\"For the removal of all impurities and to please the Supreme Lord, I resolve to chant the Gāyatrī Mahāmantra according to my capacity.\""}, {"id": 18, "title": "18. करन्यासः (Kara-nyāsaḥ)", "subtitle": "Hand Consecration with Mantras", "posture": "Sitting Upright", "actionType": "Touch 6 Finger Zones", "sanskrit": "१. ॐ तत्सवितुः ब्रह्मात्मने अङ्गुष्ठाभ्यां नमः । (अङ्गुष्ठयोः)\n२. वरेण्यं विष्णवात्मने तर्जनीभ्यां नमः । (तर्जन्योः)\n३. भर्गो देवस्य रुद्रात्मने मध्यमाभ्यां नमः । (मध्यमयोः)\n४. धीमहि सत्यात्मने अनामिकाभ्यां नमः । (अनामिकयोः)\n५. धियो यो नः ज्ञानात्मने कनिष्ठिकाभ्यां नमः । (कनिष्ठिकयोः)\n६. प्रचोदयात् सर्वात्मने करतलकरपृष्ठाभ्यां नमः । (करतल-करपृष्ठयोः) ॥", "iast": "1. oṁ tatsavituḥ brahmātmane aṅguṣṭhābhyāṃ namaḥ | (thumbs)\n2. vareṇyaṃ viṣṇvātmane tarjanībhyāṃ namaḥ | (index fingers)\n3. bhargo devasya rudrātmane madhyamābhyāṃ namaḥ | (middle fingers)\n4. dhīmahi satyātmane anāmikābhyāṃ namaḥ | (ring fingers)\n5. dhiyo yo naḥ jñānātmane kaniṣṭhikābhyāṃ namaḥ | (little fingers)\n6. pracodayāt sarvātmane karatala-karapṛṣṭhābhyāṃ namaḥ | (palms & backs) ||", "action": "Glide thumbs and index fingers along each pair of fingers sequentially, then rub palms and backs of hands.", "meaning": "\"We consecrate our hands with the sacred syllables of Gāyatrī, embodying Brahmā, Viṣṇu, Rudra, Satya, and Supreme Knowledge.\""}, {"id": 19, "title": "19. अङ्गन्यासः (Aṅga-nyāsaḥ)", "subtitle": "Armor of Divine Energy", "posture": "Sitting Upright", "actionType": "Touch Heart, Crown, Tuft, Armor, Eyes, Weapon", "sanskrit": "१. ॐ तत्सवितुः ब्रह्मात्मने हृदयाय नमः । (हृदये)\n२. वरेण्यं विष्णवात्मने शिरसे स्वाहा । (शिरसि)\n३. भर्गो देवस्य रुद्रात्मने शिखायै वषट् । (शिखायाम्)\n४. धीमहि सत्यात्मने कवचाय हुम् । (बाहुभ्याम्)\n५. धियो यो नः ज्ञानात्मने नेत्रत्रयाय वौषट् । (नेत्रयोः)\n६. प्रचोदयात् सर्वात्मने अस्त्राय फट् । (अस्त्रेण छोटिका)\n७. ॐ भूर्भुवस्सुवरोमिति दिग्बन्धः ॥ (परितः छोटिका)", "iast": "1. oṁ tatsavituḥ brahmātmane hṛdayāya namaḥ | (heart)\n2. vareṇyaṃ viṣṇvātmane śirase svāhā | (crown)\n3. bhargo devasya rudrātmane śikhāyai vaṣaṭ | (tuft)\n4. dhīmahi satyātmane kavacāya hum | (armor - cross shoulders)\n5. dhiyo yo naḥ jñānātmane netratrayāya vauṣaṭ | (three eyes)\n6. pracodayāt sarvātmane astrāya phaṭ | (snap on palm)\n7. oṁ bhūrbhuvassuvaromiti digbandhaḥ || (circle snap around head)", "action": "Consecrate limbs by touching heart, head, tuft, crossing arms, touching eyes, snapping on palm, and waving fingers clockwise around head.", "meaning": "\"We place the sacred armor of Gāyatrī upon our body and seal all directions against negative distractions.\""}, {"id": 20, "title": "20. ध्यानम् (Gāyatrī Dhyānam)", "subtitle": "Meditation on the 5-Faced Divine Form", "posture": "Sitting, Eyes Closed, Hands at Heart", "actionType": "Mental Visualization", "sanskrit": "मुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ।\nयुक्तामिन्दुनिबद्धरत्नमकुटां तत्त्वार्थवर्णात्मिकाम् ।\nगायत्रीं वरदाभयाङ्कुशकशां शुभ्रं कपालं गदां ।\nशङ्खं चक्रधराविन्दयुगलं हस्तैर्वहन्तीं भजे ॥", "iast": "muktā-vidruma-hema-nīla-dhavalacchāyair-mukhais-trīkṣaṇaiḥ |\nyuktām-indunibaddha-ratnamakuṭāṃ tattvārtha-varṇātmikām |\ngāyatrīṃ varadābhayāṅkuśa-kaśāṃ śubhraṃ kapālaṃ gadāṃ |\nśaṅkhaṃ cakra-dharāravinda-yugalaṃ hastair-vahantīṃ bhaje ||", "action": "Close eyes and visualize Mother Gāyatrī: 5 radiant faces (pearl, coral, gold, sapphire, diamond), crescent moon crown, and 10 weapons & gestures.", "meaning": "\"I meditate upon Mother Gāyatrī of 5 radiant faces, each with 3 eyes, holding the conch, discus, mace, skull, whip, goad, lotuses, and gestures of boon and fearlessness!\""}, {"id": 21, "title": "21. चतुर्विंशति-मुद्राः (Caturviṃśati-mudrāḥ)", "subtitle": "24 Opening Hand Gestures", "posture": "Sitting Upright", "actionType": "Weave 24 Gestures Sequentially", "sanskrit": "सुमुखं सम्पुटिञ्चैव विततं विस्तृतं तथा ।\nद्विमुखं त्रिमुखञ्चैव चतुः पञ्चमुखं तथा ।\nषण्मुखोऽथोमुखञ्चैव व्यापकाञ्जलिकं तथा ।\nशकटं यमपाशञ्च ग्रथितं सम्मुखोन्मुखम् ।\nप्रलम्बं मुष्टिकञ्चैव मत्स्यः कूर्मो वराहकम् ।\nसिंहाक्रान्तं महाक्रान्तं मुद्गरं पल्लवं तथा ॥\n\nचतुर्विंशति मुद्रा वै गायत्र्यां सुप्रतिष्ठिताः ।\nयो देवः सविता अस्माकं धियो धर्मादिगोचराः । प्रेरयेत्तस्य यद्भर्गस्तद्वरेण्यमुपास्महे ॥", "iast": "sumukhaṃ sampuṭiñcaiva vitataṃ vistṛtaṃ tathā |\ndvimukhaṃ trimukhañcaiva catuḥ pañcamukhaṃ tathā |\nṣaṇmukho'dhomukhañcaiva vyāpakāñjalikaṃ tathā |\nśakaṭaṃ yamapāśañca grathitaṃ sammukhonmukham |\npralambaṃ muṣṭikañcaiva matsyaḥ kūrmo varāhakam |\nsiṃhākrāntaṃ mahākrāntaṃ mudgaraṃ pallavaṃ tathā ||\n\ncaturviṃśati mudrā vai gāyatryāṃ supratiṣṭhitāḥ |\nyo devaḥ savitā asmākaṃ dhiyo dharmādigocarāḥ | prerayettasya yadbhargastadvareṇyamupāsmahe ||", "action": "Form the 24 sacred mudrās (Sumukha to Pallava) in rapid succession before Japa.", "meaning": "\"These 24 hand configurations awaken spiritual resonance. 'We meditate upon that adorable effulgence of Savitṛ who directs our intellects toward virtue.'\""}, {"id": 22, "title": "22. गायत्री महामन्त्रः (Gāyatrī Mahāmantraḥ)", "subtitle": "The Central Japa (108 / 28 Repetitions)", "posture": "Padmāsana / Siddhāsana, Hands Covered", "actionType": "Silent / Whispered Japa (Upāṃśu)", "sanskrit": "ॐ भूर्भुवस्सुवः ॥\nतत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥", "iast": "oṁ bhūrbhuvassuvaḥ ||\ntatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||", "action": "Chant mentally or with slight lip movement, counting on the 10 finger joints of the right hand. Recite 108, 28, or at least 10 times.", "meaning": "\"Om, Earth, Atmosphere, Heavens! We meditate upon that supreme, adorable radiance of the Divine Sun; may He inspire, guide, and illuminate our intellects!\""}, {"id": 23, "title": "23. जपावसानम् (Japāvasānam)", "subtitle": "Completion of Japa Rite (Full Texts in Place)", "posture": "Sitting Upright", "actionType": "Full Concluding Rite", "sanskrit": "मम उपात्त समस्त दुरितक्षयद्वारा श्रीपरमेश्वरप्रीत्यर्थं प्रातःसन्ध्याङ्ग गायत्री महामन्त्र जपावसानं करिष्ये ॥\n\n(करन्यासः)\n१. ॐ तत्सवितुः ब्रह्मात्मने अङ्गुष्ठाभ्यां नमः ।\n२. वरेण्यं विष्णवात्मने तर्जनीभ्यां नमः ।\n३. भर्गो देवस्य रुद्रात्मने मध्यमाभ्यां नमः ।\n४. धीमहि सत्यात्मने अनामिकाभ्यां नमः ।\n५. धियो यो नः ज्ञानात्मने कनिष्ठिकाभ्यां नमः ।\n६. प्रचोदयात् सर्वात्मने करतलकरपृष्ठाभ्यां नमः ॥\n\n(अङ्गन्यासः)\n१. ॐ तत्सवितुः ब्रह्मात्मने हृदयाय नमः ।\n२. वरेण्यं विष्णवात्मने शिरसे स्वाहा ।\n३. भर्गो देवस्य रुद्रात्मने शिखायै वषट् ।\n४. धीमहि सत्यात्मने कवचाय हुम् ।\n५. धियो यो नः ज्ञानात्मने नेत्रत्रयाय वौषट् ।\n६. प्रचोदयात् सर्वात्मने अस्त्राय फट् ।\n७. ॐ भूर्भुवस्सुवरोमिति दिग्विमोकः ॥\n\n(गायत्री ध्यानम्)\nमुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ।\nयुक्तामिन्दुनिबद्धरत्नमकुटां तत्त्वार्थवर्णात्मिकाम् ।\nगायत्रीं वरदाभयाङ्कुशकशां शुभ्रं कपालं गदां ।\nशङ्खं चक्रधराविन्दयुगलं हस्तैर्वहन्तीं भजे ॥", "iast": "mama upātta samasta duritakṣayadvārā śrīparameśvaraprītyarthaṃ prātaḥsandhyāṅga gāyatrī mahāmantra japāvasānaṃ kariṣye ||\n\n(Kara-nyāsaḥ)\n1. oṁ tatsavituḥ brahmātmane aṅguṣṭhābhyāṃ namaḥ |\n2. vareṇyaṃ viṣṇvātmane tarjanībhyāṃ namaḥ |\n3. bhargo devasya rudrātmane madhyamābhyāṃ namaḥ |\n4. dhīmahi satyātmane anāmikābhyāṃ namaḥ |\n5. dhiyo yo naḥ jñānātmane kaniṣṭhikābhyāṃ namaḥ |\n6. pracodayāt sarvātmane karatala-karapṛṣṭhābhyāṃ namaḥ ||\n\n(Aṅga-nyāsaḥ)\n1. oṁ tatsavituḥ brahmātmane hṛdayāya namaḥ |\n2. vareṇyaṃ viṣṇvātmane śirase svāhā |\n3. bhargo devasya rudrātmane śikhāyai vaṣaṭ |\n4. dhīmahi satyātmane kavacāya hum |\n5. dhiyo yo naḥ jñānātmane netratrayāya vauṣaṭ |\n6. pracodayāt sarvātmane astrāya phaṭ |\n7. oṁ bhūrbhuvassuvaromiti digvimokaḥ ||\n\n(Dhyānam)\nmuktā-vidruma-hema-nīla-dhavalacchāyair-mukhais-trīkṣaṇaiḥ |\nyuktām-indunibaddha-ratnamakuṭāṃ tattvārtha-varṇātmikām |\ngāyatrīṃ varadābhayāṅkuśa-kaśāṃ śubhraṃ kapālaṃ gadāṃ |\nśaṅkhaṃ cakra-dharāravinda-yugalaṃ hastair-vahantīṃ bhaje ||", "action": "State completion saṅkalpa, repeat Kara-nyāsa, Aṅga-nyāsa (with digvimoka to unbind directions), and Dhyāna to seal the mantra energy.", "meaning": "\"For the destruction of all sins and to please the Supreme Lord, I conclude the sacred Gāyatrī Mahāmantra japa, sealing its divine energy.\""}, {"id": 24, "title": "24. अष्ट-मुद्राः (Aṣṭa-mudrāḥ)", "subtitle": "8 Concluding Hand Gestures", "posture": "Sitting Upright", "actionType": "Weave 8 Concluding Gestures", "sanskrit": "सुरभिर्ज्ञानचक्रे च योनिः कूर्मोऽथ पङ्कजम् ।\nलिङ्गं निर्वाणमुद्रा चेत्यष्ट मुद्राः प्रकीर्तिताः ॥\n\nयो देवः सविता अस्माकं धियो धर्मादिगोचराः ।\nप्रेरयेत्तस्य यद्भर्गस्तद्वरेण्यमुपास्महे ॥", "iast": "surabhirjñānacakre ca yoniḥ kūrmo'tha paṅkajam |\nliṅgaṃ nirvāṇamudrā cetyaṣṭa mudrāḥ prakīrtitāḥ ||\n\nyo devaḥ savitā asmākaṃ dhiyo dharmādigocarāḥ |\nprerayettasya yadbhargastadvareṇyamupāsmahe ||", "action": "Form Surabhi, Jñāna, Cakra, Yoni, Kūrma, Paṅkaja, Liṅga, and Nirvāṇa mudrās in sequence.", "meaning": "\"The 8 closing gestures: Surabhi (prosperity), Jñāna (wisdom), Cakra (protection), Yoni (origin), Kūrma (inward calm), Paṅkaja (purity), Liṅga (divine presence), and Nirvāṇa (liberation).\""}, {"id": 25, "title": "25. गुरु-वन्दनम् (Guru-vandanam) & ब्रह्मार्पणम्", "subtitle": "Reverence to Teachers & Supreme Dedication", "posture": "Sitting Upright", "actionType": "Añjali Mudrā & Drop Water", "sanskrit": "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः ।\nगुरुः साक्षात्परब्रह्म तस्मै श्रीगुरवे नमः ॥\n\nॐ तत्सद्ब्रह्मार्पणमस्तु ।", "iast": "gururbrahmā gururviṣṇuḥ gururdevo maheśvaraḥ |\nguruḥ sākṣātparabrahma tasmai śrīgurave namaḥ ||\n\noṁ tatsadbrahmārpaṇamastu |", "action": "Bow in reverence to the spiritual masters. Pour a drop of water saying Brahmārpaṇamastu and perform standard ācamana.", "meaning": "\"The Guru is Brahmā, Viṣṇu, and Maheśvara; the Guru is the Supreme Absolute Truth manifest. Salutations to the Guru! Dedicated unto Brahman: Om Tat Sat.\""}, {"id": 26, "title": "26. शारीरिक शुद्धि (Śārīrika Śuddhiḥ)", "subtitle": "Re-consecrating the Senses", "posture": "Sitting Upright", "actionType": "9 Touches with Moist Fingers", "sanskrit": "द्विः परिमृज्य । (ओष्ठयोः)\nसकृदुपस्पृश्य । (ओष्ठयोः)\nयत्सव्यं पाणिम् । (वामहस्ते)\nपादम् । (पादयोः)\nप्रोक्षति शिरः । (शिरसि)\nचक्षुषी । (नेत्रयोः)\nनासिके । (नासिकयोः)\nश्रोत्रे । (कर्णयोः)\nहृदयमालभ्य । (हृदये) ॥", "iast": "dviḥ parimṛjya | (wipe lips twice)\nsakṛdupaspṛśya | (touch lips once)\nyatsavyaṃ pāṇim | (sprinkle left hand)\npādam | (sprinkle feet)\nprokṣati śiraḥ | (sprinkle head)\ncakṣuṣī | (touch eyes)\nnāsike | (touch nostrils)\nśrotre | (touch ears)\nhṛdayamālabhya | (touch heart) ||", "action": "Using water: wipe lips twice, touch lips once, sprinkle left hand, feet, head, touch eyes, nostrils, ears, and place palm on heart.", "meaning": "\"Grounding the high spiritual vibration generated by Gāyatrī japa back into the physical senses and body.\""}, {"id": 27, "title": "27. सूर्योपस्थानम् / वरुणोपस्थानम् (Upasthānam)", "subtitle": "Standing Solar / Varuṇa Hymns (Unabridged)", "posture": "Morning/Noon: Standing facing East/Sun | Evening: Facing West", "actionType": "Standing with Arms Raised / Folded", "sanskrit": "🌅 प्रातःकाल मित्रोपस्थानम् (Morning - TS 3.4.11 in full):\nॐ मित्रस्य चर्षणीधृतः श्रवो देवस्य सानसिम् । सत्यं चित्रश्रवस्तमम् ॥ १ ॥\nमित्रो जनान् यातयति प्रजानन्मित्रो दाधार पृथिवीमुत द्याम् ।\nमित्रः कृष्टीरनिमिषा अभिचष्टे सत्याय हव्यं घृतवद्विधेम ॥ २ ॥\nप्र स मित्र मर्त्यो अस्तु प्रयस्वान्यस्त आदित्य शिक्षति व्रतेन ।\nन हन्यते न जीयते त्वोतो नैनमंहोऽश्नोत्यन्तितो न दूरात् ॥ ३ ॥\n\n☀️ मध्याह्न सूर्योपस्थानम् (Noon Sūryopasthānam in full):\nॐ आ सत्येन रजसा वर्तमानो निवेशयन्नमृतं मर्त्यञ्च । हिरण्ययेन सविता रथेना देवो याति भुवना निपश्यन् ॥ १ ॥\nउद्वयन्तमसस्परि पश्यन्तो ज्योतिरुत्तरम् । देवं देवत्रा सूर्यं गन्म ज्योतिरुत्तमम् ॥ २ ॥\nउदुत्यं जातवेदसं देवं वहन्ति केतवः । दृशे विश्वाय सूर्यम् ॥ ३ ॥\nचित्रं देवानामुदगादनीकं चक्षुर्मित्रस्य वरुणस्याग्नेः । अप्राद्यावापृथिवी अन्तरिक्षं सूर्य आत्मा जगतस्तस्थुषश्च ॥ ४ ॥\nतच्चक्षुर्देवहितं पुरस्ताच्छुक्रमुच्चरत् ।\nपश्येम शरदः शतम् । जीवेम शरदः शतम् ।\nनन्दाम शरदः शतम् । मोदाम शरदः शतम् ।\nभवाम शरदः शतम् । शृणवाम शरदः शतम् ।\nप्रब्रवाम शरदः शतम् । अजीताः स्याम शरदः शतम् ।\nजोक् च सूर्यं दृशे ॥ ५ ॥\nय उदगान्महतोऽर्णवाद्विभ्राजमानः सरिरस्य मध्यात्समा । वृषभो लोहिताक्षः सूर्यो विपश्चिन्मनसा पुनातु ॥ ६ ॥\n\n🌇 सायं वरुणोपस्थानम् (Evening Varuṇopasthānam in full):\nॐ इमं मे वरुण शृधी हवमद्या च मृडय । त्वामवस्युराचके ॥ १ ॥\nत्वा यामि ब्रह्मणा वन्दमानस्तदाशास्ते यजमानो हविर्भिः । अहेडमानो वरुणेह बोध्युरुशंस मा न आयुः प्रमोषीः ॥ २ ॥\nयच्चिद्धि ते विशो यथा प्र देव वरुण व्रतम् । मिनीमसि द्यविद्यवि ॥ ३ ॥\nयत्किञ्चेदं वरुण दैव्ये जनेऽभिद्रोहं मनुष्याश्चरामसि । अचित्ती यत्तव धर्मा युयोपिम मा नस्तस्मादेनसो देव रीरिषः ॥ ४ ॥\nकितवासो यद्रिरिपुर्न दीवि यद्वाघा सत्यमुत यन्न विद्म । सर्वा ता विष्य शिथिरेव देवाथा ते स्याम वरुण प्रियासः ॥ ५ ॥", "iast": "Morning (Mitropasthānam):\noṁ mitrasya carṣaṇīdhṛtaḥ śravo devasya sānasim | satyaṃ citraśravastamam || 1 ||\nmitro janān yātayati prajānanmitro dādhāra pṛthivīmuta dyām |\nmitraḥ kṛṣṭīranimiṣā abhicaṣṭe satyāya havyaṃ ghṛtavadvidhema || 2 ||\npra sa mitra martyo astu prayasvānyasta āditya śikṣati vratena |\nna hanyate na jīyate tvoto nainamaṃho'śnotyantito na dūrāt || 3 ||\n\nNoon (Madhyāhna Sūryopasthānam):\noṁ ā satyena rajasā vartamāno niveśayannamṛtaṃ martyañca | hiraṇyayena savitā rathenā devo yāti bhuvanā nipaśyan || 1 ||\nudvayantamasaspari paśyanto jyotiruttaram | devaṃ devatrā sūryaṃ ganma jyotiruttamam || 2 ||\nudutyaṃ jātavedasaṃ devaṃ vahanti ketavaḥ | dṛśe viśvāya sūryam || 3 ||\ncitraṃ devānāmudagādanīkaṃ cakṣurmitrasya varuṇasyāgneḥ | aprādyāvāpṛthivī antarikṣaṃ sūrya ātmā jagatastasthuṣaśca || 4 ||\ntaccakṣurdevahitaṃ purastācchukramuccarat |\npaśyema śaradaḥ śatam | jīvema śaradaḥ śatam |\nnandāma śaradaḥ śatam | modāma śaradaḥ śatam |\nbhavāma śaradaḥ śatam | śṛṇavāma śaradaḥ śatam |\nprabravāma śaradaḥ śatam | ajītāḥ syāma śaradaḥ śatam |\njok ca sūryaṃ dṛśe || 5 ||\nya udagānmahato'rṇavādvibhrājamānaḥ sarirasya madhyātsamā | vṛṣabho lohitākṣaḥ sūryo vipaścinmanasā punātu || 6 ||\n\nEvening (Varuṇopasthānam):\noṁ imaṃ me varuṇa śṛdhī havamadyā ca mṛḍaya | tvāmavasyurācake || 1 ||\ntvā yāmi brahmaṇā vandamānastadāśāste yajamāno havirbhiḥ | aheḍamāno varuṇeha bodhyuruśaṃsa mā na āyuḥ pramoṣīḥ || 2 ||\nyacciddhi te viśo yathā pra deva varuṇa vratam | minīmasi dyavidyavi || 3 ||\nyatkiñcedaṃ varuṇa daivye jane'bhidrohaṃ manuṣyāścarāmasi | acittī यत्तव धर्मा युयोपिम मा नस्तस्मादेनसो देव रीरिषः || 4 ||\nkitavāso yadriripurna dīvi yadvāghā satyamuta yanna vidma | sarvā tā viṣya śithireva devāthā te syāma varuṇa priyāsaḥ || 5 ||", "action": "Stand facing the Sun's direction with arms raised in homage, chanting the complete Vedic hymn.", "meaning": "\"Morning Mitra sustains all people; Midday Sūrya lights the entire cosmos and grants a hundred autumns of life; Evening Varuṇa forgives all transgressions and unties all bonds of guilt!\""}, {"id": 28, "title": "28. दिग्देवता नमस्कारः (Digdevatā Namaskāraḥ)", "subtitle": "Salutations to the 7 Compass Directions", "posture": "Standing, Turning to each Direction", "actionType": "Bow to each Cardinal Point", "sanskrit": "१. ॐ नमः प्राच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (पूर्वस्याम्)\n२. ॐ नमो दक्षिणायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (दक्षिणस्याम्)\n३. ॐ नमः प्रतीच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (पश्चिमस्याम्)\n४. ॐ नम उदीच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (उत्तरस्याम्)\n५. ॐ नम ऊर्ध्वायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (ऊर्ध्वम्)\n६. ॐ नमोऽधरायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (अधः)\n७. ॐ नमोऽवान्तरायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (अवान्तरदिक्षु) ॥", "iast": "1. oṁ namaḥ prācyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (East)\n2. oṁ namo dakṣiṇāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (South)\n3. oṁ namaḥ pratīcyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (West)\n4. oṁ nama udīcyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (North)\n5. oṁ nama ūrdhvāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Zenith)\n6. oṁ namo'dharāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Nadir)\n7. oṁ namo'vāntarāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Intermediate) ||", "action": "Bow to East (Indra), South (Yama), West (Varuṇa), North (Kubera), Zenith (Up), Nadir (Earth), and all intermediate spaces.", "meaning": "\"Salutations to all seven directions and to all the divine guardian deities residing within them!\""}, {"id": 29, "title": "29. मुनि नमस्कारः (Muni Namaskāraḥ)", "subtitle": "Salutations to the Sages of Gaṅgā & Yamunā", "posture": "Standing Upright", "actionType": "Folded Hands Reverence", "sanskrit": "नमो गङ्गायमुनयोर्मध्ये ये वसन्ति ते मे प्रसन्नात्मानश्चिरञ्जीवितं वर्धयन्ति ।\nनमो गङ्गायमुनयोर्मुनिभ्यश्च नमो नमो गङ्गायमुनयोर्मुनिभ्यश्च नमः ॥", "iast": "namo gaṅgā-yamunayor-madhye ye vasanti te me prasannātmānaś-cirañjīvitaṃ vardhayanti |\nnamo gaṅgā-yamunayor-munibhyaśca namo namo gaṅgā-yamunayor-munibhyaśca namaḥ ||", "action": "Bow with folded hands in gratitude to the sacred rivers and the unbroken lineage of enlightened sages.", "meaning": "\"Salutations to those who dwell between the sacred Gaṅgā and Yamunā! May they, with pleased hearts, increase my lifespan! Salutations to the venerable munis!\""}, {"id": 30, "title": "30. सन्ध्यादेवता नमस्कारः (Sandhyādevatā Namaskāraḥ)", "subtitle": "Homage to Sandhyā, Sages, & Ancestors", "posture": "Standing Upright", "actionType": "Bow at Each Line", "sanskrit": "सन्ध्यायै नमः ।\nसावित्र्यै नमः ।\nगायत्र्यै नमः ।\nसरस्वत्यै नमः ।\nसर्वाभ्यो देवताभ्यो नमः ।\n\nदेवेभ्यो नमः ।\nऋषिभ्यो नमः ।\nमुनिभ्यो नमः ।\nगुरुभ्यो नमः ।\nपितृभ्यो नमः ।\n\nकामोऽकार्षीन्नमो नमः ।\nमन्युरकार्षीन्नमो नमः ।\nपृथिव्यापस्तेजो वायुराकाशात् नमः ॥", "iast": "sandhyāyai namaḥ | sāvitryai namaḥ | gāyatryai namaḥ | sarasvatyai namaḥ | sarvābhyo devatābhyo namaḥ |\ndevebhyo namaḥ | ṛṣibhyo namaḥ | munibhyo namaḥ | gurubhyo namaḥ | pitṛbhyo namaḥ |\nkāmo'kārṣīn-namo namaḥ | manyurakārṣīn-namo namaḥ | pṛthivyāpastejo vāyurākāśāt namaḥ ||", "action": "Bow with folded hands at each invocation.", "meaning": "\"Salutations to Sandhyā, Sāvitrī, Gāyatrī, Sarasvatī, Gods, Ṛṣis, Munis, Teachers, Ancestors, and the five elements! Desire did it, anger did it—salutations!\""}, {"id": 31, "title": "31. वासुदेव नमस्कारः (Vāsudeva Namaskāraḥ)", "subtitle": "Salutation to Supreme Vāsudeva", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "ॐ नमो भगवते वासुदेवाय ।\nयां सदा सर्वभूतानि चराणि स्थावराणि च ।\nसायं प्रातर्नमस्यन्ति सा मां सन्ध्याभिरक्षतु ॥", "iast": "oṁ namo bhagavate vāsudevāya |\nyāṃ sadā sarvabhūtāni carāṇi sthāvarāṇi ca |\nsāyaṃ prātarnamasyanti sā māṃ sandhyābhirakṣatu ||", "action": "Bow with folded hands at chest.", "meaning": "\"Om, salutations to Bhagavān Vāsudeva! May Divine Sandhyā, worshiped by all beings morning and evening, constantly guard and protect me!\""}, {"id": 32, "title": "32. शिव-विष्णु नमस्कारः (Śiva-Viṣṇu Namaskāraḥ)", "subtitle": "Unity of Divine Consciousness", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "शिवाय विष्णुरूपाय शिवरूपाय विष्णवे ।\nशिवस्य हृदयं विष्णुर्विष्णोश्च हृदयं शिवः ॥\n\nयथा शिवमयो विष्णुरेवं विष्णुमयः शिवः ।\nयथान्तरं न पश्यामि तथा मे स्वस्तिरायुषि ॥", "iast": "śivāya viṣṇurūpāya śivarūpāya viṣṇave |\nśivasya hṛdayaṃ viṣṇurviṣṇośca hṛdayaṃ śivaḥ ||\nyathā śivamayo viṣṇurevaṃ viṣṇumayaḥ śivaḥ |\nyathāntaraṃ na paśyāmi tathā me svastirāyuṣi ||", "action": "Contemplate that Lord Śiva is in Viṣṇu's heart and Lord Viṣṇu in Śiva's heart.", "meaning": "\"Viṣṇu is the heart of Śiva, and Śiva is the heart of Viṣṇu! Inasmuch as I see no difference between Them, may my life be blessed with longevity!\""}, {"id": 33, "title": "33. कृष्ण-गोविन्द नमस्कारः (Kṛṣṇa-Govinda Namaskāraḥ)", "subtitle": "Universal Welfare Prayer", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "नमो ब्रह्मण्यदेवाय गोब्राह्मणहिताय च ।\nजगद्धिताय कृष्णाय गोविन्दाय नमो नमः ॥", "iast": "namo brahmaṇyadevāya gobrāhmaṇahitāya ca |\njagaddhitāya kṛṣṇāya govindāya namo namaḥ ||", "action": "Bow in prayer for the welfare of nature, seekers, and the cosmos.", "meaning": "\"Salutations to the Divinity who fosters spiritual knowledge, who protects cows and seekers, and works for cosmic welfare—salutations to Kṛṣṇa, to Govinda!\""}, {"id": 34, "title": "34. गायत्री उद्वासनम् (Gāyatrī Udvāsanam)", "subtitle": "Joyful Farewell to Mother Gāyatrī", "posture": "Standing / Seated Prayer", "actionType": "Folded Hands", "sanskrit": "उत्तमे शिखरे जाते भूम्यां पर्वतमूर्धनि ।\nब्राह्मणेभ्योऽभ्यनुज्ञाता गच्छ देवि यथासुखम् ॥ १ ॥\n\nस्तुतो मया वरदा वेदमाता प्रचोदयन्ती पवने द्विजाता ।\nआयुः पृथिव्यां द्रविणं ब्रह्मवर्चसं मह्यं दत्त्वा प्रयातुं ब्रह्मलोकम् ॥ २ ॥", "iast": "uttame śikhare jāte bhūmyāṃ parvata-mūrdhani |\nbrāhmaṇebhyo'bhyanujñātā gaccha devi yathāsukham || 1 ||\n\nstuto mayā varadā vedamātā pracodayantī pavane dvijātā |\nāyuḥ pṛthivyāṃ draviṇaṃ brahmavarcasaṃ mahyaṃ dattvā prayātuṃ brahmalokam || 2 ||", "action": "Bid reverent farewell to Mother Gāyatrī returning to Brahmaloka while retaining Her light in your heart.", "meaning": "\"Depart happily O Goddess unto Your celestial peak! Bestowing upon me long life, righteousness, and spiritual brilliance (brahmavarcas), return to Brahmaloka!\""}, {"id": 35, "title": "35. भगवन्नमस्कारः (Bhagavannamaskāraḥ)", "subtitle": "Salutations to Cosmic Infinite Puruṣa", "posture": "Standing or Full Prostration (Sāṣṭāṅga)", "actionType": "Deep Bow / Prostration", "sanskrit": "नमोऽस्त्वनन्ताय सहस्रमूर्तये सहस्रपादाक्षिशिरोरुबाहवे ।\nसहस्रनाम्ने पुरुषाय शाश्वते सहस्रकोटियुगधारिणे नमः ॥", "iast": "namo'stvanantāya sahasramūrtaye sahasrapādākṣiśirorubāhave |\nsahasranāmne puruṣāya śāśvate sahasra-koṭi-yugadhāriṇe namaḥ ||", "action": "Bow deeply or prostrate to the Cosmic Lord of infinite forms.", "meaning": "\"Salutations to the Infinite One of thousands of forms, eyes, heads, and arms! Salutations to the eternal Puruṣa who sustains millions of cosmic ages!\""}, {"id": 36, "title": "36. भूम्याकाशाभिवन्दनम् (Bhūmyākāśābhivandanam)", "subtitle": "Salutations to Father Heaven & Mother Earth", "posture": "Standing", "actionType": "Touch Earth then Raise Hands to Sky", "sanskrit": "इदं द्यावापृथिवी सत्यमस्तु ।\nपितर्मातर्यदि होपब्रुवे वाम् ।\nभूतं देवानामवमे अवोभिः ।\nविद्यामेषं वृजिनं जीरदानुम् ॥", "iast": "idaṃ dyāvāpṛthivī satyamastu |\npitarmātaryadi hopabruve vām |\nbhūtaṃ devānāmavame avobhiḥ |\nvidyāmeṣaṃ vṛjinaṃ jīradānum ||", "action": "Touch the earth with right fingers, then raise palms and eyes toward the sky.", "meaning": "\"May this prayer be true, O Father Heaven and Mother Earth! Deliver us from troubles and grant us vigor and divine protection!\""}, {"id": 37, "title": "37. आकाशात्पतितं तोयम् (Ākāśātpatitaṃ Toyam)", "subtitle": "All Prayers Reach Keśava", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "आकाशात्पतितं तोयं यथा गच्छति सागरम् ।\nसर्वदेवनमस्कारः केशवं प्रतिगच्छति ॥\n\nश्रीकेशवं प्रतिगच्छत्योन्नम इति ।", "iast": "ākāśātpatitaṃ toyaṃ yathā gacchati sāgaram |\nsarvadevanamaskāraḥ keśavaṃ pratigacchati ||\n\nśrīkeśavaṃ pratigacchatyonnama iti |", "action": "Bow with folded hands in gratitude.", "meaning": "\"Just as all rain falling from the sky ultimately flows into the one ocean, salutations offered to every deity reach Lord Keśava alone!\""}, {"id": 38, "title": "38. सर्ववेदेषु यत्पुण्यम् (Sarvavedeṣu Yatpuṇyam)", "subtitle": "Merit of All Vedas in Janārdana", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "सर्ववेदेषु यत्पुण्यम् । सर्वतीर्थेषु यत्फलम् ।\nतत्फलं पुरुष आप्नोति स्तुत्वा देवं जनार्दनम् ॥\n\nस्तुत्वा देवं जनार्दनं ॐ नम इति ।", "iast": "sarvavedeṣu yatpuṇyam | sarvatīrtheṣu yatphalam |\ntatphalaṃ puruṣa āpnoti stutvā devaṃ janārdanam ||\n\nstutvā devaṃ janārdanaṃ oṁ nama iti |", "action": "Bow with folded hands.", "meaning": "\"Whatever spiritual merit is in all the Vedas, whatever fruit is in all sacred waters—one attains it all simply by praising Lord Janārdana!\""}, {"id": 39, "title": "39. वासुदेवस्य वासना (Vāsudevasya Vāsanā)", "subtitle": "The All-Pervading Fragrance of God", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "वासनाद्वासुदेवस्य वासितं ते जगत्त्रयम् ।\nसर्वभूतनिवासोऽसि श्रीवासुदेव नमोऽस्तुते ॥\n\nश्रीवासुदेव नमोऽस्तुते ॐ नम इति ।", "iast": "vāsanād-vāsudevasya vāsitaṃ te jagattrayam |\nsarvabhūtanivāso'si śrīvāsudeva namo'stute ||\n\nśrīvāsudeva namo'stute oṁ nama iti |", "action": "Bow with folded hands.", "meaning": "\"By the fragrant presence of Vāsudeva, these three worlds are permeated! You are the indwelling refuge of all beings; O Lord Vāsudeva, salutations to You!\""}, {"id": 40, "title": "40. अभिवादनम् (Abhivādanam)", "subtitle": "Lineage Declaration to Elders (Complete & Chantable)", "posture": "Hands Crossed Touching Ears, Bowing Low", "actionType": "Ear Touch + Prostration", "sanskrit": "चतुःसागरपर्यन्तं गोब्राह्मणेभ्यः शुभं भवतु ।\n\nआङ्गिरस-बार्हस्पत्य-भारद्वाज त्र्यार्षेय-प्रवरान्वित भारद्वाज-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी राघव-शर्मा अहं भो अभिवादये ॥\n\n(प्रमुख गोत्र प्रवर मन्त्राः):\n• कौशिक गोत्रः: वैश्वामित्र-देवरात-औदल त्र्यार्षेय-प्रवरान्वित कौशिक-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• वसिष्ठ गोत्रः: वासिष्ठ एकार्षेय-प्रवरान्वित वसिष्ठ-गोत्रः बोधायन-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• काश्यप गोत्रः: काश्यप-अवत्सार-नैध्रुव त्र्यार्षेय-प्रवरान्वित काश्यप-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• श्रीवत्स गोत्रः: भार्गव-च्यावन-आप्नवान-और्व-जामदग्न्य पञ्चार्षेय-प्रवरान्वित श्रीवत्स-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥", "iast": "catuḥ-sāgara-paryantaṃ go-brāhmaṇebhyaḥ śubhaṃ bhavatu |\n\nāṅgirasa-bārhaspatya-bhāradvāja tryārṣeya-pravarānvita bhāradvāja-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī rāghava-śarmā ahaṃ bho abhivādaye ||\n\n(Alternative lineage examples:\n• Kauśika: vaiśvāmitra-devarāta-audala tryārṣeya-pravarānvita kauśika-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||\n• Vasiṣṭha: vāsiṣṭha ekarṣeya-pravarānvita vasiṣṭha-gotraḥ bodhāyana-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||\n• Kāśyapa: kāśyapa-avatsāra-naidhruva tryārṣeya-pravarānvita kāśyapa-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||)", "action": "Cross right arm over left, hold right ear with right hand and left ear with left hand, bend down touching ground before elders and teacher.", "meaning": "\"May auspiciousness extend to sacred cows and seekers unto the four oceans! Bearing my ancestral pravara, gotra, sūtra, and name, I offer my humble reverent salutation!\""}, {"id": 41, "title": "41. ईश्वरार्पणम् (Īśvarārpaṇam / Brahmārpaṇam)", "subtitle": "Final Surrender of All Action & Fruit", "posture": "Sitting Upright", "actionType": "Pour Water into Vessel with Añjali", "sanskrit": "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत्सकलं परस्मै श्रीमन्नारायणायेति समर्पयामि ॥\n\nहरिः ॐ तत्सत् ।\nतत्सर्वं श्रीपरमेश्वरार्पणमस्तु ॥", "iast": "kāyena vācā manasendriyairvā buddhyātmanā vā prakṛteḥ svabhāvāt |\nkaromi yadyatsakalaṃ parasmai śrīmannārāyaṇāyeti samarpayāmi ||\n\nhariḥ oṁ tatsat |\ntatsarvaṃ śrīparameśvarārpaṇamastu ||", "action": "Release a spoonful of water onto the ground or plate, folding hands in peace and serenity.", "meaning": "\"Whatever I have done through body, speech, mind, senses, intellect, or innate nature—all of that I surrender completely unto Supreme Lord Śrīman Nārāyaṇa! Hariḥ Om Tat Sat! May it all be an offering to Lord Parameśvara!\""}];
+    const ALL_STEPS = [{"id": 1, "title": "1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)", "subtitle": "Bodily & Mental Purification", "posture": "Sitting Upright (East/West)", "actionType": "Water Sprinkle / Meditation", "sanskrit": "अपवित्रः पवित्रो वा सर्वावस्थाङ्गतोऽपि वा ।\nयः स्मरेत्पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥\nपुण्डरीकाक्ष ! पुण्डरीकाक्ष ! पुण्डरीकाक्षाय नमः ।", "iast": "apavitraḥ pavitro vā sarvāvasthāṅgato'pi vā |\nyaḥ smaretpuṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||\npuṇḍarīkākṣa ! puṇḍarīkākṣa ! puṇḍarīkākṣāya namaḥ |", "action": "Sit upright on your āsana facing East (Morning/Noon) or West (Evening). Meditate on Lord Puṇḍarīkākṣa (Viṣṇu). Take a drop of water with uddharaṇe and sprinkle over your head.", "meaning": "\"Whether one is impure or pure, or in whatever state of body and mind one may find oneself, whoever remembers the Lotus-Eyed Lord becomes purified both externally and internally. O Lotus-Eyed Lord! Salutations unto You!\""}, {"id": 2, "title": "2. आचमनम् (Ācamanam) — 24 Keśava Nāmāni", "subtitle": "Water Purification & Consecration of Limbs (24 Names)", "posture": "Sitting Cross-Legged (Gokarṇa-mudrā)", "actionType": "3 Sips + 21 Sense Touches", "sanskrit": "१. ॐ केशवाय स्वाहा । (आचम्य - १)\n२. ॐ नारायणाय स्वाहा । (आचम्य - २)\n३. ॐ माधवाय स्वाहा । (आचम्य - ३)\n\n४. ॐ गोविन्दाय नमः । (हस्तप्रक्षालनम्)\n५. ॐ विष्णवे नमः । (हस्तप्रक्षालनम्)\n६. ॐ मधुसूदनाय नमः । (अङ्गुष्ठेन ओष्ठपरिमार्जनम्)\n७. ॐ त्रिविक्रमाय नमः । (ओष्ठपरिमार्जनम्)\n८. ॐ वामनाय नमः । (शिरसि प्रोक्षणम्)\n९. ॐ श्रीधराय नमः । (सव्यपाणिमालभ्य)\n१०. ॐ हृषीकेशाय नमः । (पाणिप्रक्षालनम्)\n११. ॐ पद्मनाभाय नमः । (पादप्रोक्षणम्)\n१२. ॐ दामोदराय नमः । (शिरसि संस्पृश्य)\n१३. ॐ सङ्कर्षणाय नमः । (अङ्गुलीभिर्मुखमालभ्य)\n१४. ॐ वासुदेवाय नमः । (अङ्गुष्ठ-तर्जनीभ्यां दक्षिणनासिकाम्)\n१५. ॐ प्रद्युम्नाय नमः । (उत्तरनासिकाम्)\n१६. ॐ अनिरुद्धाय नमः । (अङ्गुष्ठानामिकाभ्यां दक्षिणनेत्रम्)\n१७. ॐ पुरुषोत्तमाय नमः । (उत्तरनेत्रम्)\n१८. ॐ अधोक्षजाय नमः । (अङ्गुष्ठतर्जनीभ्यां दक्षिणश्रोत्रम्)\n१९. ॐ नरसिंहाय नमः । (उत्तरश्रोत्रम्)\n२०. ॐ अच्युताय नमः । (अङ्गुष्ठकनिष्ठिकाभ्यां नाभिमालभ्य)\n२१. ॐ जनार्दनाय नमः । (हस्ततलेन हृदयमालभ्य)\n२२. ॐ उपेन्द्राय नमः । (सर्वाङ्गुलीभिः शिरसि)\n२३. ॐ हरये नमः । (दक्षिणबाहुमालभ्य)\n२४. ॐ श्रीकृष्णाय नमः । (उत्तरबाहुमालभ्य)\n\nॐ श्रीकृष्ण परब्रह्मणे नमो नमः ॥", "iast": "1. oṁ keśavāya svāhā | (sip 1)\n2. oṁ nārāyaṇāya svāhā | (sip 2)\n3. oṁ mādhavāya svāhā | (sip 3)\n4. oṁ govindāya namaḥ | (wash hands)\n5. oṁ viṣṇave namaḥ | (wash hands)\n6. oṁ madhusūdanāya namaḥ | (wipe lips)\n7. oṁ trivikramāya namaḥ | (wipe lips)\n8. oṁ vāmanāya namaḥ | (sprinkle head)\n9. oṁ śrīdharāya namaḥ | (touch left palm)\n10. oṁ hṛṣīkeśāya namaḥ | (sprinkle hands)\n11. oṁ padmanābhāya namaḥ | (touch feet)\n12. oṁ dāmodarāya namaḥ | (touch crown)\n13. oṁ saṅkarṣaṇāya namaḥ | (touch chin)\n14. oṁ vāsudevāya namaḥ | (touch right nostril)\n15. oṁ pradyumnāya namaḥ | (touch left nostril)\n16. oṁ aniruddhāya namaḥ | (touch right eye)\n17. oṁ puruṣottamāya namaḥ | (touch left eye)\n18. oṁ adhokṣajāya namaḥ | (touch right ear)\n19. oṁ narasiṃhāya namaḥ | (touch left ear)\n20. oṁ acyutāya namaḥ | (touch navel)\n21. oṁ janārdanāya namaḥ | (touch heart)\n22. oṁ upendrāya namaḥ | (touch crown)\n23. oṁ haraye namaḥ | (touch right shoulder)\n24. oṁ śrīkṛṣṇāya namaḥ | (touch left shoulder)\n\noṁ śrīkṛṣṇa parabrahmaṇe namo namaḥ ||", "action": "Take a minute quantity of water (just enough to immerse a single grain of black gram / māṣa) from the uddharaṇe into the hollow of the right palm (Brahmatīrtha).\n\nThe Three Sips:\n• 1. ॐ केशवाय स्वाहा । — Sip water from the base of the right thumb (Brahmatīrtha).\n• 2. ॐ नारायणाय स्वाहा । — Sip water a second time.\n• 3. ॐ माधवाय स्वाहा । — Sip water a third time.\n\nConsecration of Limbs & Senses:\n• 4. ॐ गोविन्दाय नमः । — Pour water into right palm and wash both hands (hasta-prakṣālanam).\n• 5. ॐ विष्णवे नमः । — Rinse/wash left hand or wash both hands again.\n• 6. ॐ मधुसूदनाय नमः । — Wipe upper and lower lips with side/pad of right thumb.\n• 7. ॐ त्रिविक्रमाय नमः । — Wipe lips once again.\n• 8. ॐ वामनाय नमः । — Sprinkle water on crown of head (śirasi prokṣaṇam).\n• 9. ॐ श्रीधराय नमः । — Touch left palm with wet right fingers.\n• 10. ॐ हृषीकेशाय नमः । — Wash or sprinkle water on both hands.\n• 11. ॐ पद्मनाभाय नमः । — Touch/sprinkle water on both feet.\n• 12. ॐ दामोदराय नमः । — Touch crown of head.\n• 13. ॐ सङ्कर्षणाय नमः । — Touch chin and mouth with joined middle three fingers of right hand.\n• 14. ॐ वासुदेवाय नमः । — Touch right nostril with thumb and index finger.\n• 15. ॐ प्रद्युम्नाय नमः । — Touch left nostril with thumb and index finger.\n• 16. ॐ अनिरुद्धाय नमः । — Touch right eye with thumb and ring finger.\n• 17. ॐ पुरुषोत्तमाय नमः । — Touch left eye with thumb and ring finger.\n• 18. ॐ अधोक्षजाय नमः । — Touch right ear with thumb and index finger.\n• 19. ॐ नरसिंहाय नमः । — Touch left ear with thumb and index finger.\n• 20. ॐ अच्युताय नमः । — Touch navel (nābhi) with thumb and little finger.\n• 21. ॐ जनार्दनाय नमः । — Touch heart/chest (hṛdaya) with flat right palm.\n• 22. ॐ उपेन्द्राय नमः । — Touch crown of head with all fingers.\n• 23. ॐ हरये नमः । — Touch right shoulder with fingertips.\n• 24. ॐ श्रीकृष्णाय नमः । — Touch left shoulder with fingertips.\n\nConclusion:\n• ॐ श्रीकृष्ण परब्रह्मणे नमो नमः । — Fold palms together in reverent salutation (Añjali-mudrā).", "meaning": "The Three Sips:\n• Keśava: Slayer of Keśī, Lord of Creation and Radiance. Svāhā!\n• Nārāyaṇa: Resting place of all beings and inner self. Svāhā!\n• Mādhava: Consort of Śrī Lakṣmī and Lord of Divine Knowledge. Svāhā!\n\nConsecration of Limbs & Senses:\n• Govinda: Protector of cows, senses, and the Earth.\n• Viṣṇu: The All-Pervading Preserver.\n• Madhusūdana: Destroyer of demonic ego (Madhu).\n• Trivikrama: He who measured the three worlds in three strides.\n• Vāmana: The divine dwarf-incarnation.\n• Śrīdhara: Bearer of Śrī Lakṣmī upon His chest.\n• Hṛṣīkeśa: Master and ruler of all senses.\n• Padmanābha: From whose navel arises the cosmic lotus.\n• Dāmodara: Bound by the rope of pure devotion.\n• Saṅkarṣaṇa: He who draws all beings unto Himself.\n• Vāsudeva: The indwelling consciousness.\n• Pradyumna: Lord of radiant intellect.\n• Aniruddha: The unobstructed sovereign.\n• Puruṣottama: Supreme Being above perishable and imperishable.\n• Adhokṣaja: He who transcends sense perception.\n• Narasiṃha: The fierce divine protector.\n• Acyuta: The infallible and unchanging One.\n• Janārdana: The refuge of humanity.\n• Upendra: Higher sovereign brother of Indra.\n• Hari: He who takes away all sorrows and sins.\n• Śrī Kṛṣṇa: The all-attractive Supreme Consciousness.\n\nConclusion:\n• Śrī Kṛṣṇa Parabrahman: Salutations again and again to Lord Śrī Kṛṣṇa, the Supreme Absolute Reality!"}, {"id": 3, "title": "3. भूत-उच्चाटनम् (Bhūtocchāṭanam)", "subtitle": "Clearing the Sacred Space", "posture": "Sitting Upright", "actionType": "Sprinkle Water Left-Rear", "sanskrit": "उत्तिष्ठन्तु । भूत पिशाचाः । ये ते भूमिभारकाः ।\nये तेषामविरोधेन । ब्रह्मकर्म समारभे ।\nॐ भूर्भुवस्सुवः ।\n\n(विनियोगः)\nदैवी गायत्री छन्दः प्राणायामे विनियोगः ।", "iast": "uttiṣṭhantu | bhūta piśācāḥ | ye te bhūmibhārakāḥ |\nye teṣāmavirodhena | brahmakarma samārabhe |\noṁ bhūrbhuvassuvaḥ |\n\n(viniyogaḥ)\ndaivī gāyatrī chandaḥ prāṇāyāme viniyogaḥ |", "action": "Sprinkle a drop of water towards your left-rear side to dismiss discordant energies and establish a protected perimeter.", "meaning": "\"May all negative spirits and heavy earthly distractions depart! Free from their obstacle, I commence this contemplation of Brahman (Brahmakarma).\""}, {"id": 4, "title": "4. प्राणायामः (Prāṇāyāmaḥ)", "subtitle": "Sacred Breath Regulation", "posture": "Straight Spine, Prāṇāyāma Mudrā", "actionType": "Inhale (4s) - Hold (8s) - Exhale (4s)", "sanskrit": "ॐ भूः । ॐ भुवः । ॐ सुवः । ॐ महः । ॐ जनः । ॐ तपः । ॐ सत्यम् ।\nॐ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥\nॐ आपो ज्योती रसोऽमृतं ब्रह्म भूर्भुवस्सुवरोम् ॥", "iast": "oṁ bhūḥ | oṁ bhuvaḥ | oṁ suvaḥ | oṁ mahaḥ | oṁ janaḥ | oṁ tapaḥ | oṁ satyam |\noṁ tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||\noṁ āpo jyotī raso'mṛtaṃ brahma bhūrbhuvassuvarom ||", "action": "Hold nostrils with thumb and ring finger. Close right nostril, inhale left (Pūraka). Close both, hold breath and recite internally (Kumbhaka). Open right nostril, exhale slowly (Recaka).", "meaning": "\"The Supreme Brahman permeates the 7 cosmic planes (Earth to Satyam). We meditate on the adorable effulgence of Savitṛ; may He illuminate our intellect. Waters, Light, Nectar, Brahman pervading all realms—Om!\""}, {"id": 5, "title": "5. सङ्कल्पः (Saṅkalpaḥ)", "subtitle": "Solemn Declaration of Intention (Complete & Continuous)", "posture": "Sitting, Right Palm over Left on Knee", "actionType": "Saṅkalpa Mudrā", "sanskrit": "🌅 प्रातःकाल सङ्कल्पः (Morning Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं प्रातःसन्ध्याम् उपासिष्ये ॥\n\n☀️ मध्याह्न सङ्कल्पः (Noon Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं मध्याह्निक-सन्ध्याम् उपासिष्ये ॥\n\n🌇 सायङ्काल सङ्कल्पः (Evening Saṅkalpa):\nॐ पूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं सायं-सन्ध्याम् उपासिष्ये ॥\n\n(विस्तृत देशकाल सङ्कल्प वाक्यम्):\nअद्य ब्रह्मणः द्वितीये परार्धे श्वेतवराहकल्पे वैवस्वतमन्वन्तरे अष्टाविंशतितमे कलियुगे प्रथमे पादे जम्बूद्वीपे भारतवर्षे भरतखण्डे मेरोः दक्षिणे पार्श्वे अस्मिन् वर्तमाने व्यावहारिक चान्द्रमानेन शुभ-संवत्सरे शुभ-अयने शुभ-ऋतौ शुभ-मासे शुभ-पक्षे शुभ-तिथौ शुभ-वासरे शुभ-नक्षत्रे शुभ-योगे शुभ-करणे एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वर-प्रीत्यर्थं प्रातःसन्ध्याम् उपासिष्ये ॥", "iast": "Morning Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ prātaḥsandhyām upāsiṣye ||\n\nNoon Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ madhyāhnika-sandhyām upāsiṣye ||\n\nEvening Saṅkalpa:\noṁ pūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-samasta-duritakṣayadvārā śrīparameśvara-prītyarthaṃ sāyaṃ-sandhyām upāsiṣye ||", "action": "Place left palm facing upward on right knee; cover with right palm facing downward (Saṅkalpa-mudrā). Recite the vow steadily with focused mind.", "meaning": "\"On this auspicious tithi endowed with divine celestial attributes, for the destruction of all accumulated sins and for the pleasure of the Supreme Lord Parameśvara, I undertake the performance of the [Morning / Noon / Evening] Sandhyā worship.\""}, {"id": 6, "title": "6. मार्जनम् (Mārjanam) — 9 Padas", "subtitle": "Purificatory Sprinkling", "posture": "Sitting Cross-Legged", "actionType": "Sprinkle on Head (Drops 1-6, 8-9) & Ground (7)", "sanskrit": "ॐ आपो हि ष्ठा मयोभुवः । (१)\nता न ऊर्जे दधातन । (२)\nमहे रणाय चक्षसे । (३)\nयो वः शिवतमो रसः । (४)\nतस्य भाजयतेह नः । (५)\nउशतीरिव मातरः । (६)\nतस्मा अरङ्ग माम वः । (७ - भूमौ/पादयोः)\nयस्य क्षयाय जिन्वथ । (८)\nआपो जनयथा च नः ॥ (९)\n\nइति शिरसि मार्जयेत् ।", "iast": "oṁ āpo hi ṣṭhā mayobhuvaḥ | (1)\ntā na ūrje dadhātana | (2)\nmahe raṇāya cakṣase | (3)\nyo vaḥ śivatamo rasaḥ | (4)\ntasya bhājayateha naḥ | (5)\nuśatīriva mātaraḥ | (6)\ntasmā araṅgamāma vaḥ | (7 - ground/feet)\nyasya kṣayāya jinvatha | (8)\nāpo janayathā ca naḥ || (9)\n\niti śirasi mārjayet |", "action": "Take water in left palm. Using right ring finger & thumb, sprinkle drops on head at each pada (pada 7 on ground/feet).", "meaning": "\"O Waters, you are source of joy! Bestow energy upon us for the supreme vision. Grant us your most auspicious nectar like loving mothers. Recreate us with divine wisdom!\""}, {"id": 7, "title": "7. मन्त्राचमनम् (Mantra-ācamanam)", "subtitle": "Inner Water Consecration (Time Specific)", "posture": "Sitting Upright", "actionType": "Single Consecrated Sip at 'Svāhā'", "sanskrit": "🌅 प्रातःकाल (Morning):\nसूर्यश्च मामन्युश्च मन्युपतयश्च मन्युकृतेभ्यः ।\nपापेभ्यो रक्षन्ताम् । यद्रात्र्या पापमकार्षम् । मनसा वाचा हस्ताभ्याम् ।\nपद्भ्यामुदरेण शिश्ना । रात्रिस्तदवलुम्पतु । यत्किञ्च दुरितं मयि ।\nइदमहं माममृतयोनौ । सूर्ये ज्योतिषि जुहोमि स्वाहा ॥\n\n☀️ मध्याह्न (Noon - TA 10.30):\nआपः पुनन्तु पृथिवीं पृथिवी पूता पुनातु माम् ।\nपुनन्तु ब्रह्मणस्पतिर्ब्रह्मा पूता पुनातु माम् ।\nयदुच्छिष्टमभोज्यं यद्वा दुश्चरितं मम ।\nसर्वं पुनन्तु मामापोऽसताञ्च प्रतिग्रहं स्वाहा ॥\n\n🌇 सायङ्काल (Evening):\nअग्निश्च मा मन्युश्च मन्युपतयश्च मन्युकृतेभ्यः ।\nपापेभ्यो रक्षन्ताम् । यदह्ना पापमकार्षम् ।\nमनसा वाचा हस्ताभ्याम् । पद्भ्यामुदरेण शिश्ना ।\nअहस्तदवलुम्पतु । यत्किञ्च दुरितं मयि ।\nइदमहं माममृतयोनौ । सत्ये ज्योतिषि जुहोमि स्वाहा ॥", "iast": "Morning (Prātaḥ):\nsūryaśca mā manyuśca manyupatayaśca manyukṛtebhyaḥ |\npāpebhyo rakṣantām | yadrātryā pāpamakārṣam | manasā vācā hastābhyām |\npadbhyāmudareṇa śiśnā | rātristadavalumpatu | yatkiñca duritaṃ mayi |\nidamahaṃ māmamṛtayonau | sūrye jyotiṣi juhomi svāhā ||\n\nNoon (Madhyāhna):\nāpaḥ punantu pṛthivīṃ pṛthivī pūtā punātu mām |\npunantu brahmaṇaspatirbrahmā pūtā punātu mām |\nyaducchiṣṭamabhojyaṃ yadvā duścaritaṃ mama |\nsarvaṃ punantu māmāpo'satāñca pratigrahaṃ svāhā ||\n\nEvening (Sāyaṃ):\nagniśca mā manyuśca manyupatayaśca manyukṛtebhyaḥ |\npāpebhyo rakṣantām | yadahnā pāpamakārṣam |\nmanasā vācā hastābhyām | padbhyāmudareṇa śiśnā |\nahastadavalumpatu | yatkiñca duritaṃ mayi |\nidamahaṃ māmamṛtayonau | satye jyotiṣi juhomi svāhā ||", "action": "Take a single spoon of water in palm, chant the mantra matching current sandhyā, sip at 'svāhā', then perform standard ācamana (Step 2).", "meaning": "\"May the presiding light (Sun in morning, Waters at noon, Fire at evening) forgive all lapses of the day/night and purify my body, words, and consciousness!\""}, {"id": 8, "title": "8. द्वितीय मार्जनम् (Dvitīya Mārjanam)", "subtitle": "Second Sprinkling (Complete Continuous Recitation)", "posture": "Sitting Upright", "actionType": "Sprinkle Water on Head", "sanskrit": "दधिक्राव्णो अकारिषम् । जिष्णोरश्वस्य वाजिनः ।\nसुरभिनो मुखाकरत्प्रण आयूँषि तारिषत् ॥\n\nॐ आपो हि ष्ठा मयोभुवः । (१)\nता न ऊर्जे दधातन । (२)\nमहे रणाय चक्षसे । (३)\nयो वः शिवतमो रसः । (४)\nतस्य भाजयतेह नः । (५)\nउशतीरिव मातरः । (६)\nतस्मा अरङ्ग माम वः । (७ - भूमौ/पादयोः)\nयस्य क्षयाय जिन्वथ । (८)\nआपो जनयथा च नः ॥ (९)", "iast": "dadhikrāvṇo akāriṣam | jiṣṇoraśvasya vājinaḥ |\nsurabhino mukhākaratpraṇa āyūm̐ṣi tāriṣat ||\n\noṁ āpo hi ṣṭhā mayobhuvaḥ | (1)\ntā na ūrje dadhātana | (2)\nmahe raṇāya cakṣase | (3)\nyo vaḥ śivatamo rasaḥ | (4)\ntasya bhājayateha naḥ | (5)\nuśatīriva mātaraḥ | (6)\ntasmā araṅgamāma vaḥ | (7 - ground/feet)\nyasya kṣayāya jinvatha | (8)\nāpo janayathā ca naḥ || (9)", "action": "Sprinkle water drops on head while chanting Dadhikrāvan and the complete 9 padas of Āpo hi ṣṭhā without interruption.", "meaning": "\"We praise Dadhikrāvan, the swift victorious divine steed of radiant vitality! May He make our senses fragrant and lengthen our lifespan! O Waters, source of delight, grant us spiritual nourishment and divine vision!\""}, {"id": 9, "title": "9. पुनर्मार्जनम् (Punarmārjanam)", "subtitle": "The 4 Golden Waters Hymns (Hiraṇyavarṇāḥ)", "posture": "Sitting Upright", "actionType": "Continuous Sprinkling on Head", "sanskrit": "हिरण्यवर्णाः शुचयः पावकाः यासु जातः कश्यपो यास्विन्द्रः ।\nअग्निं या गर्भं दधिरे विरूपास्तान आपः शं स्योना भवन्तु ॥ १ ॥\n\nयासां राजा वरुणो याति मध्ये सत्यानृते अवपश्यञ्जनानाम् ।\nमधुश्चुतः शुचयो याः पावकास्तान आपः शं स्योना भवन्तु ॥ २ ॥\n\nयासां देवा दिवि कृण्वन्ति भक्षं या अन्तरिक्षे बहुधा भवन्ति ।\nयाः पृथिवीं पयसोन्दन्ति शुक्रास्तान आपः शं स्योना भवन्तु ॥ ३ ॥\n\nयाः शिवेन मा चक्षुषा पश्यतापः शिवया तनुवोपस्पृशत त्वचं मे ।\nसर्वाग्नीँ रप्सुषदो हुवे वो मयि वर्चो बलमोजो निधत्त ॥ ४ ॥", "iast": "hiraṇyavarṇāḥ śucayaḥ pāvakāḥ yāsu jātaḥ kaśyapo yāsvindraḥ |\nagniṃ yā garbhaṃ dadhire virūpāstāna āpaḥ śaṃ syonā bhavantu || 1 ||\n\nyāsāṃ rājā varuṇo yāti madhye satyānṛte avapaśyañjanānām |\nmadhuścutaḥ śucayo yāḥ pāvakāstāna āpaḥ śaṃ syonā bhavantu || 2 ||\n\nyāsāṃ devā divi kṛṇvanti bhakṣaṃ yā antarikṣe bahudhā bhavanti |\nyāḥ pṛthivīṃ payasondanti śukrāstāna āpaḥ śaṃ syonā bhavantu || 3 ||\n\nyāḥ śivena mā cakṣuṣā paśyatāpaḥ śivayā tanuvopaspṛśata tvacaṃ me |\nsarvāgnīm̐ rapsuṣado huve vo mayi varco balamojo nidhatta || 4 ||", "action": "Sprinkle water drops over your head throughout the chanting of all 4 verses.", "meaning": "\"Golden, pure, sanctifying waters, wherein sages and gods were born—look upon me with gracious eyes, touch me with soothing grace, and bestow spiritual luster (varcas), vitality (bala), and strength (ojas)!\""}, {"id": 10, "title": "10. अघमर्षणम् (Aghamarṣaṇa)", "subtitle": "Rite of Sin-Cleansing", "posture": "Sitting Upright", "actionType": "Exhale via Nostril onto Water & Cast Left", "sanskrit": "द्रुपदादिव मुञ्चतु । द्रुपदादिवेन्मुमुचानः ।\nस्विन्नः स्नात्वी मलादिव ।\nपूतं पवित्रेणेवाज्यमापः शुन्दन्तु मैनसः ॥", "iast": "drupadādiva muñcatu | drupadādivenmumucānaḥ |\nsvinnaḥ snātvī malādiva |\npūtaṃ pavitreṇevājyamāpaḥ śundantu mainasaḥ ||", "action": "Hold water in right palm near right nostril with breath held. Meditate on sins leaving through breath into water. Cast water to left without looking. Perform ācamana and 3 prāṇāyāmas.", "meaning": "\"As one bound to a post is released, as one sweating is cleansed by a bath, as ghee is filtered through a purifier—may the Divine Waters wash away all my sins!\""}, {"id": 11, "title": "11. लघुसङ्कल्पः (Laghu-saṅkalpaḥ)", "subtitle": "Saṅkalpa for Arghya Oblation", "posture": "Sitting, Ready to Stand", "actionType": "Saṅkalpa Mudrā", "sanskrit": "🌅 प्रातःकाल (Morning):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं प्रातःसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥\n\n☀️ मध्याह्न (Noon):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं मध्याह्निकसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥\n\n🌇 सायङ्काल (Evening):\nपूर्वोक्त-एवं-गुण-विशेषण-विशिष्टायां शुभतिथौ ममोपात्त-दुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं सायंसन्ध्याङ्ग यथाकालोचित अर्घ्यप्रदानं करिष्ये ॥", "iast": "Morning:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ prātaḥsandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||\n\nNoon:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ madhyāhnikasandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||\n\nEvening:\npūrvokta-evaṃ-guṇa-viśeṣaṇa-viśiṣṭhāyāṃ śubhatithau mamopātta-duritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ sāyaṃsandhyāṅga yathākālocita arghyapradānaṃ kariṣye ||", "action": "Hold palms together on lap and declare your intention to offer Arghya to the Sun without truncation.", "meaning": "\"For the eradication of my sins and to please the Supreme Lord, I now perform the sacred Arghya offering.\""}, {"id": 12, "title": "12. अर्घ्यप्रदानम् (Arghyapradānam)", "subtitle": "The Core Solar Water Oblations", "posture": "Morning/Noon: Standing | Evening: Seated/Squatting", "actionType": "Joined Cupped Palms Offering ×3", "sanskrit": "🌅 प्रातःकाल (Morning ×3 - Cast upwards towards Sun):\nॐ भूर्भुवस्सुवः ॥ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥ (×३)\n\n☀️ मध्याह्न (Noon - Haṃsavati TA 10.4):\nॐ हंसः शुचिषद्वसुरन्तरिक्षसद्धोता वेदिषदतिथिर्दुरोणसत् ।\nनृषद्वरसदृतसद्व्योमसदब्जा गोजा ऋतजा अद्रिजा ऋतम् बृहत् ॥\n\n🌇 सायङ्काल (Evening ×3 - Released downward):\nॐ भूर्भुवस्सुवः ॥ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥ (×३)", "iast": "Morning (Prātaḥ ×3):\noṁ bhūrbhuvassuvaḥ || tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt || (×3)\n\nNoon (Madhyāhna - Haṃsavati):\noṁ haṃsaḥ śuciṣadvasurantarikṣasaddhotā vediṣadatithirduroṇasat |\nnṛṣadvarasadṛtasadvyomasadabjā gojā ṛtajā adrijā ṛtam bṛhat ||\n\nEvening (Sāyaṃ ×3):\noṁ bhūrbhuvassuvaḥ || tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt || (×3)", "action": "Fill joined palms with water, elbows lifted. In morning, cast water upwards to rising sun 3 times. At noon, offer with Haṃsavati. In evening, release water downwards seated.", "meaning": "\"We offer water to empower the divine radiant Sun! 'He is the pure Swan in heaven, the vital air in the atmosphere, the truth supreme!'\""}, {"id": 13, "title": "13. कालातिक्रमण प्रायश्चित्तम् (Kālātīkrama-prāyaścittam)", "subtitle": "4th Expiatory Arghya for Delay (Complete)", "posture": "Standing (Morning/Noon) or Seated (Evening)", "actionType": "Conditional 4th Water Offering", "sanskrit": "पूर्वोक्त-कालातिक्रम-दोष-परिहारार्थं चतुर्थार्घ्य-प्रदानं करिष्ये ॥\n\nॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥", "iast": "pūrvokta-kālātikrama-doṣa-parihārārthaṃ caturthārghya-pradānaṃ kariṣye ||\n\noṁ bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi | dhiyo yo naḥ pracodayāt ||", "action": "If performing after the ideal transition time has lapsed, declare and offer a 4th Arghya with Gāyatrī mantra.", "meaning": "\"To atone for the fault of delayed timing, I offer this fourth compensatory Arghya.\""}, {"id": 14, "title": "14. सजल-प्रदक्षिणम् (Sajala-pradakṣiṇam)", "subtitle": "Contemplation of Sun as Brahman", "posture": "Standing, 360° Clockwise Circle", "actionType": "Trickle Water Around Yourself", "sanskrit": "ॐ उद्यन्तमस्तं यन्तमादित्यमभिध्यायन् कुर्वन् ब्राह्मणो विद्वान् सकलं भद्रमश्नुते ।\nअसावादित्यो ब्रह्मेति ॥\n\nब्रह्मैव सन् ब्रह्माप्येति य एवं वेद ॥ असावादित्यो ब्रह्म ॥", "iast": "oṁ udyantamastaṃ yantamādityamabhidhyāyan kurvan brāhmaṇo vidvān sakalaṃ bhadramaśnute |\nasāvādityo brahmeti ||\n\nbrahmaiva san brahmāpyeti ya evaṃ veda || asāvādityo brahma ||", "action": "Pour a thin stream of water in a complete circle around yourself clockwise, bowing to the Sun. Then sit, perform 2 ācamanas and 3 prāṇāyāmas.", "meaning": "\"The wise seeker who meditates on the rising and setting Sun attains all blessings! 'Yonder Sun is verily Brahman!' Realizing this, he merges with Brahman!\""}, {"id": 15, "title": "15. सन्ध्याङ्ग तर्पणम् (Sandhyāṅga Tarpaṇam)", "subtitle": "Water Libations to Deities", "posture": "Sitting Upright", "actionType": "Release Water via Fingertips (Devatīrtha)", "sanskrit": "🌅 प्रातःकाल (Morning):\n१. सन्ध्यां तर्पयामि ।\n२. गायत्रीं तर्पयामि ।\n३. ब्राह्मीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥\n\n☀️ मध्याह्न (Noon):\n१. सन्ध्यां तर्पयामि ।\n२. सावित्रीं तर्पयामि ।\n३. रौद्रीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥\n\n🌇 सायङ्काल (Evening):\n१. सन्ध्यां तर्पयामि ।\n२. सरस्वतीं तर्पयामि ।\n३. वैष्णवीं तर्पयामि ।\n४. निमृजीं तर्पयामि ॥", "iast": "Morning: sandhyāṃ tarpayāmi | gāyatrīṃ tarpayāmi | brāhmīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||\nNoon: sandhyāṃ tarpayāmi | sāvitrīṃ tarpayāmi | raudrīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||\nEvening: sandhyāṃ tarpayāmi | sarasvatīṃ tarpayāmi | vaiṣṇavīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||", "action": "Pour water spoonfuls through the tips of the 4 fingers into the vessel for each divine energy.", "meaning": "\"I offer sacred water libations to the Sandhyā deities presiding over creation, transformation, and preservation.\""}, {"id": 16, "title": "16. गायत्री आवाहनम् (Gāyatrī Āvāhanam)", "subtitle": "Welcoming Mother Gāyatrī", "posture": "Sitting Upright, Añjali Mudrā", "actionType": "Chanting with Folded Hands", "sanskrit": "(i) विनियोगः:\nॐ इत्येकाक्षरं ब्रह्म । अग्निर्देवता ब्रह्म इत्यार्षम् । गायत्रं छन्दः परमात्मं स्वरूपम् । सायुज्यं विनियोगम् ॥\n\n(ii) आवाहन मन्त्राः:\nआयातु वरदा देवी अक्षरं ब्रह्मसम्मितम् ।\nगायत्रीं छन्दसां मातेदं ब्रह्म जुषस्व मे ।\nयदह्नात्कुरुते पापं तदह्नात्प्रतिमुच्यते ।\nयद्रात्रियात्कुरुते पापं तद्रात्रियात्प्रतिमुच्यते ।\nसर्ववर्णे महादेवि सन्ध्याविद्ये सरस्वति ॥\n\nओजोऽसि सहोऽसि बलमसि भ्राजोऽसि देवानां धामनामसि विश्वमसि विश्वायुः सर्वमसि सर्वायुरभिभूरोम् ।\n\nगायत्रीमावाहयामि । सावित्रीमावाहयामि । सरस्वतीमावाहयामि । छन्दर्षीनावाहयामि । श्रियमावाहयामि ॥", "iast": "(i) viniyogaḥ:\noṁ ityekākṣaraṃ brahma | agnirdevatā brahma ityārṣam | gāyatraṃ chandaḥ paramātmaṃ svarūpam | sāyujyaṃ viniyogam ||\n\n(ii) āvāhana mantrāḥ:\nāyātu varadā devī akṣaraṃ brahmasammitam |\ngāyatrīṃ chandasāṃ mātedaṃ brahma juṣasva me |\nyadahnātkurute pāpaṃ tadahnātpratimucyate |\nyadrātriyātkurute pāpaṃ tadrātriyātpratimucyate |\nsarvavarṇe mahādevi sandhyāvidye sarasvati ||\n\nojo'si saho'si balamasi bhrājo'si devānāṃ dhāmanāmasi viśvamasi viśvāyuḥ sarvamasi sarvāyurabhibhūrom |\n\ngāyatrīmāvāhayāmi | sāvitrīmāvāhayāmi | sarasvatīmāvāhayāmi | chandarṣīnāvāhayāmi | śriyamāvāhayāmi ||", "action": "Join hands at chest in Añjali-mudrā, welcoming Mother Gāyatrī into your heart.", "meaning": "\"May the boon-bestowing Goddess arrive! O Mother of the Vedas, receive this prayer! You are vitality, endurance, strength, and radiance. I invoke Gāyatrī, Sāvitrī, Sarasvatī, the Vedic seers, and divine prosperity!\""}, {"id": 17, "title": "17. गायत्री-जप-सङ्कल्पः (Gāyatrī-japa-saङ्kalpaḥ)", "subtitle": "Declaration for Japa", "posture": "Sitting Upright", "actionType": "Saṅkalpa Mudrā", "sanskrit": "पूर्वोक्त एवङ्गुणविशेषणविशिष्ठायां शुभतिथौ ममोपात्तदुरितक्षयद्वारा श्रीपरमेश्वरमुद्दिश्य श्रीपरमेश्वरप्रीत्यर्थं सन्ध्याङ्ग यथाशक्ति गायत्री महामन्त्रजपं करिष्ये ॥", "iast": "pūrvokta evaṅguṇaviśeṣaṇaviśiṣṭhāyāṃ śubhatithau mamopāttaduritakṣayadvārā śrīparameśvaramuddiśya śrīparameśvaraprītyarthaṃ sandhyāṅga yathāśakti gāyatrī mahāmantrajapaṃ kariṣye ||", "action": "Place right palm over left palm on thigh, making solemn vow for Gāyatrī japa.", "meaning": "\"For the removal of all impurities and to please the Supreme Lord, I resolve to chant the Gāyatrī Mahāmantra according to my capacity.\""}, {"id": 18, "title": "18. करन्यासः (Kara-nyāsaḥ)", "subtitle": "Hand Consecration with Mantras", "posture": "Sitting Upright", "actionType": "Touch 6 Finger Zones", "sanskrit": "१. ॐ तत्सवितुः ब्रह्मात्मने अङ्गुष्ठाभ्यां नमः । (अङ्गुष्ठयोः)\n२. वरेण्यं विष्णवात्मने तर्जनीभ्यां नमः । (तर्जन्योः)\n३. भर्गो देवस्य रुद्रात्मने मध्यमाभ्यां नमः । (मध्यमयोः)\n४. धीमहि सत्यात्मने अनामिकाभ्यां नमः । (अनामिकयोः)\n५. धियो यो नः ज्ञानात्मने कनिष्ठिकाभ्यां नमः । (कनिष्ठिकयोः)\n६. प्रचोदयात् सर्वात्मने करतलकरपृष्ठाभ्यां नमः । (करतल-करपृष्ठयोः) ॥", "iast": "1. oṁ tatsavituḥ brahmātmane aṅguṣṭhābhyāṃ namaḥ | (thumbs)\n2. vareṇyaṃ viṣṇvātmane tarjanībhyāṃ namaḥ | (index fingers)\n3. bhargo devasya rudrātmane madhyamābhyāṃ namaḥ | (middle fingers)\n4. dhīmahi satyātmane anāmikābhyāṃ namaḥ | (ring fingers)\n5. dhiyo yo naḥ jñānātmane kaniṣṭhikābhyāṃ namaḥ | (little fingers)\n6. pracodayāt sarvātmane karatala-karapṛṣṭhābhyāṃ namaḥ | (palms & backs) ||", "action": "Glide thumbs and index fingers along each pair of fingers sequentially, then rub palms and backs of hands.", "meaning": "\"We consecrate our hands with the sacred syllables of Gāyatrī, embodying Brahmā, Viṣṇu, Rudra, Satya, and Supreme Knowledge.\""}, {"id": 19, "title": "19. अङ्गन्यासः (Aṅga-nyāsaḥ)", "subtitle": "Armor of Divine Energy", "posture": "Sitting Upright", "actionType": "Touch Heart, Crown, Tuft, Armor, Eyes, Weapon", "sanskrit": "१. ॐ तत्सवितुः ब्रह्मात्मने हृदयाय नमः । (हृदये)\n२. वरेण्यं विष्णवात्मने शिरसे स्वाहा । (शिरसि)\n३. भर्गो देवस्य रुद्रात्मने शिखायै वषट् । (शिखायाम्)\n४. धीमहि सत्यात्मने कवचाय हुम् । (बाहुभ्याम्)\n५. धियो यो नः ज्ञानात्मने नेत्रत्रयाय वौषट् । (नेत्रयोः)\n६. प्रचोदयात् सर्वात्मने अस्त्राय फट् । (अस्त्रेण छोटिका)\n७. ॐ भूर्भुवस्सुवरोमिति दिग्बन्धः ॥ (परितः छोटिका)", "iast": "1. oṁ tatsavituḥ brahmātmane hṛdayāya namaḥ | (heart)\n2. vareṇyaṃ viṣṇvātmane śirase svāhā | (crown)\n3. bhargo devasya rudrātmane śikhāyai vaṣaṭ | (tuft)\n4. dhīmahi satyātmane kavacāya hum | (armor - cross shoulders)\n5. dhiyo yo naḥ jñānātmane netratrayāya vauṣaṭ | (three eyes)\n6. pracodayāt sarvātmane astrāya phaṭ | (snap on palm)\n7. oṁ bhūrbhuvassuvaromiti digbandhaḥ || (circle snap around head)", "action": "Consecrate limbs by touching heart, head, tuft, crossing arms, touching eyes, snapping on palm, and waving fingers clockwise around head.", "meaning": "\"We place the sacred armor of Gāyatrī upon our body and seal all directions against negative distractions.\""}, {"id": 20, "title": "20. ध्यानम् (Gāyatrī Dhyānam)", "subtitle": "Meditation on the 5-Faced Divine Form", "posture": "Sitting, Eyes Closed, Hands at Heart", "actionType": "Mental Visualization", "sanskrit": "मुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ।\nयुक्तामिन्दुनिबद्धरत्नमकुटां तत्त्वार्थवर्णात्मिकाम् ।\nगायत्रीं वरदाभयाङ्कुशकशां शुभ्रं कपालं गदां ।\nशङ्खं चक्रधराविन्दयुगलं हस्तैर्वहन्तीं भजे ॥", "iast": "muktā-vidruma-hema-nīla-dhavalacchāyair-mukhais-trīkṣaṇaiḥ |\nyuktām-indunibaddha-ratnamakuṭāṃ tattvārtha-varṇātmikām |\ngāyatrīṃ varadābhayāṅkuśa-kaśāṃ śubhraṃ kapālaṃ gadāṃ |\nśaṅkhaṃ cakra-dharāravinda-yugalaṃ hastair-vahantīṃ bhaje ||", "action": "Close eyes and visualize Mother Gāyatrī: 5 radiant faces (pearl, coral, gold, sapphire, diamond), crescent moon crown, and 10 weapons & gestures.", "meaning": "\"I meditate upon Mother Gāyatrī of 5 radiant faces, each with 3 eyes, holding the conch, discus, mace, skull, whip, goad, lotuses, and gestures of boon and fearlessness!\""}, {"id": 21, "title": "21. चतुर्विंशति-मुद्राः (Caturviṃśati-mudrāḥ)", "subtitle": "24 Opening Hand Gestures", "posture": "Sitting Upright", "actionType": "Weave 24 Gestures Sequentially", "sanskrit": "सुमुखं सम्पुटिञ्चैव विततं विस्तृतं तथा ।\nद्विमुखं त्रिमुखञ्चैव चतुः पञ्चमुखं तथा ।\nषण्मुखोऽथोमुखञ्चैव व्यापकाञ्जलिकं तथा ।\nशकटं यमपाशञ्च ग्रथितं सम्मुखोन्मुखम् ।\nप्रलम्बं मुष्टिकञ्चैव मत्स्यः कूर्मो वराहकम् ।\nसिंहाक्रान्तं महाक्रान्तं मुद्गरं पल्लवं तथा ॥\n\nचतुर्विंशति मुद्रा वै गायत्र्यां सुप्रतिष्ठिताः ।\nयो देवः सविता अस्माकं धियो धर्मादिगोचराः । प्रेरयेत्तस्य यद्भर्गस्तद्वरेण्यमुपास्महे ॥", "iast": "sumukhaṃ sampuṭiñcaiva vitataṃ vistṛtaṃ tathā |\ndvimukhaṃ trimukhañcaiva catuḥ pañcamukhaṃ tathā |\nṣaṇmukho'dhomukhañcaiva vyāpakāñjalikaṃ tathā |\nśakaṭaṃ yamapāśañca grathitaṃ sammukhonmukham |\npralambaṃ muṣṭikañcaiva matsyaḥ kūrmo varāhakam |\nsiṃhākrāntaṃ mahākrāntaṃ mudgaraṃ pallavaṃ tathā ||\n\ncaturviṃśati mudrā vai gāyatryāṃ supratiṣṭhitāḥ |\nyo devaḥ savitā asmākaṃ dhiyo dharmādigocarāḥ | prerayettasya yadbhargastadvareṇyamupāsmahe ||", "action": "Form the 24 sacred mudrās (Sumukha to Pallava) in rapid succession before Japa.", "meaning": "\"These 24 hand configurations awaken spiritual resonance. 'We meditate upon that adorable effulgence of Savitṛ who directs our intellects toward virtue.'\""}, {"id": 22, "title": "22. गायत्री महामन्त्रः (Gāyatrī Mahāmantraḥ)", "subtitle": "The Central Japa (108 / 28 Repetitions)", "posture": "Padmāsana / Siddhāsana, Hands Covered", "actionType": "Silent / Whispered Japa (Upāṃśu)", "sanskrit": "ॐ भूर्भुवस्सुवः ॥\nतत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥", "iast": "oṁ bhūrbhuvassuvaḥ ||\ntatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||", "action": "Chant mentally or with slight lip movement, counting on the 10 finger joints of the right hand. Recite 108, 28, or at least 10 times.", "meaning": "\"Om, Earth, Atmosphere, Heavens! We meditate upon that supreme, adorable radiance of the Divine Sun; may He inspire, guide, and illuminate our intellects!\""}, {"id": 23, "title": "23. जपावसानम् (Japāvasānam)", "subtitle": "Completion of Japa Rite (Full Texts in Place)", "posture": "Sitting Upright", "actionType": "Full Concluding Rite", "sanskrit": "मम उपात्त समस्त दुरितक्षयद्वारा श्रीपरमेश्वरप्रीत्यर्थं प्रातःसन्ध्याङ्ग गायत्री महामन्त्र जपावसानं करिष्ये ॥\n\n(करन्यासः)\n१. ॐ तत्सवितुः ब्रह्मात्मने अङ्गुष्ठाभ्यां नमः ।\n२. वरेण्यं विष्णवात्मने तर्जनीभ्यां नमः ।\n३. भर्गो देवस्य रुद्रात्मने मध्यमाभ्यां नमः ।\n४. धीमहि सत्यात्मने अनामिकाभ्यां नमः ।\n५. धियो यो नः ज्ञानात्मने कनिष्ठिकाभ्यां नमः ।\n६. प्रचोदयात् सर्वात्मने करतलकरपृष्ठाभ्यां नमः ॥\n\n(अङ्गन्यासः)\n१. ॐ तत्सवितुः ब्रह्मात्मने हृदयाय नमः ।\n२. वरेण्यं विष्णवात्मने शिरसे स्वाहा ।\n३. भर्गो देवस्य रुद्रात्मने शिखायै वषट् ।\n४. धीमहि सत्यात्मने कवचाय हुम् ।\n५. धियो यो नः ज्ञानात्मने नेत्रत्रयाय वौषट् ।\n६. प्रचोदयात् सर्वात्मने अस्त्राय फट् ।\n७. ॐ भूर्भुवस्सुवरोमिति दिग्विमोकः ॥\n\n(गायत्री ध्यानम्)\nमुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ।\nयुक्तामिन्दुनिबद्धरत्नमकुटां तत्त्वार्थवर्णात्मिकाम् ।\nगायत्रीं वरदाभयाङ्कुशकशां शुभ्रं कपालं गदां ।\nशङ्खं चक्रधराविन्दयुगलं हस्तैर्वहन्तीं भजे ॥", "iast": "mama upātta samasta duritakṣayadvārā śrīparameśvaraprītyarthaṃ prātaḥsandhyāṅga gāyatrī mahāmantra japāvasānaṃ kariṣye ||\n\n(Kara-nyāsaḥ)\n1. oṁ tatsavituḥ brahmātmane aṅguṣṭhābhyāṃ namaḥ |\n2. vareṇyaṃ viṣṇvātmane tarjanībhyāṃ namaḥ |\n3. bhargo devasya rudrātmane madhyamābhyāṃ namaḥ |\n4. dhīmahi satyātmane anāmikābhyāṃ namaḥ |\n5. dhiyo yo naḥ jñānātmane kaniṣṭhikābhyāṃ namaḥ |\n6. pracodayāt sarvātmane karatala-karapṛṣṭhābhyāṃ namaḥ ||\n\n(Aṅga-nyāsaḥ)\n1. oṁ tatsavituḥ brahmātmane hṛdayāya namaḥ |\n2. vareṇyaṃ viṣṇvātmane śirase svāhā |\n3. bhargo devasya rudrātmane śikhāyai vaṣaṭ |\n4. dhīmahi satyātmane kavacāya hum |\n5. dhiyo yo naḥ jñānātmane netratrayāya vauṣaṭ |\n6. pracodayāt sarvātmane astrāya phaṭ |\n7. oṁ bhūrbhuvassuvaromiti digvimokaḥ ||\n\n(Dhyānam)\nmuktā-vidruma-hema-nīla-dhavalacchāyair-mukhais-trīkṣaṇaiḥ |\nyuktām-indunibaddha-ratnamakuṭāṃ tattvārtha-varṇātmikām |\ngāyatrīṃ varadābhayāṅkuśa-kaśāṃ śubhraṃ kapālaṃ gadāṃ |\nśaṅkhaṃ cakra-dharāravinda-yugalaṃ hastair-vahantīṃ bhaje ||", "action": "State completion saṅkalpa, repeat Kara-nyāsa, Aṅga-nyāsa (with digvimoka to unbind directions), and Dhyāna to seal the mantra energy.", "meaning": "\"For the destruction of all sins and to please the Supreme Lord, I conclude the sacred Gāyatrī Mahāmantra japa, sealing its divine energy.\""}, {"id": 24, "title": "24. अष्ट-मुद्राः (Aṣṭa-mudrāḥ)", "subtitle": "8 Concluding Hand Gestures", "posture": "Sitting Upright", "actionType": "Weave 8 Concluding Gestures", "sanskrit": "सुरभिर्ज्ञानचक्रे च योनिः कूर्मोऽथ पङ्कजम् ।\nलिङ्गं निर्वाणमुद्रा चेत्यष्ट मुद्राः प्रकीर्तिताः ॥\n\nयो देवः सविता अस्माकं धियो धर्मादिगोचराः ।\nप्रेरयेत्तस्य यद्भर्गस्तद्वरेण्यमुपास्महे ॥", "iast": "surabhirjñānacakre ca yoniḥ kūrmo'tha paṅkajam |\nliṅgaṃ nirvāṇamudrā cetyaṣṭa mudrāḥ prakīrtitāḥ ||\n\nyo devaḥ savitā asmākaṃ dhiyo dharmādigocarāḥ |\nprerayettasya yadbhargastadvareṇyamupāsmahe ||", "action": "Form Surabhi, Jñāna, Cakra, Yoni, Kūrma, Paṅkaja, Liṅga, and Nirvāṇa mudrās in sequence.", "meaning": "\"The 8 closing gestures: Surabhi (prosperity), Jñāna (wisdom), Cakra (protection), Yoni (origin), Kūrma (inward calm), Paṅkaja (purity), Liṅga (divine presence), and Nirvāṇa (liberation).\""}, {"id": 25, "title": "25. गुरु-वन्दनम् (Guru-vandanam) & ब्रह्मार्पणम्", "subtitle": "Reverence to Teachers & Supreme Dedication", "posture": "Sitting Upright", "actionType": "Añjali Mudrā & Drop Water", "sanskrit": "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः ।\nगुरुः साक्षात्परब्रह्म तस्मै श्रीगुरवे नमः ॥\n\nॐ तत्सद्ब्रह्मार्पणमस्तु ।", "iast": "gururbrahmā gururviṣṇuḥ gururdevo maheśvaraḥ |\nguruḥ sākṣātparabrahma tasmai śrīgurave namaḥ ||\n\noṁ tatsadbrahmārpaṇamastu |", "action": "Bow in reverence to the spiritual masters. Pour a drop of water saying Brahmārpaṇamastu and perform standard ācamana.", "meaning": "\"The Guru is Brahmā, Viṣṇu, and Maheśvara; the Guru is the Supreme Absolute Truth manifest. Salutations to the Guru! Dedicated unto Brahman: Om Tat Sat.\""}, {"id": 26, "title": "26. शारीरिक शुद्धि (Śārīrika Śuddhiḥ)", "subtitle": "Re-consecrating the Senses", "posture": "Sitting Upright", "actionType": "9 Touches with Moist Fingers", "sanskrit": "द्विः परिमृज्य । (ओष्ठयोः)\nसकृदुपस्पृश्य । (ओष्ठयोः)\nयत्सव्यं पाणिम् । (वामहस्ते)\nपादम् । (पादयोः)\nप्रोक्षति शिरः । (शिरसि)\nचक्षुषी । (नेत्रयोः)\nनासिके । (नासिकयोः)\nश्रोत्रे । (कर्णयोः)\nहृदयमालभ्य । (हृदये) ॥", "iast": "dviḥ parimṛjya | (wipe lips twice)\nsakṛdupaspṛśya | (touch lips once)\nyatsavyaṃ pāṇim | (sprinkle left hand)\npādam | (sprinkle feet)\nprokṣati śiraḥ | (sprinkle head)\ncakṣuṣī | (touch eyes)\nnāsike | (touch nostrils)\nśrotre | (touch ears)\nhṛdayamālabhya | (touch heart) ||", "action": "Using water: wipe lips twice, touch lips once, sprinkle left hand, feet, head, touch eyes, nostrils, ears, and place palm on heart.", "meaning": "\"Grounding the high spiritual vibration generated by Gāyatrī japa back into the physical senses and body.\""}, {"id": 27, "title": "27. सूर्योपस्थानम् / वरुणोपस्थानम् (Upasthānam)", "subtitle": "Standing Solar / Varuṇa Hymns (Unabridged)", "posture": "Morning/Noon: Standing facing East/Sun | Evening: Facing West", "actionType": "Standing with Arms Raised / Folded", "sanskrit": "🌅 प्रातःकाल मित्रोपस्थानम् (Morning - TS 3.4.11 in full):\nॐ मित्रस्य चर्षणीधृतः श्रवो देवस्य सानसिम् । सत्यं चित्रश्रवस्तमम् ॥ १ ॥\nमित्रो जनान् यातयति प्रजानन्मित्रो दाधार पृथिवीमुत द्याम् ।\nमित्रः कृष्टीरनिमिषा अभिचष्टे सत्याय हव्यं घृतवद्विधेम ॥ २ ॥\nप्र स मित्र मर्त्यो अस्तु प्रयस्वान्यस्त आदित्य शिक्षति व्रतेन ।\nन हन्यते न जीयते त्वोतो नैनमंहोऽश्नोत्यन्तितो न दूरात् ॥ ३ ॥\n\n☀️ मध्याह्न सूर्योपस्थानम् (Noon Sūryopasthānam in full):\nॐ आ सत्येन रजसा वर्तमानो निवेशयन्नमृतं मर्त्यञ्च । हिरण्ययेन सविता रथेना देवो याति भुवना निपश्यन् ॥ १ ॥\nउद्वयन्तमसस्परि पश्यन्तो ज्योतिरुत्तरम् । देवं देवत्रा सूर्यं गन्म ज्योतिरुत्तमम् ॥ २ ॥\nउदुत्यं जातवेदसं देवं वहन्ति केतवः । दृशे विश्वाय सूर्यम् ॥ ३ ॥\nचित्रं देवानामुदगादनीकं चक्षुर्मित्रस्य वरुणस्याग्नेः । अप्राद्यावापृथिवी अन्तरिक्षं सूर्य आत्मा जगतस्तस्थुषश्च ॥ ४ ॥\nतच्चक्षुर्देवहितं पुरस्ताच्छुक्रमुच्चरत् ।\nपश्येम शरदः शतम् । जीवेम शरदः शतम् ।\nनन्दाम शरदः शतम् । मोदाम शरदः शतम् ।\nभवाम शरदः शतम् । शृणवाम शरदः शतम् ।\nप्रब्रवाम शरदः शतम् । अजीताः स्याम शरदः शतम् ।\nजोक् च सूर्यं दृशे ॥ ५ ॥\nय उदगान्महतोऽर्णवाद्विभ्राजमानः सरिरस्य मध्यात्समा । वृषभो लोहिताक्षः सूर्यो विपश्चिन्मनसा पुनातु ॥ ६ ॥\n\n🌇 सायं वरुणोपस्थानम् (Evening Varuṇopasthānam in full):\nॐ इमं मे वरुण शृधी हवमद्या च मृडय । त्वामवस्युराचके ॥ १ ॥\nत्वा यामि ब्रह्मणा वन्दमानस्तदाशास्ते यजमानो हविर्भिः । अहेडमानो वरुणेह बोध्युरुशंस मा न आयुः प्रमोषीः ॥ २ ॥\nयच्चिद्धि ते विशो यथा प्र देव वरुण व्रतम् । मिनीमसि द्यविद्यवि ॥ ३ ॥\nयत्किञ्चेदं वरुण दैव्ये जनेऽभिद्रोहं मनुष्याश्चरामसि । अचित्ती यत्तव धर्मा युयोपिम मा नस्तस्मादेनसो देव रीरिषः ॥ ४ ॥\nकितवासो यद्रिरिपुर्न दीवि यद्वाघा सत्यमुत यन्न विद्म । सर्वा ता विष्य शिथिरेव देवाथा ते स्याम वरुण प्रियासः ॥ ५ ॥", "iast": "Morning (Mitropasthānam):\noṁ mitrasya carṣaṇīdhṛtaḥ śravo devasya sānasim | satyaṃ citraśravastamam || 1 ||\nmitro janān yātayati prajānanmitro dādhāra pṛthivīmuta dyām |\nmitraḥ kṛṣṭīranimiṣā abhicaṣṭe satyāya havyaṃ ghṛtavadvidhema || 2 ||\npra sa mitra martyo astu prayasvānyasta āditya śikṣati vratena |\nna hanyate na jīyate tvoto nainamaṃho'śnotyantito na dūrāt || 3 ||\n\nNoon (Madhyāhna Sūryopasthānam):\noṁ ā satyena rajasā vartamāno niveśayannamṛtaṃ martyañca | hiraṇyayena savitā rathenā devo yāti bhuvanā nipaśyan || 1 ||\nudvayantamasaspari paśyanto jyotiruttaram | devaṃ devatrā sūryaṃ ganma jyotiruttamam || 2 ||\nudutyaṃ jātavedasaṃ devaṃ vahanti ketavaḥ | dṛśe viśvāya sūryam || 3 ||\ncitraṃ devānāmudagādanīkaṃ cakṣurmitrasya varuṇasyāgneḥ | aprādyāvāpṛthivī antarikṣaṃ sūrya ātmā jagatastasthuṣaśca || 4 ||\ntaccakṣurdevahitaṃ purastācchukramuccarat |\npaśyema śaradaḥ śatam | jīvema śaradaḥ śatam |\nnandāma śaradaḥ śatam | modāma śaradaḥ śatam |\nbhavāma śaradaḥ śatam | śṛṇavāma śaradaḥ śatam |\nprabravāma śaradaḥ śatam | ajītāḥ syāma śaradaḥ śatam |\njok ca sūryaṃ dṛśe || 5 ||\nya udagānmahato'rṇavādvibhrājamānaḥ sarirasya madhyātsamā | vṛṣabho lohitākṣaḥ sūryo vipaścinmanasā punātu || 6 ||\n\nEvening (Varuṇopasthānam):\noṁ imaṃ me varuṇa śṛdhī havamadyā ca mṛḍaya | tvāmavasyurācake || 1 ||\ntvā yāmi brahmaṇā vandamānastadāśāste yajamāno havirbhiḥ | aheḍamāno varuṇeha bodhyuruśaṃsa mā na āyuḥ pramoṣīḥ || 2 ||\nyacciddhi te viśo yathā pra deva varuṇa vratam | minīmasi dyavidyavi || 3 ||\nyatkiñcedaṃ varuṇa daivye jane'bhidrohaṃ manuṣyāścarāmasi | acittī यत्तव धर्मा युयोपिम मा नस्तस्मादेनसो देव रीरिषः || 4 ||\nkitavāso yadriripurna dīvi yadvāghā satyamuta yanna vidma | sarvā tā viṣya śithireva devāthā te syāma varuṇa priyāsaḥ || 5 ||", "action": "Stand facing the Sun's direction with arms raised in homage, chanting the complete Vedic hymn.", "meaning": "\"Morning Mitra sustains all people; Midday Sūrya lights the entire cosmos and grants a hundred autumns of life; Evening Varuṇa forgives all transgressions and unties all bonds of guilt!\""}, {"id": 28, "title": "28. दिग्देवता नमस्कारः (Digdevatā Namaskāraḥ)", "subtitle": "Salutations to the 7 Compass Directions", "posture": "Standing, Turning to each Direction", "actionType": "Bow to each Cardinal Point", "sanskrit": "१. ॐ नमः प्राच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (पूर्वस्याम्)\n२. ॐ नमो दक्षिणायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (दक्षिणस्याम्)\n३. ॐ नमः प्रतीच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (पश्चिमस्याम्)\n४. ॐ नम उदीच्यै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (उत्तरस्याम्)\n५. ॐ नम ऊर्ध्वायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (ऊर्ध्वम्)\n६. ॐ नमोऽधरायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (अधः)\n७. ॐ नमोऽवान्तरायै दिशे याश्च देवता एतस्यां प्रतिवसन्त्येताभ्यश्च नमः । (अवान्तरदिक्षु) ॥", "iast": "1. oṁ namaḥ prācyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (East)\n2. oṁ namo dakṣiṇāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (South)\n3. oṁ namaḥ pratīcyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (West)\n4. oṁ nama udīcyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (North)\n5. oṁ nama ūrdhvāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Zenith)\n6. oṁ namo'dharāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Nadir)\n7. oṁ namo'vāntarāyai diśe yāśca devatā etasyāṃ prativasanty-etābhyaśca namaḥ | (Intermediate) ||", "action": "Bow to East (Indra), South (Yama), West (Varuṇa), North (Kubera), Zenith (Up), Nadir (Earth), and all intermediate spaces.", "meaning": "\"Salutations to all seven directions and to all the divine guardian deities residing within them!\""}, {"id": 29, "title": "29. मुनि नमस्कारः (Muni Namaskāraḥ)", "subtitle": "Salutations to the Sages of Gaṅgā & Yamunā", "posture": "Standing Upright", "actionType": "Folded Hands Reverence", "sanskrit": "नमो गङ्गायमुनयोर्मध्ये ये वसन्ति ते मे प्रसन्नात्मानश्चिरञ्जीवितं वर्धयन्ति ।\nनमो गङ्गायमुनयोर्मुनिभ्यश्च नमो नमो गङ्गायमुनयोर्मुनिभ्यश्च नमः ॥", "iast": "namo gaṅgā-yamunayor-madhye ye vasanti te me prasannātmānaś-cirañjīvitaṃ vardhayanti |\nnamo gaṅgā-yamunayor-munibhyaśca namo namo gaṅgā-yamunayor-munibhyaśca namaḥ ||", "action": "Bow with folded hands in gratitude to the sacred rivers and the unbroken lineage of enlightened sages.", "meaning": "\"Salutations to those who dwell between the sacred Gaṅgā and Yamunā! May they, with pleased hearts, increase my lifespan! Salutations to the venerable munis!\""}, {"id": 30, "title": "30. सन्ध्यादेवता नमस्कारः (Sandhyādevatā Namaskāraḥ)", "subtitle": "Homage to Sandhyā, Sages, & Ancestors", "posture": "Standing Upright", "actionType": "Bow at Each Line", "sanskrit": "सन्ध्यायै नमः ।\nसावित्र्यै नमः ।\nगायत्र्यै नमः ।\nसरस्वत्यै नमः ।\nसर्वाभ्यो देवताभ्यो नमः ।\n\nदेवेभ्यो नमः ।\nऋषिभ्यो नमः ।\nमुनिभ्यो नमः ।\nगुरुभ्यो नमः ।\nपितृभ्यो नमः ।\n\nकामोऽकार्षीन्नमो नमः ।\nमन्युरकार्षीन्नमो नमः ।\nपृथिव्यापस्तेजो वायुराकाशात् नमः ॥", "iast": "sandhyāyai namaḥ | sāvitryai namaḥ | gāyatryai namaḥ | sarasvatyai namaḥ | sarvābhyo devatābhyo namaḥ |\ndevebhyo namaḥ | ṛṣibhyo namaḥ | munibhyo namaḥ | gurubhyo namaḥ | pitṛbhyo namaḥ |\nkāmo'kārṣīn-namo namaḥ | manyurakārṣīn-namo namaḥ | pṛthivyāpastejo vāyurākāśāt namaḥ ||", "action": "Bow with folded hands at each invocation.", "meaning": "\"Salutations to Sandhyā, Sāvitrī, Gāyatrī, Sarasvatī, Gods, Ṛṣis, Munis, Teachers, Ancestors, and the five elements! Desire did it, anger did it—salutations!\""}, {"id": 31, "title": "31. वासुदेव नमस्कारः (Vāsudeva Namaskāraḥ)", "subtitle": "Salutation to Supreme Vāsudeva", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "ॐ नमो भगवते वासुदेवाय ।\nयां सदा सर्वभूतानि चराणि स्थावराणि च ।\nसायं प्रातर्नमस्यन्ति सा मां सन्ध्याभिरक्षतु ॥", "iast": "oṁ namo bhagavate vāsudevāya |\nyāṃ sadā sarvabhūtāni carāṇi sthāvarāṇi ca |\nsāyaṃ prātarnamasyanti sā māṃ sandhyābhirakṣatu ||", "action": "Bow with folded hands at chest.", "meaning": "\"Om, salutations to Bhagavān Vāsudeva! May Divine Sandhyā, worshiped by all beings morning and evening, constantly guard and protect me!\""}, {"id": 32, "title": "32. शिव-विष्णु नमस्कारः (Śiva-Viṣṇu Namaskāraḥ)", "subtitle": "Unity of Divine Consciousness", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "शिवाय विष्णुरूपाय शिवरूपाय विष्णवे ।\nशिवस्य हृदयं विष्णुर्विष्णोश्च हृदयं शिवः ॥\n\nयथा शिवमयो विष्णुरेवं विष्णुमयः शिवः ।\nयथान्तरं न पश्यामि तथा मे स्वस्तिरायुषि ॥", "iast": "śivāya viṣṇurūpāya śivarūpāya viṣṇave |\nśivasya hṛdayaṃ viṣṇurviṣṇośca hṛdayaṃ śivaḥ ||\nyathā śivamayo viṣṇurevaṃ viṣṇumayaḥ śivaḥ |\nyathāntaraṃ na paśyāmi tathā me svastirāyuṣi ||", "action": "Contemplate that Lord Śiva is in Viṣṇu's heart and Lord Viṣṇu in Śiva's heart.", "meaning": "\"Viṣṇu is the heart of Śiva, and Śiva is the heart of Viṣṇu! Inasmuch as I see no difference between Them, may my life be blessed with longevity!\""}, {"id": 33, "title": "33. कृष्ण-गोविन्द नमस्कारः (Kṛṣṇa-Govinda Namaskāraḥ)", "subtitle": "Universal Welfare Prayer", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "नमो ब्रह्मण्यदेवाय गोब्राह्मणहिताय च ।\nजगद्धिताय कृष्णाय गोविन्दाय नमो नमः ॥", "iast": "namo brahmaṇyadevāya gobrāhmaṇahitāya ca |\njagaddhitāya kṛṣṇāya govindāya namo namaḥ ||", "action": "Bow in prayer for the welfare of nature, seekers, and the cosmos.", "meaning": "\"Salutations to the Divinity who fosters spiritual knowledge, who protects cows and seekers, and works for cosmic welfare—salutations to Kṛṣṇa, to Govinda!\""}, {"id": 34, "title": "34. गायत्री उद्वासनम् (Gāyatrī Udvāsanam)", "subtitle": "Joyful Farewell to Mother Gāyatrī", "posture": "Standing / Seated Prayer", "actionType": "Folded Hands", "sanskrit": "उत्तमे शिखरे जाते भूम्यां पर्वतमूर्धनि ।\nब्राह्मणेभ्योऽभ्यनुज्ञाता गच्छ देवि यथासुखम् ॥ १ ॥\n\nस्तुतो मया वरदा वेदमाता प्रचोदयन्ती पवने द्विजाता ।\nआयुः पृथिव्यां द्रविणं ब्रह्मवर्चसं मह्यं दत्त्वा प्रयातुं ब्रह्मलोकम् ॥ २ ॥", "iast": "uttame śikhare jāte bhūmyāṃ parvata-mūrdhani |\nbrāhmaṇebhyo'bhyanujñātā gaccha devi yathāsukham || 1 ||\n\nstuto mayā varadā vedamātā pracodayantī pavane dvijātā |\nāyuḥ pṛthivyāṃ draviṇaṃ brahmavarcasaṃ mahyaṃ dattvā prayātuṃ brahmalokam || 2 ||", "action": "Bid reverent farewell to Mother Gāyatrī returning to Brahmaloka while retaining Her light in your heart.", "meaning": "\"Depart happily O Goddess unto Your celestial peak! Bestowing upon me long life, righteousness, and spiritual brilliance (brahmavarcas), return to Brahmaloka!\""}, {"id": 35, "title": "35. भगवन्नमस्कारः (Bhagavannamaskāraḥ)", "subtitle": "Salutations to Cosmic Infinite Puruṣa", "posture": "Standing or Full Prostration (Sāṣṭāṅga)", "actionType": "Deep Bow / Prostration", "sanskrit": "नमोऽस्त्वनन्ताय सहस्रमूर्तये सहस्रपादाक्षिशिरोरुबाहवे ।\nसहस्रनाम्ने पुरुषाय शाश्वते सहस्रकोटियुगधारिणे नमः ॥", "iast": "namo'stvanantāya sahasramūrtaye sahasrapādākṣiśirorubāhave |\nsahasranāmne puruṣāya śāśvate sahasra-koṭi-yugadhāriṇe namaḥ ||", "action": "Bow deeply or prostrate to the Cosmic Lord of infinite forms.", "meaning": "\"Salutations to the Infinite One of thousands of forms, eyes, heads, and arms! Salutations to the eternal Puruṣa who sustains millions of cosmic ages!\""}, {"id": 36, "title": "36. भूम्याकाशाभिवन्दनम् (Bhūmyākāśābhivandanam)", "subtitle": "Salutations to Father Heaven & Mother Earth", "posture": "Standing", "actionType": "Touch Earth then Raise Hands to Sky", "sanskrit": "इदं द्यावापृथिवी सत्यमस्तु ।\nपितर्मातर्यदि होपब्रुवे वाम् ।\nभूतं देवानामवमे अवोभिः ।\nविद्यामेषं वृजिनं जीरदानुम् ॥", "iast": "idaṃ dyāvāpṛthivī satyamastu |\npitarmātaryadi hopabruve vām |\nbhūtaṃ devānāmavame avobhiḥ |\nvidyāmeṣaṃ vṛjinaṃ jīradānum ||", "action": "Touch the earth with right fingers, then raise palms and eyes toward the sky.", "meaning": "\"May this prayer be true, O Father Heaven and Mother Earth! Deliver us from troubles and grant us vigor and divine protection!\""}, {"id": 37, "title": "37. आकाशात्पतितं तोयम् (Ākāśātpatitaṃ Toyam)", "subtitle": "All Prayers Reach Keśava", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "आकाशात्पतितं तोयं यथा गच्छति सागरम् ।\nसर्वदेवनमस्कारः केशवं प्रतिगच्छति ॥\n\nश्रीकेशवं प्रतिगच्छत्योन्नम इति ।", "iast": "ākāśātpatitaṃ toyaṃ yathā gacchati sāgaram |\nsarvadevanamaskāraḥ keśavaṃ pratigacchati ||\n\nśrīkeśavaṃ pratigacchatyonnama iti |", "action": "Bow with folded hands in gratitude.", "meaning": "\"Just as all rain falling from the sky ultimately flows into the one ocean, salutations offered to every deity reach Lord Keśava alone!\""}, {"id": 38, "title": "38. सर्ववेदेषु यत्पुण्यम् (Sarvavedeṣu Yatpuṇyam)", "subtitle": "Merit of All Vedas in Janārdana", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "सर्ववेदेषु यत्पुण्यम् । सर्वतीर्थेषु यत्फलम् ।\nतत्फलं पुरुष आप्नोति स्तुत्वा देवं जनार्दनम् ॥\n\nस्तुत्वा देवं जनार्दनं ॐ नम इति ।", "iast": "sarvavedeṣu yatpuṇyam | sarvatīrtheṣu yatphalam |\ntatphalaṃ puruṣa āpnoti stutvā devaṃ janārdanam ||\n\nstutvā devaṃ janārdanaṃ oṁ nama iti |", "action": "Bow with folded hands.", "meaning": "\"Whatever spiritual merit is in all the Vedas, whatever fruit is in all sacred waters—one attains it all simply by praising Lord Janārdana!\""}, {"id": 39, "title": "39. वासुदेवस्य वासना (Vāsudevasya Vāsanā)", "subtitle": "The All-Pervading Fragrance of God", "posture": "Standing Upright", "actionType": "Folded Hands", "sanskrit": "वासनाद्वासुदेवस्य वासितं ते जगत्त्रयम् ।\nसर्वभूतनिवासोऽसि श्रीवासुदेव नमोऽस्तुते ॥\n\nश्रीवासुदेव नमोऽस्तुते ॐ नम इति ।", "iast": "vāsanād-vāsudevasya vāsitaṃ te jagattrayam |\nsarvabhūtanivāso'si śrīvāsudeva namo'stute ||\n\nśrīvāsudeva namo'stute oṁ nama iti |", "action": "Bow with folded hands.", "meaning": "\"By the fragrant presence of Vāsudeva, these three worlds are permeated! You are the indwelling refuge of all beings; O Lord Vāsudeva, salutations to You!\""}, {"id": 40, "title": "40. अभिवादनम् (Abhivādanam)", "subtitle": "Lineage Declaration to Elders (Complete & Chantable)", "posture": "Hands Crossed Touching Ears, Bowing Low", "actionType": "Ear Touch + Prostration", "sanskrit": "चतुःसागरपर्यन्तं गोब्राह्मणेभ्यः शुभं भवतु ।\n\nआङ्गिरस-बार्हस्पत्य-भारद्वाज त्र्यार्षेय-प्रवरान्वित भारद्वाज-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी राघव-शर्मा अहं भो अभिवादये ॥\n\n(प्रमुख गोत्र प्रवर मन्त्राः):\n• कौशिक गोत्रः: वैश्वामित्र-देवरात-औदल त्र्यार्षेय-प्रवरान्वित कौशिक-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• वसिष्ठ गोत्रः: वासिष्ठ एकार्षेय-प्रवरान्वित वसिष्ठ-गोत्रः बोधायन-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• काश्यप गोत्रः: काश्यप-अवत्सार-नैध्रुव त्र्यार्षेय-प्रवरान्वित काश्यप-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥\n• श्रीवत्स गोत्रः: भार्गव-च्यावन-आप्नवान-और्व-जामदग्न्य पञ्चार्षेय-प्रवरान्वित श्रीवत्स-गोत्रः आपस्तम्ब-सूत्रः कृष्ण-यजुश्शाखाध्यायी शर्मा अहं भो अभिवादये ॥", "iast": "catuḥ-sāgara-paryantaṃ go-brāhmaṇebhyaḥ śubhaṃ bhavatu |\n\nāṅgirasa-bārhaspatya-bhāradvāja tryārṣeya-pravarānvita bhāradvāja-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī rāghava-śarmā ahaṃ bho abhivādaye ||\n\n(Alternative lineage examples:\n• Kauśika: vaiśvāmitra-devarāta-audala tryārṣeya-pravarānvita kauśika-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||\n• Vasiṣṭha: vāsiṣṭha ekarṣeya-pravarānvita vasiṣṭha-gotraḥ bodhāyana-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||\n• Kāśyapa: kāśyapa-avatsāra-naidhruva tryārṣeya-pravarānvita kāśyapa-gotraḥ āpastamba-sūtraḥ kṛṣṇa-yajuśśākhādhyāyī śarmā ahaṃ bho abhivādaye ||)", "action": "Cross right arm over left, hold right ear with right hand and left ear with left hand, bend down touching ground before elders and teacher.", "meaning": "\"May auspiciousness extend to sacred cows and seekers unto the four oceans! Bearing my ancestral pravara, gotra, sūtra, and name, I offer my humble reverent salutation!\""}, {"id": 41, "title": "41. ईश्वरार्पणम् (Īśvarārpaṇam / Brahmārpaṇam)", "subtitle": "Final Surrender of All Action & Fruit", "posture": "Sitting Upright", "actionType": "Pour Water into Vessel with Añjali", "sanskrit": "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत्सकलं परस्मै श्रीमन्नारायणायेति समर्पयामि ॥\n\nहरिः ॐ तत्सत् ।\nतत्सर्वं श्रीपरमेश्वरार्पणमस्तु ॥", "iast": "kāyena vācā manasendriyairvā buddhyātmanā vā prakṛteḥ svabhāvāt |\nkaromi yadyatsakalaṃ parasmai śrīmannārāyaṇāyeti samarpayāmi ||\n\nhariḥ oṁ tatsat |\ntatsarvaṃ śrīparameśvarārpaṇamastu ||", "action": "Release a spoonful of water onto the ground or plate, folding hands in peace and serenity.", "meaning": "\"Whatever I have done through body, speech, mind, senses, intellect, or innate nature—all of that I surrender completely unto Supreme Lord Śrīman Nārāyaṇa! Hariḥ Om Tat Sat! May it all be an offering to Lord Parameśvara!\""}];
+
+    // Detailed 25 Ācamanam Actions Data
+    const ACAMANAM_ACTIONS = [
+      {
+        id: 1,
+        shortName: "1. Keśava",
+        sanskrit: "ॐ केशवाय स्वाहा ।",
+        iast: "oṁ keśavāya svāhā |",
+        action: "Sip water from the base of the right thumb (Brahmatīrtha).",
+        mudra: "Right Palm Base (Brahmatīrtha)",
+        target: "Mouth (Sip 1)",
+        nodeId: "node-lips",
+        meaning: "Salutations to Lord Keśava (Slayer of Keśī, Lord of Creation and Radiance). Svāhā!"
+      },
+      {
+        id: 2,
+        shortName: "2. Nārāyaṇa",
+        sanskrit: "ॐ नारायणाय स्वाहा ।",
+        iast: "oṁ nārāyaṇāya svāhā |",
+        action: "Sip water a second time from Brahmatīrtha.",
+        mudra: "Right Palm Base (Brahmatīrtha)",
+        target: "Mouth (Sip 2)",
+        nodeId: "node-lips",
+        meaning: "Salutations to Lord Nārāyaṇa (the resting place of all beings and inner self). Svāhā!"
+      },
+      {
+        id: 3,
+        shortName: "3. Mādhava",
+        sanskrit: "ॐ माधवाय स्वाहा ।",
+        iast: "oṁ mādhavāya svāhā |",
+        action: "Sip water a third time from Brahmatīrtha.",
+        mudra: "Right Palm Base (Brahmatīrtha)",
+        target: "Mouth (Sip 3)",
+        nodeId: "node-lips",
+        meaning: "Salutations to Lord Mādhava (consort of Śrī Lakṣmī and Lord of Divine Knowledge). Svāhā!"
+      },
+      {
+        id: 4,
+        shortName: "4. Govinda",
+        sanskrit: "ॐ गोविन्दाय नमः ।",
+        iast: "oṁ govindāya namaḥ |",
+        action: "Pour water into the right palm and wash both hands (hasta-prakṣālanam).",
+        mudra: "Wash Both Hands",
+        target: "Both Hands",
+        nodeId: "node-hands",
+        meaning: "Salutations to Lord Govinda (protector of cows, senses, and the Earth)."
+      },
+      {
+        id: 5,
+        shortName: "5. Viṣṇu",
+        sanskrit: "ॐ विष्णवे नमः ।",
+        iast: "oṁ viṣṇave namaḥ |",
+        action: "Rinse/wash the left hand or wash both hands again.",
+        mudra: "Wash Hands Again",
+        target: "Both Hands",
+        nodeId: "node-hands",
+        meaning: "Salutations to Lord Viṣṇu (the All-Pervading Preserver)."
+      },
+      {
+        id: 6,
+        shortName: "6. Madhusūdana",
+        sanskrit: "ॐ मधुसूदनाय नमः ।",
+        iast: "oṁ madhusūdanāya namaḥ |",
+        action: "Wipe the upper and lower lips with the side/pad of the right thumb.",
+        mudra: "Right Thumb Pad",
+        target: "Lips (Upper & Lower)",
+        nodeId: "node-lips",
+        meaning: "Salutations to Lord Madhusūdana (destroyer of demonic ego/Madhu)."
+      },
+      {
+        id: 7,
+        shortName: "7. Trivikrama",
+        sanskrit: "ॐ त्रिविक्रमाय नमः ।",
+        iast: "oṁ trivikramāya namaḥ |",
+        action: "Wipe the lips once again with the thumb pad.",
+        mudra: "Right Thumb Pad",
+        target: "Lips (Second Wipe)",
+        nodeId: "node-lips",
+        meaning: "Salutations to Lord Trivikrama (who measured the three worlds in three strides)."
+      },
+      {
+        id: 8,
+        shortName: "8. Vāmana",
+        sanskrit: "ॐ वामनाय नमः ।",
+        iast: "oṁ vāmanāya namaḥ |",
+        action: "Sprinkle water on the crown of the head (śirasi prokṣaṇam).",
+        mudra: "Sprinkle Water",
+        target: "Crown of Head",
+        nodeId: "node-crown",
+        meaning: "Salutations to Lord Vāmana (the divine dwarf-incarnation)."
+      },
+      {
+        id: 9,
+        shortName: "9. Śrīdhara",
+        sanskrit: "ॐ श्रीधराय नमः ।",
+        iast: "oṁ śrīdharāya namaḥ |",
+        action: "Touch the left palm with wet right fingers.",
+        mudra: "Wet Right Fingers",
+        target: "Left Palm",
+        nodeId: "node-hands",
+        meaning: "Salutations to Lord Śrīdhara (bearer of Śrī Lakṣmī upon His chest)."
+      },
+      {
+        id: 10,
+        shortName: "10. Hṛṣīkeśa",
+        sanskrit: "ॐ हृषीकेशाय नमः ।",
+        iast: "oṁ hṛṣīkeśāya namaḥ |",
+        action: "Wash or sprinkle water on both hands.",
+        mudra: "Sprinkle Water",
+        target: "Both Hands",
+        nodeId: "node-hands",
+        meaning: "Salutations to Lord Hṛṣīkeśa (master and ruler of all senses)."
+      },
+      {
+        id: 11,
+        shortName: "11. Padmanābha",
+        sanskrit: "ॐ पद्मनाभाय नमः ।",
+        iast: "oṁ padmanābhāya namaḥ |",
+        action: "Touch/sprinkle water on both feet.",
+        mudra: "Touch / Sprinkle Water",
+        target: "Both Feet",
+        nodeId: "node-feet",
+        meaning: "Salutations to Lord Padmanābha (from whose navel arises the cosmic lotus)."
+      },
+      {
+        id: 12,
+        shortName: "12. Dāmodara",
+        sanskrit: "ॐ दामोदराय नमः ।",
+        iast: "oṁ dāmodarāya namaḥ |",
+        action: "Touch the crown of the head.",
+        mudra: "Fingertips",
+        target: "Crown of Head",
+        nodeId: "node-crown",
+        meaning: "Salutations to Lord Dāmodara (bound by the rope of pure devotion)."
+      },
+      {
+        id: 13,
+        shortName: "13. Saṅkarṣaṇa",
+        sanskrit: "ॐ सङ्कर्षणाय नमः ।",
+        iast: "oṁ saṅkarṣaṇāya namaḥ |",
+        action: "Touch the chin and mouth with the joined middle three fingers of the right hand.",
+        mudra: "Joined Middle 3 Fingers",
+        target: "Chin & Mouth",
+        nodeId: "node-chin",
+        meaning: "Salutations to Lord Saṅkarṣaṇa (who draws all beings unto Himself)."
+      },
+      {
+        id: 14,
+        shortName: "14. Vāsudeva",
+        sanskrit: "ॐ वासुदेवाय नमः ।",
+        iast: "oṁ vāsudevāya namaḥ |",
+        action: "Touch the right nostril with the thumb and index finger.",
+        mudra: "Thumb + Index Finger",
+        target: "Right Nostril",
+        nodeId: "node-right-nostril",
+        meaning: "Salutations to Lord Vāsudeva (the indwelling consciousness)."
+      },
+      {
+        id: 15,
+        shortName: "15. Pradyumna",
+        sanskrit: "ॐ प्रद्युम्नाय नमः ।",
+        iast: "oṁ pradyumnāya namaḥ |",
+        action: "Touch the left nostril with the thumb and index finger.",
+        mudra: "Thumb + Index Finger",
+        target: "Left Nostril",
+        nodeId: "node-left-nostril",
+        meaning: "Salutations to Lord Pradyumna (the lord of radiant intellect)."
+      },
+      {
+        id: 16,
+        shortName: "16. Aniruddha",
+        sanskrit: "ॐ अनिरुद्धाय नमः ।",
+        iast: "oṁ aniruddhāya namaḥ |",
+        action: "Touch the right eye with the thumb and ring finger.",
+        mudra: "Thumb + Ring Finger",
+        target: "Right Eye",
+        nodeId: "node-right-eye",
+        meaning: "Salutations to Lord Aniruddha (the unobstructed sovereign)."
+      },
+      {
+        id: 17,
+        shortName: "17. Puruṣottama",
+        sanskrit: "ॐ पुरुषोत्तमाय नमः ।",
+        iast: "oṁ puruṣottamāya namaḥ |",
+        action: "Touch the left eye with the thumb and ring finger.",
+        mudra: "Thumb + Ring Finger",
+        target: "Left Eye",
+        nodeId: "node-left-eye",
+        meaning: "Salutations to Lord Puruṣottama (Supreme Being above perishable & imperishable)."
+      },
+      {
+        id: 18,
+        shortName: "18. Adhokṣaja",
+        sanskrit: "ॐ अधोक्षजाय नमः ।",
+        iast: "oṁ adhokṣajāya namaḥ |",
+        action: "Touch the right ear with the thumb and index finger.",
+        mudra: "Thumb + Index Finger",
+        target: "Right Ear",
+        nodeId: "node-right-ear",
+        meaning: "Salutations to Lord Adhokṣaja (who transcends sense perception)."
+      },
+      {
+        id: 19,
+        shortName: "19. Narasiṃha",
+        sanskrit: "ॐ नरसिंहाय नमः ।",
+        iast: "oṁ narasiṃhāya namaḥ |",
+        action: "Touch the left ear with the thumb and index finger.",
+        mudra: "Thumb + Index Finger",
+        target: "Left Ear",
+        nodeId: "node-left-ear",
+        meaning: "Salutations to Lord Narasiṃha (the fierce divine protector)."
+      },
+      {
+        id: 20,
+        shortName: "20. Acyuta",
+        sanskrit: "ॐ अच्युताय नमः ।",
+        iast: "oṁ acyutāya namaḥ |",
+        action: "Touch the navel (nābhi) with the thumb and little finger.",
+        mudra: "Thumb + Little Finger",
+        target: "Navel (Nābhi)",
+        nodeId: "node-navel",
+        meaning: "Salutations to Lord Acyuta (the infallible and unchanging One)."
+      },
+      {
+        id: 21,
+        shortName: "21. Janārdana",
+        sanskrit: "ॐ जनार्दनाय नमः ।",
+        iast: "oṁ janārdanāya namaḥ |",
+        action: "Touch the heart/chest (hṛdaya) with the flat right palm.",
+        mudra: "Flat Right Palm",
+        target: "Heart / Chest",
+        nodeId: "node-heart",
+        meaning: "Salutations to Lord Janārdana (the refuge of humanity)."
+      },
+      {
+        id: 22,
+        shortName: "22. Upendra",
+        sanskrit: "ॐ उपेन्द्राय नमः ।",
+        iast: "oṁ upendrāya namaḥ |",
+        action: "Touch the crown of the head with all fingers.",
+        mudra: "All 5 Fingers",
+        target: "Crown of Head",
+        nodeId: "node-crown",
+        meaning: "Salutations to Lord Upendra (higher sovereign brother of Indra)."
+      },
+      {
+        id: 23,
+        shortName: "23. Hari",
+        sanskrit: "ॐ हरये नमः ।",
+        iast: "oṁ haraye namaḥ |",
+        action: "Touch the right shoulder with the fingertips.",
+        mudra: "Fingertips",
+        target: "Right Shoulder",
+        nodeId: "node-right-shoulder",
+        meaning: "Salutations to Lord Hari (who takes away all sorrows and sins)."
+      },
+      {
+        id: 24,
+        shortName: "24. Śrī Kṛṣṇa",
+        sanskrit: "ॐ श्रीकृष्णाय नमः ।",
+        iast: "oṁ śrīkṛṣṇāya namaḥ |",
+        action: "Touch the left shoulder with the fingertips.",
+        mudra: "Fingertips",
+        target: "Left Shoulder",
+        nodeId: "node-left-shoulder",
+        meaning: "Salutations to Lord Śrī Kṛṣṇa (the all-attractive Supreme Consciousness)."
+      },
+      {
+        id: 25,
+        shortName: "25. Añjali",
+        sanskrit: "ॐ श्रीकृष्ण परब्रह्मणे नमो नमः ।",
+        iast: "oṁ śrīkṛṣṇa parabrahmaṇe namo namaḥ |",
+        action: "Fold palms together in reverent salutation (Añjali-mudrā).",
+        mudra: "Añjali-mudrā (Folded Palms)",
+        target: "Chest / Folded Palms",
+        nodeId: "node-heart",
+        meaning: "Salutations again and again to Lord Śrī Kṛṣṇa, the Supreme Absolute Reality (Parabrahman)."
+      }
+    ];
 
     // Audio Bell Synthesizer (Quiet & Soft)
     let audioCtx = null;
@@ -723,22 +1280,20 @@
       return audioCtx;
     }
 
-    function playBell(freq = 528, duration = 0.6) {
+    function playBell(freq = 528, duration = 0.5) {
       try {
         const ctx = getAudioContext();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, ctx.currentTime);
-        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
         osc.stop(ctx.currentTime + duration);
-      } catch (e) {
-        // audio might be blocked before user gesture
-      }
+      } catch (e) {}
     }
 
     // Speech Synthesis for Sanskrit Pronunciation
@@ -785,31 +1340,22 @@
         .replace(/\s+/g, ' ')
         .trim();
 
-      currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
-      
+      speakText(textToSpeak, () => updateSpeakBtnUI(false));
+      updateSpeakBtnUI(true);
+    }
+
+    function speakText(text, onEnd) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(text);
       const voices = window.speechSynthesis.getVoices();
       const indicVoice = voices.find(v => (v.lang && (v.lang.startsWith('hi') || v.lang.startsWith('sa'))) || (v.name && (v.name.includes('India') || v.name.includes('Hindi'))));
-      if (indicVoice) {
-        currentUtterance.voice = indicVoice;
-      }
-      
-      currentUtterance.rate = speechPace;
-      currentUtterance.pitch = 1.0;
-
-      currentUtterance.onstart = () => {
-        isSpeaking = true;
-        updateSpeakBtnUI(true);
-      };
-      currentUtterance.onend = () => {
-        isSpeaking = false;
-        updateSpeakBtnUI(false);
-      };
-      currentUtterance.onerror = () => {
-        isSpeaking = false;
-        updateSpeakBtnUI(false);
-      };
-
-      window.speechSynthesis.speak(currentUtterance);
+      if (indicVoice) utt.voice = indicVoice;
+      utt.rate = speechPace;
+      utt.pitch = 1.0;
+      utt.onend = () => { if (onEnd) onEnd(); };
+      utt.onerror = () => { if (onEnd) onEnd(); };
+      window.speechSynthesis.speak(utt);
     }
 
     function updateSpeakBtnUI(speaking) {
@@ -829,6 +1375,129 @@
     let currentPeriod = 'morning';
     let currentFontSizeRem = 1.10;
 
+    // =========================================================
+    // ĀCAMANAM TRAINER LOGIC
+    // =========================================================
+    let currentAcIdx = 0;
+    let acTimer = null;
+    let acPlaying = false;
+
+    function initAcChips() {
+      const strip = document.getElementById('acChipsStrip');
+      if (!strip) return;
+      strip.innerHTML = '';
+      ACAMANAM_ACTIONS.forEach((act, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'ac-chip' + (idx === currentAcIdx ? ' active' : '');
+        btn.textContent = act.shortName;
+        btn.onclick = () => jumpAcAction(idx);
+        strip.appendChild(btn);
+      });
+    }
+
+    function renderAcAction(idx) {
+      currentAcIdx = idx;
+      const act = ACAMANAM_ACTIONS[currentAcIdx];
+
+      document.getElementById('acStepCounter').textContent = `Action ${act.id} of ${ACAMANAM_ACTIONS.length}`;
+      document.getElementById('acTargetLocus').textContent = act.target;
+      document.getElementById('acSanskrit').textContent = act.sanskrit;
+      document.getElementById('acIast').textContent = act.iast;
+      document.getElementById('acMudraText').textContent = act.mudra;
+      document.getElementById('acActionText').textContent = act.action;
+      document.getElementById('acMeaningText').textContent = `"${act.meaning}"`;
+
+      // Update Node Highlight on SVG
+      document.querySelectorAll('.target-node').forEach(node => node.classList.remove('active'));
+      const activeNode = document.getElementById(act.nodeId);
+      if (activeNode) {
+        activeNode.classList.add('active');
+        const cx = activeNode.getAttribute('cx');
+        const cy = activeNode.getAttribute('cy');
+        const ping = document.getElementById('activePing');
+        ping.setAttribute('cx', cx);
+        ping.setAttribute('cy', cy);
+        ping.classList.remove('active');
+        void ping.offsetWidth; // trigger reflow for css animation
+        ping.classList.add('active');
+      }
+
+      // Update Chips
+      document.querySelectorAll('.ac-chip').forEach((ch, cIdx) => {
+        ch.classList.toggle('active', cIdx === currentAcIdx);
+      });
+    }
+
+    function nextAcAction() {
+      if (currentAcIdx < ACAMANAM_ACTIONS.length - 1) {
+        renderAcAction(currentAcIdx + 1);
+        playBell(587, 0.1);
+      } else if (acPlaying) {
+        stopAcAutoPlay();
+      }
+    }
+
+    function prevAcAction() {
+      if (currentAcIdx > 0) {
+        renderAcAction(currentAcIdx - 1);
+        playBell(440, 0.1);
+      }
+    }
+
+    function jumpAcAction(idx) {
+      renderAcAction(idx);
+      playBell(528, 0.1);
+    }
+
+    function toggleAcAutoPlay() {
+      if (acPlaying) {
+        stopAcAutoPlay();
+      } else {
+        startAcAutoPlay();
+      }
+    }
+
+    function startAcAutoPlay() {
+      acPlaying = true;
+      document.getElementById('acAutoBtn').textContent = "⏸ Pause";
+      document.getElementById('acAutoBtn').classList.add('active');
+      runAcAutoStep();
+    }
+
+    function runAcAutoStep() {
+      if (!acPlaying) return;
+      playBell(528, 0.2);
+      speakAcAction();
+
+      acTimer = setTimeout(() => {
+        if (currentAcIdx < ACAMANAM_ACTIONS.length - 1) {
+          renderAcAction(currentAcIdx + 1);
+          runAcAutoStep();
+        } else {
+          stopAcAutoPlay();
+        }
+      }, 2800);
+    }
+
+    function stopAcAutoPlay() {
+      acPlaying = false;
+      if (acTimer) clearTimeout(acTimer);
+      const btn = document.getElementById('acAutoBtn');
+      if (btn) {
+        btn.textContent = "▶ Auto Play";
+        btn.classList.remove('active');
+      }
+    }
+
+    function speakAcAction() {
+      const act = ACAMANAM_ACTIONS[currentAcIdx];
+      let cleanMantra = act.sanskrit.replace(/[॥।\d\.\:\-]/g, ' ').trim();
+      speakText(cleanMantra);
+    }
+
+    // =========================================================
+    // GENERAL STEP RENDERER
+    // =========================================================
     function initStepPicker() {
       const select = document.getElementById('stepSelect');
       select.innerHTML = '';
@@ -838,10 +1507,13 @@
         opt.textContent = `${s.id}. ${s.title.replace(/^\d+\.\s*/, '')}`;
         select.appendChild(opt);
       });
+      initAcChips();
     }
 
     function renderCurrentStep() {
       stopPronunciation();
+      stopAcAutoPlay();
+
       const step = ALL_STEPS[currentStepIdx];
       document.getElementById('stepSelect').value = currentStepIdx;
       document.getElementById('stepTitleDisplay').textContent = step.title;
@@ -850,6 +1522,17 @@
       document.getElementById('iastDisplay').textContent = step.iast;
       document.getElementById('actionContent').textContent = step.action;
       document.getElementById('meaningContent').textContent = step.meaning;
+
+      // Toggle Ācamanam Animator only on Step 2 (id: 2, currentStepIdx: 1)
+      const acAnimator = document.getElementById('acamanamAnimator');
+      if (acAnimator) {
+        if (currentStepIdx === 1) {
+          acAnimator.style.display = 'block';
+          renderAcAction(0);
+        } else {
+          acAnimator.style.display = 'none';
+        }
+      }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -920,6 +1603,7 @@
     // View Switching
     function switchView(viewName) {
       stopPronunciation();
+      stopAcAutoPlay();
       document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
       document.querySelectorAll('.dock-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('view-' + viewName).classList.add('active');
