@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandhyāvandanam — Interactive Brahmachāri Learning Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at 50% 0%, #fff7ed 0%, #fef3c7 40%, #fef9c3 100%);
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: #fcd34d;
+      --primary: #d97706;
+      --primary-dark: #b45309;
+      --primary-glow: rgba(245, 158, 11, 0.35);
+      --accent: #dc2626;
+      --accent-soft: #fee2e2;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --gold: #f59e0b;
+      --gold-dark: #b45309;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+      --shadow-md: 0 10px 25px -5px rgba(217, 119, 6, 0.15), 0 8px 10px -6px rgba(0,0,0,0.05);
+      --shadow-lg: 0 20px 35px -5px rgba(217, 119, 6, 0.22);
+    }
+
+    [data-theme="noon"] {
+      --bg-gradient: radial-gradient(circle at 50% 0%, #fffbeb 0%, #fef3c7 45%, #fed7aa 100%);
+      --primary: #ea580c;
+      --primary-dark: #c2410c;
+      --primary-glow: rgba(234, 88, 12, 0.35);
+      --card-border: #fdba74;
+    }
+
+    [data-theme="evening"] {
+      --bg-gradient: radial-gradient(circle at 50% 0%, #311b92 0%, #1e1b4b 45%, #0f172a 100%);
+      --card-bg: rgba(30, 27, 75, 0.94);
+      --card-border: #6366f1;
+      --primary: #fb923c;
+      --primary-dark: #ea580c;
+      --primary-glow: rgba(251, 146, 60, 0.35);
+      --accent: #e11d48;
+      --accent-soft: rgba(225, 29, 72, 0.2);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --shadow-md: 0 10px 25px -5px rgba(99, 102, 241, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.75rem 1.5rem;
+    }
+
+    [data-theme="evening"] header {
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-symbol {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'Yatra One', serif;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+      animation: pulseGlow 4s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3); }
+      100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5); }
+    }
+
+    .logo-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Sandhyā Period Switcher */
+    .sandhya-switcher {
+      display: flex;
+      background: rgba(0, 0, 0, 0.06);
+      padding: 4px;
+      border-radius: 30px;
+      border: 1px solid var(--card-border);
+    }
+
+    [data-theme="evening"] .sandhya-switcher {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .sandhya-btn {
+      border: none;
+      background: transparent;
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sandhya-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px var(--primary-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      max-width: 1200px;
+      margin: 1.25rem auto 0;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 0.65rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 1.5rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Common Card Styles */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Interactive Guided Walkthrough */
+    .walkthrough-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .walkthrough-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps-sidebar {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      max-height: 720px;
+      overflow-y: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-search {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(0,0,0,0.03);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-item {
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+    }
+
+    .step-item:hover {
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .step-item.active {
+      background: var(--primary-glow);
+      border-left-color: var(--primary);
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    [data-theme="evening"] .step-item.active {
+      color: #fb923c;
+    }
+
+    .step-number-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Active Step View */
+    .active-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .step-header-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(220, 38, 38, 0.1));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .ritual-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    [data-theme="evening"] .ritual-badge {
+      color: #fed7aa;
+    }
+
+    .mantra-box {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sanskrit-text {
+      font-family: 'Yatra One', serif;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      white-space: pre-line;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    [data-theme="evening"] .sanskrit-text {
+      color: #fca5a5;
+    }
+
+    .iast-text {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+      white-space: pre-line;
+      letter-spacing: 0.3px;
+    }
+
+    [data-theme="evening"] .iast-text {
+      color: #fdba74;
+    }
+
+    .action-instruction-card {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .action-instruction-card strong {
+      color: var(--primary-dark);
+    }
+
+    [data-theme="evening"] .action-instruction-card strong {
+      color: #fb923c;
+    }
+
+    .kid-wisdom-box {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+      border: 1px dashed #3b82f6;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .stepper-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      padding: 0.65rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(0,0,0,0.06);
+      color: var(--text-main);
+    }
+    [data-theme="evening"] .btn-secondary {
+      background: rgba(255,255,255,0.1);
+    }
+    .btn-secondary:hover {
+      background: rgba(0,0,0,0.12);
+    }
+
+    /* Prāṇāyāma Animated Pacer */
+    .pranayama-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .breath-circle-container {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .breath-ring-outer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px dashed var(--primary);
+      opacity: 0.4;
+      animation: rotateRing 30s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .breath-orb {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f59e0b 0%, #dc2626 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 0 35px var(--primary-glow);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .breath-stage {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .breath-timer {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'Cinzel', serif;
+    }
+
+    .pranayama-mudra-guide {
+      max-width: 600px;
+      background: rgba(245, 158, 11, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    /* Interactive Vedic Finger Japa Counter */
+    .japa-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .japa-layout { grid-template-columns: 1fr; }
+    }
+
+    .hand-svg-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .joint-node {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .joint-node:hover {
+      filter: drop-shadow(0 0 6px #f59e0b);
+    }
+
+    .joint-node.current {
+      filter: drop-shadow(0 0 10px #dc2626);
+      animation: pulseNode 1s infinite alternate;
+    }
+
+    @keyframes pulseNode {
+      from { transform: scale(1); }
+      to { transform: scale(1.3); }
+    }
+
+    .counter-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .count-big-number {
+      font-family: 'Cinzel', serif;
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-shadow: 0 4px 10px var(--primary-glow);
+      line-height: 1;
+    }
+
+    .target-chips {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .japa-btn-big {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .japa-btn-big:active {
+      transform: scale(0.92);
+    }
+
+    /* Mudrā Gallery */
+    .mudra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .mudra-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mudra-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .mudra-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    /* Saṅkalpa Builder */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 700px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .preview-card {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(220, 38, 38, 0.05));
+      border: 2px dashed var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    /* Audio Mute Button */
+    .sound-toggle {
+      background: none;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+  </style>
+</head>
+<body data-theme="morning">
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo-block">
+        <div class="logo-symbol">ॐ</div>
+        <div class="logo-text">
+          <h1>Sandhyā-Vandanam</h1>
+          <span>Young Brahmachāri Interactive Companion</span>
+        </div>
+      </div>
+
+      <!-- Sandhyā Period Selector -->
+      <div class="sandhya-switcher">
+        <button class="sandhya-btn active" onclick="setSandhya('morning')">
+          🌅 Morning (Prātaḥ)
+        </button>
+        <button class="sandhya-btn" onclick="setSandhya('noon')">
+          ☀️ Noon (Madhyāhna)
+        </button>
+        <button class="sandhya-btn" onclick="setSandhya('evening')">
+          🌇 Evening (Sāyaṃ)
+        </button>
+      </div>
+
+      <!-- Sound FX Toggle -->
+      <button class="sound-toggle" onclick="toggleSound()" id="soundToggleBtn">
+        🔔 Sound: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('walkthrough')">
+      🚶 Step-by-Step Guide
+    </button>
+    <button class="tab-btn" onclick="switchTab('pranayama')">
+      🧘 Prāṇāyāma Pacer
+    </button>
+    <button class="tab-btn" onclick="switchTab('japa')">
+      📿 Finger Japa Trainer
+    </button>
+    <button class="tab-btn" onclick="switchTab('mudras')">
+      🤲 Mudrā Master (24 + 8)
+    </button>
+    <button class="tab-btn" onclick="switchTab('sankalpa')">
+      📜 My Saṅkalpa Builder
+    </button>
+  </div>
+
+  <main>
+    <!-- TAB 1: STEP-BY-STEP GUIDED PRACTICE -->
+    <section id="tab-walkthrough" class="tab-content active">
+      <div class="walkthrough-grid">
+        <!-- Sidebar Step Directory -->
+        <aside class="steps-sidebar">
+          <input type="text" class="step-search" id="stepSearchInput" placeholder="🔍 Search steps (e.g., Arghya, Gayatri)..." oninput="filterSteps()">
+          <div id="stepList">
+            <!-- Rendered by JS -->
+          </div>
+        </aside>
+
+        <!-- Main Step Display -->
+        <div class="active-step-container">
+          <div class="step-header-banner">
+            <h2 id="stepTitle" style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--text-main);">1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)</h2>
+            <div class="badge-strip" id="badgeStrip">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <div class="mantra-box">
+            <div class="sanskrit-text" id="stepSanskrit">अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा ।
+यः स्मरेत् पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥</div>
+            <div class="iast-text" id="stepIast">apavitraḥ pavitro vā sarvāvasthāṃ gato'pi vā |
+yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
+
+            <div class="action-instruction-card">
+              <span style="font-size: 1.3rem;">🤲</span>
+              <div>
+                <strong>Physical Action:</strong>
+                <p id="stepAction">Take a spoon of clean water with uddharaṇe, sprinkle on your head while reciting.</p>
+              </div>
+            </div>
+
+            <div class="kid-wisdom-box">
+              <span style="font-size: 1.3rem;">💡</span>
+              <div>
+                <strong style="color: #2563eb;">Brahmachāri Secret Power:</strong>
+                <p id="stepWisdom" style="font-size: 0.9rem; margin-top: 0.2rem; color: var(--text-main);">
+                  Before entering the sacred ritual, this mantra reminds you that remembering the Lord clears away all tiredness and mental fog instantly!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stepper Buttons -->
+          <div class="stepper-nav">
+            <button class="btn btn-secondary" onclick="prevStep()">⬅️ Previous Step</button>
+            <span id="stepCounterLabel" style="font-weight: 600; color: var(--text-muted);">Step 1 of 36</span>
+            <button class="btn btn-primary" onclick="nextStep()">Next Step ➡️</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PRĀṆĀYĀMA PACER -->
+    <section id="tab-pranayama" class="tab-content">
+      <div class="card pranayama-wrap">
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.7rem; color: var(--primary);">Prāṇāyāma Rhythm Master</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin-top: 0.5rem;">
+          Coordinate your sacred breath with the animated orb. Touch right nostril with thumb, left with ring/little finger.
+        </p>
+
+        <div class="breath-circle-container">
+          <div class="breath-ring-outer"></div>
+          <div class="breath-orb" id="breathOrb">
+            <div class="breath-stage" id="breathStageText">Ready</div>
+            <div class="breath-timer" id="breathTimerNum">--</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <button class="btn btn-primary" id="pranayamaStartBtn" onclick="togglePranayama()">▶️ Start Prāṇāyāma Cycle</button>
+          <button class="btn btn-secondary" onclick="resetPranayama()">🔄 Reset</button>
+        </div>
+
+        <div class="pranayama-mudra-guide">
+          <h4 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 0.4rem;">🖐️ Finger Grip for Prāṇāyāma (Prāṇāyāma Mudrā):</h4>
+          <p style="font-size: 0.9rem; color: var(--text-main);">
+            • <strong>Right Thumb</strong> gently closes the right nostril.<br>
+            • <strong>Ring & Little fingers</strong> gently close the left nostril.<br>
+            • <strong>Inhale (Pūraka)</strong> through the left nostril while mentally chanting the sacred Vyāhṛtis.<br>
+            • <strong>Hold (Kumbhaka)</strong> closing both nostrils while reciting Gāyatrī with Śiras.<br>
+            • <strong>Exhale (Recaka)</strong> slowly releasing the right nostril.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: VEDIC FINGER JAPA TRAINER -->
+    <section id="tab-japa" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--primary); text-align: center; margin-bottom: 0.5rem;">Vedic Finger Counting (Kara-mālā)</h2>
+        <p style="text-align: center; color: var(--text-muted); max-width: 650px; margin: 0 auto 1.5rem;">
+          In traditional Krishna Yajurveda practice, young brahmachāris count the sacred 10, 28, or 108 Gāyatrī repetitions using the 10 joints of the right hand fingers!
+        </p>
+
+        <div class="japa-layout">
+          <!-- Visual Hand Joint Diagram -->
+          <div class="hand-svg-container">
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text-main);">Right Hand Joint Sequence</h4>
+            <svg width="280" height="340" viewBox="0 0 280 340" style="overflow: visible;">
+              <!-- Stylized Hand Silhouette -->
+              <path d="M 60 320 C 60 260, 40 210, 45 170 C 48 145, 65 145, 75 165 C 80 135, 100 130, 110 150 C 115 110, 135 105, 145 130 C 150 90, 175 90, 185 115 C 190 140, 195 190, 210 220 C 230 240, 235 270, 220 320 Z" 
+                    fill="rgba(245, 158, 11, 0.12)" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+              
+              <!-- 10 Japa Joint Nodes (Numbered 1-10) -->
+              <!-- Joint 1: Ring finger middle -->
+              <circle cx="105" cy="205" r="14" class="joint-node" id="joint-1" fill="#f59e0b" onclick="setJapaJoint(1)"/>
+              <text x="105" y="210" font-size="11" font-weight="bold" fill="white" text-anchor="middle">1</text>
+
+              <!-- Joint 2: Ring finger base -->
+              <circle cx="108" cy="235" r="14" class="joint-node" id="joint-2" fill="#f59e0b" onclick="setJapaJoint(2)"/>
+              <text x="108" y="240" font-size="11" font-weight="bold" fill="white" text-anchor="middle">2</text>
+
+              <!-- Joint 3: Little finger base -->
+              <circle cx="70" cy="245" r="14" class="joint-node" id="joint-3" fill="#f59e0b" onclick="setJapaJoint(3)"/>
+              <text x="70" y="250" font-size="11" font-weight="bold" fill="white" text-anchor="middle">3</text>
+
+              <!-- Joint 4: Little finger middle -->
+              <circle cx="65" cy="210" r="14" class="joint-node" id="joint-4" fill="#f59e0b" onclick="setJapaJoint(4)"/>
+              <text x="65" y="215" font-size="11" font-weight="bold" fill="white" text-anchor="middle">4</text>
+
+              <!-- Joint 5: Little finger tip -->
+              <circle cx="60" cy="170" r="14" class="joint-node" id="joint-5" fill="#f59e0b" onclick="setJapaJoint(5)"/>
+              <text x="60" y="175" font-size="11" font-weight="bold" fill="white" text-anchor="middle">5</text>
+
+              <!-- Joint 6: Ring finger tip -->
+              <circle cx="95" cy="150" r="14" class="joint-node" id="joint-6" fill="#f59e0b" onclick="setJapaJoint(6)"/>
+              <text x="95" y="155" font-size="11" font-weight="bold" fill="white" text-anchor="middle">6</text>
+
+              <!-- Joint 7: Middle finger tip -->
+              <circle cx="130" cy="125" r="14" class="joint-node" id="joint-7" fill="#f59e0b" onclick="setJapaJoint(7)"/>
+              <text x="130" y="130" font-size="11" font-weight="bold" fill="white" text-anchor="middle">7</text>
+
+              <!-- Joint 8: Index finger tip -->
+              <circle cx="165" cy="115" r="14" class="joint-node" id="joint-8" fill="#f59e0b" onclick="setJapaJoint(8)"/>
+              <text x="165" y="120" font-size="11" font-weight="bold" fill="white" text-anchor="middle">8</text>
+
+              <!-- Joint 9: Index finger middle -->
+              <circle cx="170" cy="155" r="14" class="joint-node" id="joint-9" fill="#f59e0b" onclick="setJapaJoint(9)"/>
+              <text x="170" y="160" font-size="11" font-weight="bold" fill="white" text-anchor="middle">9</text>
+
+              <!-- Joint 10: Index finger base -->
+              <circle cx="175" cy="195" r="14" class="joint-node" id="joint-10" fill="#f59e0b" onclick="setJapaJoint(10)"/>
+              <text x="175" y="200" font-size="11" font-weight="bold" fill="white" text-anchor="middle">10</text>
+            </svg>
+            <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Clockwise progression tracked with right thumb</span>
+          </div>
+
+          <!-- Counter and Big Button -->
+          <div class="counter-display">
+            <div class="target-chips">
+              <button class="chip active" onclick="setJapaTarget(108)">Target: 108</button>
+              <button class="chip" onclick="setJapaTarget(28)">Target: 28</button>
+              <button class="chip" onclick="setJapaTarget(10)">Target: 10</button>
+            </div>
+
+            <div class="count-big-number" id="japaCounter">0</div>
+            <div id="japaJointLabel" style="font-weight: 600; color: var(--primary);">Joint 1: Ring Middle</div>
+
+            <button class="japa-btn-big" onclick="incrementJapa()">
+              <span>+1 JAPA</span>
+              <span style="font-size: 0.8rem; opacity: 0.9;">(Press Space)</span>
+            </button>
+
+            <button class="btn btn-secondary" style="font-size: 0.85rem;" onclick="resetJapa()">🔄 Reset Counter</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: MUDRĀ MASTER -->
+    <section id="tab-mudras" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--primary); text-align: center; margin-bottom: 0.5rem;">Caturviṃśati & Aṣṭa Mudrās</h2>
+        <p style="text-align: center; color: var(--text-muted); max-width: 650px; margin: 0 auto 1.5rem;">
+          Hand gestures weave spiritual energy before and after the Gāyatrī Mahāmantra. Practice each formation step-by-step.
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+          <button class="chip active" id="btnMudra24" onclick="showMudras(24)">24 Opening Mudrās (Pūrva)</button>
+          <button class="chip" id="btnMudra8" onclick="showMudras(8)">8 Concluding Mudrās (Uttara)</button>
+        </div>
+
+        <div class="mudra-grid" id="mudraContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: PERSONAL SAṄKALPA & ABHIVĀDANA BUILDER -->
+    <section id="tab-sankalpa" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--primary); margin-bottom: 0.5rem;">Personal Saṅkalpa & Abhivādanam Customizer</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Fill in your family lineage details below. The interactive tool will instantly generate your personalized chanting text for daily practice!
+        </p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Your Personal Name (Prathama-nāma)</label>
+            <input type="text" id="inputName" value="Rāghava" oninput="updateSankalpaPreview()">
+          </div>
+
+          <div class="form-group">
+            <label>Gotra (Sage Lineage)</label>
+            <input type="text" id="inputGotra" value="Bhāradvāja" oninput="updateSankalpaPreview()">
+          </div>
+
+          <div class="form-group">
+            <label>Pravara Ṛṣis (Ancestral Sages)</label>
+            <input type="text" id="inputPravara" value="Āṅgirasa, Bārhaspatya, Bhāradvāja" oninput="updateSankalpaPreview()">
+          </div>
+
+          <div class="form-group">
+            <label>Sūtra & Śākhā</label>
+            <select id="inputSutra" onchange="updateSankalpaPreview()">
+              <option value="Āpastamba">Āpastamba Sūtra (Krishna Yajurveda)</option>
+              <option value="Baudhāyana">Baudhāyana Sūtra (Krishna Yajurveda)</option>
+              <option value="Āśvalāyana">Āśvalāyana Sūtra (Rigveda)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="preview-card">
+          <h4 style="font-family: 'Cinzel', serif; color: var(--primary); margin-bottom: 0.75rem;">Your Custom Abhivādana Chanting Text:</h4>
+          <div style="font-family: 'Yatra One', serif; font-size: 1.3rem; color: var(--accent); margin-bottom: 0.5rem;" id="abhivadanaSanskrit">
+            अभिवादये ... गोत्रोत्पन्नः ... शर्मा अहम् भोः ॥
+          </div>
+          <div style="font-family: 'Cinzel', Georgia, serif; font-size: 1rem; color: var(--text-main); font-weight: 600;" id="abhivadanaIast">
+            abhivādaye ... gotrotpannaḥ ... śarmā aham bhoḥ ||
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem;">
+            🖐️ <em>Touch your ears with crossed hands (right hand to right ear, left hand to left ear), then bend forward touching the ground before family elders and teachers.</em>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Krishna Yajurvedīya Sandhyāvandanam Manual & Interactive Companion</p>
+    <p style="margin-top: 0.3rem;">Dedicated to young brahmachāris preserving Sanātana Dharma.</p>
+  </footer>
+
+  <script>
+    // Procedural Web Audio Synthesizer for Bell Chimes
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playChime(freq = 528, duration = 1.2) {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.log('Audio note:', e);
+      }
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundToggleBtn').textContent = soundEnabled ? '🔔 Sound: ON' : '🔕 Sound: OFF';
+      if (soundEnabled) playChime(660, 0.5);
+    }
+
+    // Sandhyā period state: 'morning' | 'noon' | 'evening'
+    let currentSandhya = 'morning';
+
+    function setSandhya(period) {
+      currentSandhya = period;
+      document.body.setAttribute('data-theme', period);
+      document.querySelectorAll('.sandhya-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(period)) btn.classList.add('active');
+      });
+      playChime(period === 'morning' ? 528 : (period === 'noon' ? 587 : 440), 0.8);
+      renderActiveStep();
+    }
+
+    // Navigation Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      
+      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (targetBtn) targetBtn.classList.add('active');
+      
+      const targetTab = document.getElementById('tab-' + tabId);
+      if (targetTab) targetTab.classList.add('active');
+      playChime(784, 0.3);
+    }
+
+    // 36 Ritual Steps Dataset
+    const RITUAL_STEPS = [
+      {
+        id: 1,
+        title: "1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)",
+        subtitle: "Bodily & Mental Purification",
+        posture: "Sitting Cross-Legged",
+        direction: "East (Morning/Noon) / West (Evening)",
+        actionType: "Sprinkle Water",
+        sanskrit: "अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा ।\nयः स्मरेत् पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥",
+        iast: "apavitraḥ pavitro vā sarvāvasthāṃ gato'pi vā |\nyaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||",
+        action: "Take a spoon of water with uddharaṇe, sprinkle on your head while reciting.",
+        wisdom: "Before entering the sacred practice, this reminder washes away tiredness, sleepiness, and mental clutter!"
+      },
+      {
+        id: 2,
+        title: "2. आचमनम् (Ācamanam) — 24 Keśava Nāmāni",
+        subtitle: "Consecration of Senses",
+        posture: "Sitting Cross-Legged (Gokarṇa Mudrā)",
+        direction: "East / North",
+        actionType: "3 Sips + 21 Touches",
+        sanskrit: "ॐ केशवाय स्वाहा । ॐ नारायणाय स्वाहा । ॐ माधवाय स्वाहा ।\nॐ गोविन्दाय नमः ... ॐ विष्णवे नमः ...",
+        iast: "om keśavāya svāhā | om nārāyaṇāya svāhā | om mādhavāya svāhā |\nom govindāya namaḥ ... om viṣṇave namaḥ ...",
+        action: "Sip water 3 times from palm root (Brahmatīrtha) for the first 3 names. Then touch lips, eyes, nostrils, ears, shoulders, navel, chest, and head.",
+        wisdom: "By touching your sense organs (eyes, ears, tongue), you awaken them to divine alertness and sacred speech."
+      },
+      {
+        id: 3,
+        title: "3. भूत-उच्चाटनम् (Bhūtocchāṭanam)",
+        subtitle: "Clearing the Sacred Space",
+        posture: "Sitting Cross-Legged",
+        direction: "Current Orientation",
+        actionType: "Flick Water Left",
+        sanskrit: "उत्तिष्ठन्तु भूतपिशाचाः ये ते भूमिसंस्थिताः ।\nये तेषामविरोधेन ब्रह्मकर्म समारभे ॥",
+        iast: "uttiṣṭhantu bhūtapiśācāḥ ye te bhūmisaṃsthitāḥ |\nye teṣāmavirodhena brahmakarma samārabhe ||",
+        action: "Take a drop of water with uddharaṇe, sprinkle it towards your left rear side.",
+        wisdom: "Creates a peaceful protective bubble around your seat so your concentration remains unshakeable."
+      },
+      {
+        id: 4,
+        title: "4. प्राणायामः (Prāṇāyāmaḥ)",
+        subtitle: "Sacred Breath Harmonization",
+        posture: "Sitting Straight Spine",
+        direction: "Current Orientation",
+        actionType: "Breath Control",
+        sanskrit: "ॐ भूः ॐ भुवः ॐ सुवः ॐ महः ॐ जनः ॐ तपः ॐ सत्यम् ।\nॐ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ।\nॐ आपो ज्योति रसोऽमृतं ब्रह्म भूर्भुवस्सुवरोम् ॥",
+        iast: "om bhūḥ om bhuvaḥ om suvaḥ om mahaḥ om janaḥ om tapaḥ om satyam |\nom tatsaviturvareṇyaṃ bhargo devasya dhīmahi dhiyo yo naḥ pracodayāt |\nom āpo jyoti raso'mṛtaṃ brahma bhūrbhuvassuvarom ||",
+        action: "Hold nostrils with thumb and ring finger. Pūraka (inhale), Kumbhaka (hold), Recaka (exhale).",
+        wisdom: "Calms your heart rate and powers up your brain with oxygen and prāṇa energy for sharp focus."
+      },
+      {
+        id: 5,
+        title: "5. सङ्कल्पः (Saṅkalpaḥ)",
+        subtitle: "Solemn Vow of Practice",
+        posture: "Sitting, Left Palm on Right Knee, Covered by Right Palm",
+        direction: "Current Orientation",
+        actionType: "Hand Placement",
+        sanskrit: "ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वरप्रीत्यर्थं ... सन्ध्याम् उपासिष्ये ॥",
+        iast: "mamopātta-samasta-duritakṣayadvarā śrī-parameśvara-prītyarthaṃ ... sandhyām upāsiṣye ||",
+        action: "Place left palm facing up on right knee; cover with right palm facing down. Declare Morning/Noon/Evening Sandhyā.",
+        wisdom: "A superhero pledge! You declare your exact time, place, and dedication to align with cosmic harmony."
+      },
+      {
+        id: 6,
+        title: "6. मार्जनम् (Mārjanam) — 9 Padas",
+        subtitle: "Purificatory Water Sprinkling",
+        posture: "Sitting Cross-Legged",
+        direction: "Current Orientation",
+        actionType: "Sprinkling on Head & Earth",
+        sanskrit: "आपो हि ष्ठा मयोभुवः । ता न ऊर्जे दधातन । महे रणाय चक्षसे ...",
+        iast: "āpo hi ṣṭhā mayobhuvaḥ | tā na ūrje dadhātana | mahe raṇāya cakṣase ...",
+        action: "Using darbha grass or ring finger, sprinkle water drops on head for 7 padas, on earth for 8th, on head for 9th.",
+        wisdom: "The sacred waters refresh you like a loving mother, bestowing vitality, radiant eyesight, and spiritual strength."
+      },
+      {
+        id: 7,
+        title: "7. मन्त्राचमनम् (Mantra-ācamanam)",
+        subtitle: "Inner Water Consecration",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Single Consecrated Sip",
+        sanskrit: "Morning: सूर्यश्च मा मन्युश्च... स्वाहा\nNoon: आपः पुनन्तु पृथिवीं... स्वाहा\nEvening: अग्निश्च मा मन्युश्च... स्वाहा",
+        iast: "Morning: sūryaśca mā manyuśca... svāhā\nNoon: āpaḥ punantu pṛthivīṃ... svāhā\nEvening: agniśca mā manyuśca... svāhā",
+        action: "Take a single sip of water consecrated with the specific mantra of Morning (Sun), Noon (Water purity), or Evening (Fire).",
+        wisdom: "Inner detox! Destroys any mistakes, careless thoughts, or anger accumulated since the previous sandhyā."
+      },
+      {
+        id: 8,
+        title: "8. द्वितीय मार्जनम् (Dvitīya Mārjanam)",
+        subtitle: "Second Sprinkling (Dadhikrāvṇaḥ)",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Sprinkle Water on Head",
+        sanskrit: "दधिक्राव्णो अकारिषं जिष्णोरश्वस्य वाजिनः ।\nसुरभि नो मुखा करत्प्र ण आयूंषि तारिषत् ॥",
+        iast: "dadhikrāvṇo akāriṣaṃ jiṣṇoraśvasya vājinaḥ |\nsurabhi no mukhā karatpra ṇa āyūṃṣi tāriṣat ||",
+        action: "Sprinkle water on head, breathing in the fragrance of vitality and courage.",
+        wisdom: "Invokes the swift, victorious divine horse (Dadhikrāvan) to grant stamina and fragrant purity."
+      },
+      {
+        id: 9,
+        title: "9. पुनर्मार्जनम् (Punarmārjanam)",
+        subtitle: "The 4 Golden Waters Hymns (Hiraṇyavarṇāḥ)",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Continuous Sprinkling",
+        sanskrit: "हिरण्यवर्णाः शुचयः पावका यासु जातः कश्यपो यास्विन्द्रः ...",
+        iast: "hiraṇyavarṇāḥ śucayaḥ pāvakā yāsu jātaḥ kaśyapo yāsvindraḥ ...",
+        action: "Recite the 4 sacred ṛks while gently sprinkling water on head.",
+        wisdom: "These four verses invoke the heavenly waters in which celestial sages and kings were consecrated."
+      },
+      {
+        id: 10,
+        title: "10. अघमर्षणम् (Aghamarṣaṇa)",
+        subtitle: "Sin-Cleansing Water Breath",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Exhale through Nose onto Water",
+        sanskrit: "ऋतं च सत्यं चाभीद्धात्तपसोऽध्यजायते ...",
+        iast: "ṛtaṃ ca satyaṃ cābhīddhāttapaso'dhyajāyate ...",
+        action: "Hold water in right palm, visualize sins expelled through right nostril into water, cast water down to left side without looking.",
+        wisdom: "A scientific visualization technique that purges lingering guilt and negative energy into water and discards it."
+      },
+      {
+        id: 11,
+        title: "11. लघुसङ्कल्पः (Laghu-saṅkalpaḥ)",
+        subtitle: "Saṅkalpa for Offering Arghya",
+        posture: "Sitting / Preparing to Stand",
+        direction: "East / North / West",
+        actionType: "Intention declaration",
+        sanskrit: "पूर्वसङ्कल्पित ... सन्ध्याङ्ग-अर्घ्यप्रदानं करिष्ये ॥",
+        iast: "pūrvasaṅkalpita ... sandhyāṅga-arghyapradānaṃ kariṣye ||",
+        action: "Touch water, declare the upcoming sacred Arghya offering.",
+        wisdom: "Prepares your focus for the most crucial water-offering of the entire ritual."
+      },
+      {
+        id: 12,
+        title: "12. अर्घ्यप्रदानम् (Arghyapradānam) — The Core Water Offering",
+        subtitle: "Offering 3 Handfuls of Water to Sun",
+        posture: "Morning/Noon: Standing | Evening: Seated/Squatting",
+        direction: "East (Morning/Noon) / West (Evening)",
+        actionType: "Water Offering ×3",
+        sanskrit: "ॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥ (×3)",
+        iast: "om bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt || (×3)",
+        action: "Fill both palms joined with water, elbows lifted, cast water upwards towards Sun (Morning/Noon) or downward into vessel (Evening).",
+        wisdom: "Legend tells of the Mandeha demons opposing the Sun; your sacred water offerings act as radiant thunderbolts empowering the Sun to shine!"
+      },
+      {
+        id: 13,
+        title: "13. कालातिक्रमण प्रायश्चित्तम् (Kālātīkrama-prāyaścittam)",
+        subtitle: "Remedial 4th Arghya if Delayed",
+        posture: "Same as Arghya",
+        direction: "Sun Facing",
+        actionType: "4th Water Offering",
+        sanskrit: "कालातिक्रम-दोष-प्रायश्चित्तार्थं तुरीयार्घ्यप्रदानं करिष्ये ॥",
+        iast: "kālātīkrama-doṣa-prāyaścittārthaṃ turīyārghyapradānaṃ kariṣye ||",
+        action: "Offer a 4th Arghya if Sandhyā was started late after sunrise, midday, or sunset.",
+        wisdom: "Teaches accountability! If school or travel delayed your practice, this remedy restores harmony."
+      },
+      {
+        id: 14,
+        title: "14. सजल-प्रदक्षिणम् (Sajala-pradakṣiṇam)",
+        subtitle: "Contemplation of Sun as One with Self",
+        posture: "Standing, Turn 360° Clockwise",
+        direction: "Full Circle",
+        actionType: "Pour water in circle",
+        sanskrit: "ॐ उद्यन्तमस्तं यन्तमादित्यमभिध्यायन् कुर्वन् ब्राह्मणो विद्वान् सकलं भद्रमश्नुते असावादित्यो ब्रह्म ॥",
+        iast: "om udyantamastaṃ yantamādityamabhidhyāyan kurvan brāhmaṇo vidvān sakalaṃ bhadramaśnute asāvādityo brahma ||",
+        action: "Pour water continuously around yourself while making one complete clockwise circle.",
+        wisdom: "'Asāvādityo Brahma' — That radiant sun in the sky and the divine spark in my own heart are one and the same!"
+      },
+      {
+        id: 15,
+        title: "15. सन्ध्याङ्ग तर्पणम् (Sandhyāṅga Tarpaṇam)",
+        subtitle: "Water Offerings to Sandhyā Aspects",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Offer water through finger tips",
+        sanskrit: "सन्ध्यां तर्पयामि । गायत्रीं तर्पयामि । ब्राह्मीं तर्पयामि । निमृजीं तर्पयामि ॥",
+        iast: "sandhyāṃ tarpayāmi | gāyatrīṃ tarpayāmi | brāhmīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||",
+        action: "Offer water spoons through Deva-tīrtha (tips of four fingers) into vessel.",
+        wisdom: "Honors the divine presiding deities who protect time, light, and knowledge."
+      },
+      {
+        id: 16,
+        title: "16. गायत्री आवाहनम् (Gāyatrī Āvāhanam)",
+        subtitle: "Welcoming Mother Gāyatrī into Heart",
+        posture: "Sitting Erect / Añjali Mudrā",
+        direction: "Current Orientation",
+        actionType: "Folded Hands",
+        sanskrit: "आयातु वरदा देवी अक्षरं ब्रह्म सम्मितम् ।\nगायत्रीं छन्दसां मातेदं ब्रह्म जुषस्व नः ॥",
+        iast: "āyātu varadā devī akṣaraṃ brahma sammitam |\ngāyatrīṃ chandasāṃ mātedaṃ brahma juṣasva naḥ ||",
+        action: "Hold hands in prayer at chest, welcoming the Mother of all Vedic meters into your heart.",
+        wisdom: "Like welcoming an honored, radiant guest into your home, you invite the highest wisdom into your intellect."
+      },
+      {
+        id: 17,
+        title: "17. गायत्री-जप-सङ्कल्पः (Gāyatrī-japa-saṅkalpaḥ)",
+        subtitle: "Declaration for Japa Repetitions",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Declaration",
+        sanskrit: "ममोपात्त-समस्त-दुरितक्षयद्वारा ... गायत्री-महामन्त्र-जपं करिष्ये ॥",
+        iast: "mamopātta-samasta-duritakṣayadvarā ... gāyatrī-mahāmantra-japaṃ kariṣye ||",
+        action: "Declare intention to chant the Gāyatrī Mahāmantra 108 (or 28) times.",
+        wisdom: "Sharpens your dedication so your mind will not wander during the sacred chant."
+      },
+      {
+        id: 18,
+        title: "18. करन्यासः (Kara-nyāsaḥ)",
+        subtitle: "Hand Consecration with Mantras",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Finger Touches",
+        sanskrit: "तत्सवितुः अङ्गुष्ठाभ्यां नमः । वरेण्यं तर्जनीभ्यां नमः ...",
+        iast: "tatsavituḥ aṅguṣṭhābhyāṃ namaḥ | vareṇyaṃ tarjanībhyāṃ namaḥ ...",
+        action: "Slide thumbs over index, middle, ring, little fingers, and palms/backs of hands.",
+        wisdom: "Charges your fingertips with spiritual warmth and sensitivity like turning on divine circuits."
+      },
+      {
+        id: 19,
+        title: "19. अङ्गन्यासः (Aṅga-nyāsaḥ)",
+        subtitle: "Limb Consecration (Armor of Light)",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Touch Heart, Head, Tuft, Arms, Eyes, Weapon",
+        sanskrit: "हृदयाय नमः । शिरसे स्वाहा । शिखायै वषट् । कवचाय हुम् । नेत्रत्रयाय वौषट् । अस्त्राय फट् ॥",
+        iast: "hṛdayāya namaḥ | śirase svāhā | śikhāyai vaṣaṭ | kavacāya hum | netratrayāya vauṣaṭ | astrāya phaṭ ||",
+        action: "Touch heart (palm), head (fingertips), śikhā (thumb), arms crossed (kavaca), 3 eyes, snap fingers around head (astra).",
+        wisdom: "Puts on an invisible Vedic armor! Shields your heart, intellect, intuition, and aura from distraction."
+      },
+      {
+        id: 20,
+        title: "20. ध्यानम् (Gāyatrī Dhyānam)",
+        subtitle: "Meditation on the Form of Light",
+        posture: "Eyes Closed, Meditative Pose",
+        direction: "Current Orientation",
+        actionType: "Mental Visualization",
+        sanskrit: "मुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ... ध्यायेद्गायत्रीमन्त्रमध्यगाम् ॥",
+        iast: "muktāvidrumahemanīladhavalacchāyairmukhaistrīkṣaṇaiḥ ... dhyāyedgāyatrīmantramadhyagām ||",
+        action: "Visualize the five radiant faces (pearl, coral, gold, sapphire, diamond) of Mother Gāyatrī seated on a lotus.",
+        wisdom: "A vivid mental painting that stills all anxious thoughts and fills the mind with peaceful rainbow radiance."
+      },
+      {
+        id: 21,
+        title: "21. चतुर्विंशति-मुद्राः (Caturviṃśati-mudrāḥ)",
+        subtitle: "24 Opening Hand Gestures",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Weave 24 Mudrās in succession",
+        sanskrit: "सुमुखं सम्पुटं चैव विततं विस्तृतं तथा ...",
+        iast: "sumukhaṃ sampuṭaṃ caiva vitataṃ vistṛtaṃ tathā ...",
+        action: "Form the 24 gestures (Sumukha, Sampuṭa, Vitata, etc.) sequentially before beginning Japa.",
+        wisdom: "Ancient sacred hand gymnastics that activate neural pathways and lock in full meditative absorption."
+      },
+      {
+        id: 22,
+        title: "22. गायत्री महामन्त्रः (Gāyatrī Mahāmantraḥ)",
+        subtitle: "The Central Sacred Japa (108 / 28 Repetitions)",
+        posture: "Sitting, Hands covered by sacred cloth / Uttariya",
+        direction: "East (Morning/Noon) / West (Evening)",
+        actionType: "Silent / Whispered Japa (Upāṃśu)",
+        sanskrit: "ॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥",
+        iast: "om bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||",
+        action: "Chant mentally or with slight lip movement, counting on the 10 joints of the right hand fingers.",
+        wisdom: "The crown jewel of all mantras! 'May the divine light of the Sun illuminate and sharpen our intellect.'"
+      },
+      {
+        id: 23,
+        title: "23. जपावसानम् (Japāvasānam)",
+        subtitle: "Completion of Japa Rite",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Concluding Prāṇāyāma",
+        sanskrit: "प्राणायामं कृत्वा ...",
+        iast: "prāṇāyāmaṃ kṛtvā ...",
+        action: "Perform one calm Prāṇāyāma to seal the spiritual energy of the chant.",
+        wisdom: "Locks the immense energy of the Gāyatrī Mahāmantra deep inside your heart and brain."
+      },
+      {
+        id: 24,
+        title: "24. अष्ट-मुद्राः (Aṣṭa-mudrāḥ)",
+        subtitle: "8 Concluding Hand Gestures",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "8 Hand Gestures",
+        sanskrit: "सुरभिर्ज्ञानवैराग्ये योनिः शङ्खोऽथ पङ्कजम् । लिङ्गं निर्वाणमुद्रा चेत्यष्टमुद्राः प्रकीर्तिताः ॥",
+        iast: "surabhirjñānavairāgye yoniḥ śaṅkho'tha paṅkajam | liṅgaṃ nirvāṇamudrā cetyaṣṭamudrāḥ prakīrtitāḥ ||",
+        action: "Form Surabhi, Jñāna, Vairāgya, Yoni, Śaṅkha, Paṅkaja, Liṅga, and Nirvāṇa mudrās.",
+        wisdom: "Seals the practice with divine wish-fulfilment, wisdom, detachment, and supreme peace."
+      },
+      {
+        id: 25,
+        title: "25. गायत्री उपस्थानम् (Gāyatrī Upasthānam)",
+        subtitle: "Farewell to Gāyatrī (Udvāsanam)",
+        posture: "Standing / Seated Prayer",
+        direction: "Current Orientation",
+        actionType: "Folded Hands",
+        sanskrit: "उत्तमे शिखरे जाते भूम्यां पर्वतमुर्धनि ।\nब्राह्मणेभ्योऽभ्यनुज्ञाता गच्छ देवि यथासुखम् ॥",
+        iast: "uttame śikhare jāte bhūmyāṃ parvatamurdhani |\nbrāhmaṇebhyo'bhyanujñātā gaccha devi yathāsukham ||",
+        action: "Offer salutations, thanking Mother Gāyatrī and bidding her joyful farewell until the next Sandhyā.",
+        wisdom: "Teaches gratitude and graceful closure to the most sacred meditation."
+      },
+      {
+        id: 26,
+        title: "26. शारीरिक शुद्धि (Śārīrika Śuddhiḥ)",
+        subtitle: "Bodily & Face Touches",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Water Touches to Eyes, Limbs",
+        sanskrit: "जातरूपं... चक्षुः... श्रोत्रम्...",
+        iast: "jātarūpaṃ... cakṣuḥ... śrotram...",
+        action: "Touch eyes and ears with moistened fingers to ground the vibrant spiritual energy into physical senses.",
+        wisdom: "Grounds high meditation voltage safely into your physical body so you are energetic all day!"
+      },
+      {
+        id: 27,
+        title: "27. सूर्योपस्थानम् / वरुणोपस्थानम् (Upasthānam)",
+        subtitle: "Standing Hymn to Sun / Varuṇa",
+        posture: "Standing, Hands Raised / Añjali",
+        direction: "Morning/Noon: East | Evening: West",
+        actionType: "Standing Recitation",
+        sanskrit: "Morning: मित्रस्य चर्षणीधृतः... (TS 3.4.11)\nNoon: आ सत्येन रजसा... (TS 3.4.11)\nEvening: इमं मे वरुण श्रुधी हवम्... (TS 2.1.11)",
+        iast: "Morning: mitrasya carṣaṇīdhṛtaḥ...\nNoon: ā satyena rajasā...\nEvening: imaṃ me varuṇa śrudhī havam...",
+        action: "Stand facing the Sun's direction, arms raised towards the sky in total surrender.",
+        wisdom: "Morning Mitra protects all people; Midday Surya lights the entire cosmos; Evening Varuna forgives all shortcomings."
+      },
+      {
+        id: 28,
+        title: "28. दिग्देवता नमस्कारः (Digdevatā Namaskāraḥ)",
+        subtitle: "Salutations to the 8 Compass Directions",
+        posture: "Standing, Turning to each Cardinal Point",
+        direction: "East -> South -> West -> North",
+        actionType: "Bow to each direction",
+        sanskrit: "ॐ नमः प्राच्यै दिशे । ॐ नमः दक्षिणायै दिशे । ॐ नमः प्रतीच्यै दिशे । ॐ नमः उदीच्यै दिशे ...",
+        iast: "om namaḥ prācyai diśe | om namaḥ dakṣiṇāyai diśe | om namaḥ pratīcyai diśe | om namaḥ udīcyai diśe ...",
+        action: "Bow slightly to East (Indra), South (Yama), West (Varuṇa), North (Kubera), Zenith, and Nadir.",
+        wisdom: "Establishes peace and friendliness with the entire surrounding world in every direction."
+      },
+      {
+        id: 29,
+        title: "29. मुनि नमस्कारः (Muni Namaskāraḥ)",
+        subtitle: "Salutations to the Ancient Seers",
+        posture: "Standing",
+        direction: "Current Orientation",
+        actionType: "Bow",
+        sanskrit: "ॐ नमो गङ्गायै यमुनायै सरस्वत्यै ... ॐ नमो मुनिभ्यः ॥",
+        iast: "om namo gaṅgāyai yamunāyai sarasvatyai ... om namo munibhyaḥ ||",
+        action: "Bow to sacred rivers and the unbroken lineage of enlightened sages.",
+        wisdom: "Connects you to thousands of years of lineage knowledge and river wisdom."
+      },
+      {
+        id: 30,
+        title: "30. सन्ध्यादेवता नमस्कारः (Sandhyādevatā Namaskāraḥ)",
+        subtitle: "Salutations to Sandhyā Forms",
+        posture: "Standing",
+        direction: "Current Orientation",
+        actionType: "Bow",
+        sanskrit: "सन्ध्यायै नमः । सावित्र्यै नमः । सरस्वत्यै नमः ।",
+        iast: "sandhyāyai namaḥ | sāvitryai namaḥ | sarasvatyai namaḥ |",
+        action: "Offer reverence to Sandhyā in all three periods of the day.",
+        wisdom: "Reminds you of the sacred transition points connecting morning, midday, and twilight."
+      },
+      {
+        id: 31,
+        title: "31. वासुदेव नमस्कारः (Vāsudeva Namaskāraḥ)",
+        subtitle: "Salutations to Supreme Vāsudeva",
+        posture: "Standing",
+        direction: "Current Orientation",
+        actionType: "Bow",
+        sanskrit: "नमो ब्रह्मण्यदेवाय गोब्राह्मणहिताय च ।\nजगद्धिताय कृष्णाय गोविन्दाय नमो नमः ॥",
+        iast: "namo brahmaṇyadevāya gobrāhmaṇahitāya ca |\njagaddhitāya kṛṣṇāya govindāya namo namaḥ ||",
+        action: "Fold hands in deep gratitude for the welfare of all living beings and the cosmos.",
+        wisdom: "A prayer for world peace: May all beings, nature, cows, and seekers of truth be protected."
+      },
+      {
+        id: 32,
+        title: "32. शिव-विष्णु नमस्कारः (Śiva-Viṣṇu Namaskāraḥ)",
+        subtitle: "Unity of the Divine Forms",
+        posture: "Standing",
+        direction: "Current Orientation",
+        actionType: "Bow",
+        sanskrit: "शिवाय विष्णुरूपाय शिवरूपाय विष्णवे ।\nशिवस्य हृदयं विष्णुर्विष्णोश्च हृदयं शिवः ॥",
+        iast: "śivāya viṣṇurūpāya śivarūpāya viṣṇave |\nśivasya hṛdayaṃ viṣṇurviṣṇośca hṛdayaṃ śivaḥ ||",
+        action: "Fold hands, contemplating that Lord Shiva lives in Vishnu's heart and Lord Vishnu lives in Shiva's heart.",
+        wisdom: "Removes sectarian division! Teaches that the supreme reality expresses itself in all divine names."
+      },
+      {
+        id: 33,
+        title: "33. प्रदक्षिण-नमस्कारः (Pradakṣiṇa-namaskāraḥ)",
+        subtitle: "Self-Circumambulation & Full Prostration",
+        posture: "Turn Clockwise 3 times, then Prostrate (Sāṣṭāṅga)",
+        direction: "Full Circle",
+        actionType: "3 Circles + Full Bow",
+        sanskrit: "यानि कानि च पापानि जन्मान्तरकृतानि च ।\nतानि तानि प्रणश्यन्ति प्रदक्षिणपदे पदे ॥",
+        iast: "yāni kāni ca pāpāni janmāntarakṛtāni ca |\ntāni tāni praṇaśyanti pradakṣiṇapade pade ||",
+        action: "Turn around clockwise 3 times reciting, then prostrate fully with chest and forehead to ground.",
+        wisdom: "Surrenders all ego, tiredness, and pride, filling you with humility and joy."
+      },
+      {
+        id: 34,
+        title: "34. अभिवादनम् (Abhivādanam)",
+        subtitle: "Lineage Declaration to Elders",
+        posture: "Hands Crossing Touching Ears",
+        direction: "Current Orientation",
+        actionType: "Ear Touch + Prostration",
+        sanskrit: "अभिवादये [प्रवर ऋषयः] ... [गोत्रः] ... [सूत्रः] ... [नाम] शर्मा अहम् भोः ॥",
+        iast: "abhivādaye [pravara-ṛṣayaḥ] ... [gotraḥ] ... [sūtraḥ] ... [nāma] śarmā aham bhoḥ ||",
+        action: "Cross right arm over left, hold right ear with right fingers, left ear with left fingers, bend forward.",
+        wisdom: "Your traditional spiritual passport! Introduces who you are, your ancestral sages, and your teacher's lineage."
+      },
+      {
+        id: 35,
+        title: "35. आचमनम् (Antya Ācamanam)",
+        subtitle: "Final Water Purification",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "3 Sips",
+        sanskrit: "ॐ केशवाय स्वाहा । ॐ नारायणाय स्वाहा । ॐ माधवाय स्वाहा ...",
+        iast: "om keśavāya svāhā | om nārāyaṇāya svāhā | om mādhavāya svāhā ...",
+        action: "Take 3 sips of water with Keśavāya, Nārāyaṇāya, Mādhavāya.",
+        wisdom: "Refreshes your throat and locks in the serene state."
+      },
+      {
+        id: 36,
+        title: "36. समर्पणम् (Brahmārpaṇam)",
+        subtitle: "Dedication of the Fruit of Action to Supreme",
+        posture: "Sitting",
+        direction: "Current Orientation",
+        actionType: "Water Release to Earth",
+        sanskrit: "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥",
+        iast: "kāyena vācā manasendriyairvā buddhyātmanā vā prakṛteḥ svabhāvāt |\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi ||",
+        action: "Release a spoonful of water onto the ground with humility.",
+        wisdom: "The essence of Karma Yoga: You perform the ritual with love and offer the results entirely to God without pride!"
+      }
+    ];
+
+    let currentStepIndex = 0;
+
+    function renderStepList() {
+      const listEl = document.getElementById('stepList');
+      listEl.innerHTML = '';
+      RITUAL_STEPS.forEach((step, idx) => {
+        const item = document.createElement('div');
+        item.className = 'step-item' + (idx === currentStepIndex ? ' active' : '');
+        item.onclick = () => selectStep(idx);
+        item.innerHTML = `
+          <div class="step-number-badge">${step.id}</div>
+          <div>
+            <div style="font-size: 0.85rem; font-weight: 600;">${step.title.split('—')[0]}</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">${step.subtitle}</div>
+          </div>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    function selectStep(index) {
+      currentStepIndex = index;
+      renderActiveStep();
+      renderStepList();
+      playChime(600 + (index * 8), 0.4);
+    }
+
+    function nextStep() {
+      if (currentStepIndex < RITUAL_STEPS.length - 1) {
+        selectStep(currentStepIndex + 1);
+      } else {
+        playChime(880, 1.5);
+        alert('🌟 Congratulations Brahmachāri! You have completed all ritual steps!');
+      }
+    }
+
+    function prevStep() {
+      if (currentStepIndex > 0) {
+        selectStep(currentStepIndex - 1);
+      }
+    }
+
+    function renderActiveStep() {
+      const step = RITUAL_STEPS[currentStepIndex];
+      document.getElementById('stepTitle').textContent = step.title;
+      document.getElementById('stepSanskrit').textContent = step.sanskrit;
+      document.getElementById('stepIast').textContent = step.iast;
+      document.getElementById('stepAction').textContent = step.action;
+      document.getElementById('stepWisdom').textContent = step.wisdom;
+      document.getElementById('stepCounterLabel').textContent = `Step ${step.id} of ${RITUAL_STEPS.length}`;
+
+      // Badges
+      const badgesContainer = document.getElementById('badgeStrip');
+      badgesContainer.innerHTML = `
+        <span class="ritual-badge">🧘 ${step.posture}</span>
+        <span class="ritual-badge">🧭 Face: ${step.direction}</span>
+        <span class="ritual-badge">💧 Action: ${step.actionType}</span>
+      `;
+    }
+
+    function filterSteps() {
+      const q = document.getElementById('stepSearchInput').value.toLowerCase();
+      document.querySelectorAll('.step-item').forEach((item, idx) => {
+        const step = RITUAL_STEPS[idx];
+        const match = step.title.toLowerCase().includes(q) || step.subtitle.toLowerCase().includes(q) || step.iast.toLowerCase().includes(q);
+        item.style.display = match ? 'flex' : 'none';
+      });
+    }
+
+    // PRĀṆĀYĀMA PACER LOGIC
+    let pranayamaRunning = false;
+    let pranayamaTimer = null;
+    let pranayamaPhase = 0; // 0: Inhale (Pūraka), 1: Hold (Kumbhaka), 2: Exhale (Recaka)
+    const PHASES = [
+      { name: "Inhale (Pūraka)", duration: 4, scale: 1.6, freq: 440 },
+      { name: "Hold (Kumbhaka)", duration: 8, scale: 1.6, freq: 554 },
+      { name: "Exhale (Recaka)", duration: 4, scale: 1.0, freq: 392 }
+    ];
+    let phaseSecondsLeft = 0;
+
+    function togglePranayama() {
+      if (pranayamaRunning) {
+        resetPranayama();
+      } else {
+        startPranayama();
+      }
+    }
+
+    function startPranayama() {
+      pranayamaRunning = true;
+      document.getElementById('pranayamaStartBtn').textContent = "⏹️ Stop Prāṇāyāma";
+      pranayamaPhase = 0;
+      startPhase();
+    }
+
+    function startPhase() {
+      if (!pranayamaRunning) return;
+      const phase = PHASES[pranayamaPhase];
+      phaseSecondsLeft = phase.duration;
+      document.getElementById('breathStageText').textContent = phase.name;
+      document.getElementById('breathTimerNum').textContent = phaseSecondsLeft;
+      
+      const orb = document.getElementById('breathOrb');
+      orb.style.transform = `scale(${phase.scale})`;
+      playChime(phase.freq, 0.6);
+
+      if (pranayamaTimer) clearInterval(pranayamaTimer);
+      pranayamaTimer = setInterval(() => {
+        phaseSecondsLeft--;
+        if (phaseSecondsLeft > 0) {
+          document.getElementById('breathTimerNum').textContent = phaseSecondsLeft;
+        } else {
+          clearInterval(pranayamaTimer);
+          pranayamaPhase = (pranayamaPhase + 1) % PHASES.length;
+          startPhase();
+        }
+      }, 1000);
+    }
+
+    function resetPranayama() {
+      pranayamaRunning = false;
+      if (pranayamaTimer) clearInterval(pranayamaTimer);
+      document.getElementById('pranayamaStartBtn').textContent = "▶️ Start Prāṇāyāma Cycle";
+      document.getElementById('breathStageText').textContent = "Ready";
+      document.getElementById('breathTimerNum').textContent = "--";
+      document.getElementById('breathOrb').style.transform = "scale(1)";
+    }
+
+    // VEDIC FINGER JAPA COUNTER
+    let japaCount = 0;
+    let japaTarget = 108;
+    const JOINT_NAMES = [
+      "1. Ring Finger (Middle Joint)",
+      "2. Ring Finger (Base Joint)",
+      "3. Little Finger (Base Joint)",
+      "4. Little Finger (Middle Joint)",
+      "5. Little Finger (Tip)",
+      "6. Ring Finger (Tip)",
+      "7. Middle Finger (Tip)",
+      "8. Index Finger (Tip)",
+      "9. Index Finger (Middle Joint)",
+      "10. Index Finger (Base Joint)"
+    ];
+
+    function setJapaTarget(target) {
+      japaTarget = target;
+      document.querySelectorAll('.target-chips .chip').forEach(c => {
+        c.classList.remove('active');
+        if (c.textContent.includes(target.toString())) c.classList.add('active');
+      });
+      playChime(520, 0.3);
+    }
+
+    function incrementJapa() {
+      japaCount++;
+      document.getElementById('japaCounter').textContent = japaCount;
+
+      const jointIndex = ((japaCount - 1) % 10) + 1;
+      setJapaJoint(jointIndex);
+
+      // Audio feedback
+      playChime(440 + (jointIndex * 25), 0.25);
+
+      if (japaCount === japaTarget) {
+        playChime(880, 2.0);
+        setTimeout(() => {
+          alert(`🎉 Sacred Japa Milestone Reached! You have completed ${japaTarget} repetitions! Om Śrī Gāyatrī Devyai Namaḥ!`);
+        }, 300);
+      }
+    }
+
+    function setJapaJoint(jointNum) {
+      document.querySelectorAll('.joint-node').forEach(node => node.classList.remove('current'));
+      const activeNode = document.getElementById('joint-' + jointNum);
+      if (activeNode) activeNode.classList.add('current');
+      document.getElementById('japaJointLabel').textContent = JOINT_NAMES[jointNum - 1];
+    }
+
+    function resetJapa() {
+      japaCount = 0;
+      document.getElementById('japaCounter').textContent = "0";
+      setJapaJoint(1);
+    }
+
+    // Keyboard shortcut for Japa
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && document.getElementById('tab-japa').classList.contains('active')) {
+        e.preventDefault();
+        incrementJapa();
+      }
+    });
+
+    // MUDRĀ DATASET (24 Pūrva + 8 Uttara)
+    const MUDRAS_24 = [
+      { name: "1. Sumukha", desc: "Both palms joined facing face with fingers upright in pleasant smiling countanence." },
+      { name: "2. Sampuṭa", desc: "Fingers interlocked like a hollow treasure chest concealing the inner jewel." },
+      { name: "3. Vitata", desc: "Fingers extended wide apart with palms facing downwards." },
+      { name: "4. Vistṛta", desc: "Fingers spread outwards radiating divine illumination." },
+      { name: "5. Dvimukha", desc: "Two index fingers raised vertically side by side." },
+      { name: "6. Trimukha", desc: "Three middle fingers raised representing Ṛg, Yajus, and Sāma." },
+      { name: "7. Caturmukha", desc: "Four fingers standing erect like the four faces of Lord Brahmā." },
+      { name: "8. Pañcamukha", desc: "All five fingers raised embodying the five sacred elements (Pañcamahābhūtas)." },
+      { name: "9. Ṣaṇmukha", desc: "Six fingers arranged symbolizing Lord Kārtikeya." },
+      { name: "10. Adhomukha", desc: "Fingers directed straight downward towards the earth." },
+      { name: "11. Vyāpakāñjalika", desc: "All-pervading cavity formed by cupped open palms." },
+      { name: "12. Śakaṭa", desc: "Chariot formation made by interlocking thumbs and little fingers." },
+      { name: "13. Yamapāśa", desc: "Noose formation binding away negative impulses." },
+      { name: "14. Grathita", desc: "Intertwined knot of fingers symbolizing focused concentration." },
+      { name: "15. Sanmukhonmukha", desc: "Hands facing each other in intimate dialogue." },
+      { name: "16. Vilamba", desc: "Hanging posture releasing physical tension." },
+      { name: "17. Muṣṭika", desc: "Firm fists with thumbs placed across fingers denoting determination." },
+      { name: "18. Matsya", desc: "Fish gesture with thumbs extended like swimming fins." },
+      { name: "19. Kūrma", desc: "Tortoise formation withdrawing the senses inward." },
+      { name: "20. Varāhaka", desc: "Boar gesture uplifting divine earth from chaos." },
+      { name: "21. Siṃhākrānta", desc: "Lion paw posture expressing fearless spiritual strength." },
+      { name: "22. Mahākrānta", desc: "Great stride gesture encompassing the sky." },
+      { name: "23. Mudgara", desc: "Hammer gesture destroying ignorance." },
+      { name: "24. Pallava", desc: "Tender leaf formation symbolizing surrender and gentle devotion." }
+    ];
+
+    const MUDRAS_8 = [
+      { name: "1. Surabhi", desc: "Cow-of-plenty gesture where left index touches right middle, and right index touches left middle." },
+      { name: "2. Jñāna", desc: "Wisdom gesture with index finger tip touching thumb tip at the heart." },
+      { name: "3. Vairāgya", desc: "Detachment formation releasing worldly clinging." },
+      { name: "4. Yoni", desc: "Origin/matrix formation symbolizing cosmic Mother Gāyatrī." },
+      { name: "5. Śaṅkha", desc: "Conch gesture with right hand wrapping around left thumb." },
+      { name: "6. Paṅkaja", desc: "Blooming lotus gesture formed by wrists together and fingers spreading." },
+      { name: "7. Liṅga", desc: "Form of eternal consciousness with erect right thumb on left palm." },
+      { name: "8. Nirvāṇa", desc: "Supreme liberation gesture dissolving all dualities into stillness." }
+    ];
+
+    function showMudras(count) {
+      document.getElementById('btnMudra24').classList.toggle('active', count === 24);
+      document.getElementById('btnMudra8').classList.toggle('active', count === 8);
+      const list = count === 24 ? MUDRAS_24 : MUDRAS_8;
+      const container = document.getElementById('mudraContainer');
+      container.innerHTML = '';
+      list.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'mudra-card';
+        card.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div class="mudra-icon-badge">🖐️</div>
+            <strong style="color: var(--primary); font-size: 1.05rem;">${m.name}</strong>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5;">${m.desc}</p>
+        `;
+        container.appendChild(card);
+      });
+      playChime(640, 0.3);
+    }
+
+    // SAṄKALPA & ABHIVĀDANA LIVE BUILDER
+    function updateSankalpaPreview() {
+      const name = document.getElementById('inputName').value.trim() || "Rāghava";
+      const gotra = document.getElementById('inputGotra').value.trim() || "Bhāradvāja";
+      const pravara = document.getElementById('inputPravara').value.trim() || "Āṅgirasa, Bārhaspatya, Bhāradvāja";
+      const sutra = document.getElementById('inputSutra').value;
+
+      document.getElementById('abhivadanaSanskrit').textContent = 
+        `अभिवादये ${pravara} प्रवरान्वित ${gotra} गोत्रोत्पन्नः ${sutra} सूत्रः यजुश्शाखाध्यायी ${name} शर्मा अहम् भोः ॥`;
+
+      document.getElementById('abhivadanaIast').textContent = 
+        `abhivādaye ${pravara} pravarānvita ${gotra} gotrotpannaḥ ${sutra} sūtraḥ yajuśśākhādhyāyī ${name} śarmā aham bhoḥ ||`;
+    }
+
+    // Initialize App
+    window.addEventListener('DOMContentLoaded', () => {
+      renderStepList();
+      renderActiveStep();
+      showMudras(24);
+      setJapaJoint(1);
+      updateSankalpaPreview();
+    });
+  </script>
+</body>
+</html>

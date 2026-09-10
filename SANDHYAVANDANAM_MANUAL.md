@@ -4,6 +4,69 @@
 
 ---
 
+## 🌟 Interactive Learning Companion for Young Brahmachāris
+> [!TIP]
+> **Open [`index.html`](index.html)** in any web browser (or on GitHub Pages) for an animated companion featuring:
+> - **🚶 Guided Stepper**: 36 interactive step cards with posture, orientation, and "Brahmachāri Secret Power" wisdom.
+> - **🧘 Prāṇāyāma Rhythm Master**: Animated breathing orb with audio chimes for Pūraka, Kumbhaka, and Recaka.
+> - **📿 Vedic Finger Japa Counter**: Interactive right-hand SVG diagram mapping the 10 finger joints for 108 / 28 / 10 counts.
+> - **🤲 Mudrā Master**: Interactive gallery of all 24 Pūrva and 8 Uttara mudrās with formation guides.
+> - **📜 My Saṅkalpa Builder**: Live customizer for your Pravara, Gotra, Sūtra, and Name.
+
+> [!NOTE]
+> **Living Tradition First**: These sacred rites and mudrās are best learned once directly from your family elders and ācārya tradition. Once received, use this working manual and the animated companion portal (`index.html`) as your daily reference to build lifelong mastery, focus, and spiritual strength.
+
+---
+
+## 🖐️ Brahmachāri Visual Learning Aids
+
+### 1. Kara-Mālā (Vedic Right-Hand Japa Counting Path)
+In the traditional Krishna Yajurveda practice, count the 10, 28, or 108 repetitions of Gāyatrī Mahāmantra clockwise along the joints of the right hand fingers using the tip of the right thumb:
+
+```text
+                 [7] Middle Tip
+                    |
+         [6] Ring   |   [8] Index Tip
+            Tip     |       |
+             \      |      /
+      [5] Little    |    [9] Index Middle
+         Tip        |       |
+          |         |    [10] Index Base
+      [4] Little    |       |
+         Middle     |       V
+          |         |  (Never touch Mount of Venus)
+      [3] Little    |
+         Base       |
+           \_______/ 
+         [2] Ring Base <--- [1] START HERE (Ring Finger Middle Joint)
+```
+
+**Joint Progression Sequence (Clockwise)**:
+1. **Ring Finger (Middle Joint)** — *Start here*
+2. **Ring Finger (Base Joint)**
+3. **Little Finger (Base Joint)**
+4. **Little Finger (Middle Joint)**
+5. **Little Finger (Tip)**
+6. **Ring Finger (Tip)**
+7. **Middle Finger (Tip)**
+8. **Index Finger (Tip)**
+9. **Index Finger (Middle Joint)**
+10. **Index Finger (Base Joint)** — *Completes 1 full cycle of 10. Repeat 10 cycles + 8 counts for 108!*
+
+---
+
+### 2. Prāṇāyāma Breath Cycle
+```text
+  INHALATION (Pūraka)           RETENTION (Kumbhaka)            EXHALATION (Recaka)
+    Left Nostril Open             Both Nostrils Closed           Right Nostril Open
+   (Right closed by thumb)       (Thumb + Ring Finger)         (Left closed by ring)
+        [ 4 counts ]                 [ 8 counts ]                   [ 4 counts ]
+   Chant: 7 Vyāhṛtis             Chant: Gāyatrī + Śiras         Chant: Calm release
+   (Om Bhūḥ ... Satyam)          (Om Tatsavitur ... Suvarom)
+```
+
+---
+
 ## Guide Structure & Conventions
 
 For every mantra and ritual step in this manual, the information is presented in four standardized components:
