@@ -4,6 +4,18 @@
 
 ---
 
+<p align="center">
+  <img src="assets/chibi_sandhya_meditation.jpg" width="260" alt="Little Brahmachāri in Dhyāna" style="border-radius: 18px; margin: 6px;" />
+  <img src="assets/chibi_sandhya_arghya.jpg" width="260" alt="Little Brahmachāri Offering Arghya" style="border-radius: 18px; margin: 6px;" />
+</p>
+
+<p align="center">
+  <strong>लोकाः समस्ताः सुखिनो भवन्तु</strong><br>
+  <em>Loka Samasta Sukhino Bhavantu — May all beings be happy and peaceful</em>
+</p>
+
+---
+
 ## 🌟 Interactive Learning Companion for Young Brahmachāris
 > [!TIP]
 > **Open [`index.html`](index.html)** in any web browser (or on GitHub Pages) for an animated companion featuring:

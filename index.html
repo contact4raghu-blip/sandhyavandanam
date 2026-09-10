@@ -68,17 +68,17 @@
     }
 
     header {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--card-border);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.5rem;
     }
 
     [data-theme="evening"] header {
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.88);
     }
 
     .header-container {
@@ -94,28 +94,23 @@
     .logo-block {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
     }
 
-    .logo-symbol {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #f59e0b, #dc2626);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: 'Yatra One', serif;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
-      animation: pulseGlow 4s infinite alternate;
+    .chibi-header-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 12px var(--primary-glow);
+      object-fit: cover;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
     }
 
-    @keyframes pulseGlow {
-      0% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3); }
-      100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5); }
+    .chibi-header-avatar:hover {
+      transform: scale(1.15) rotate(5deg);
     }
 
     .logo-text h1 {
@@ -131,7 +126,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--primary);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Sandhyā Period Switcher */
@@ -167,6 +162,158 @@
       color: white;
       box-shadow: 0 4px 12px var(--primary-glow);
       transform: translateY(-1px);
+    }
+
+    /* Hero Companion Card */
+    .chibi-hero-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.75rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .chibi-hero-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .chibi-avatar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chibi-hero-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 4px solid var(--card-border);
+      box-shadow: 0 12px 24px var(--primary-glow);
+      animation: gentleFloat 4s ease-in-out infinite;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .chibi-hero-img:hover {
+      transform: scale(1.04);
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .chibi-pose-switcher {
+      display: flex;
+      gap: 0.4rem;
+      background: rgba(0,0,0,0.05);
+      padding: 4px;
+      border-radius: 20px;
+    }
+
+    [data-theme="evening"] .chibi-pose-switcher {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .chibi-pose-btn {
+      border: none;
+      background: transparent;
+      padding: 0.3rem 0.6rem;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .chibi-pose-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+
+    .chibi-hero-speech {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .speech-bubble-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--primary-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    [data-theme="evening"] .speech-bubble-tag {
+      color: #fed7aa;
+    }
+
+    .chibi-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    [data-theme="evening"] .chibi-hero-title {
+      color: #fb923c;
+    }
+
+    .chibi-hero-text {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .chibi-motto-strip {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(220, 38, 38, 0.05));
+      border-left: 4px solid var(--accent);
+      padding: 0.75rem 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .motto-line {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sanskrit-motto {
+      font-family: 'Yatra One', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    [data-theme="evening"] .sanskrit-motto {
+      color: #fca5a5;
+    }
+
+    .motto-meaning {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* Navigation Tabs */
@@ -242,7 +389,7 @@
     /* Interactive Guided Walkthrough */
     .walkthrough-grid {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 320px 1fr;
       gap: 1.5rem;
     }
 
@@ -327,8 +474,20 @@
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .step-character-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      border: 2px solid var(--card-border);
+      object-fit: cover;
+      box-shadow: 0 4px 10px var(--primary-glow);
+      flex-shrink: 0;
     }
 
     .badge-strip {
@@ -416,8 +575,17 @@
       border-radius: var(--radius-md);
       padding: 1rem 1.25rem;
       display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .kid-wisdom-box img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 2px solid #3b82f6;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
     .stepper-nav {
@@ -523,12 +691,24 @@
     }
 
     .pranayama-mudra-guide {
-      max-width: 600px;
+      max-width: 650px;
       background: rgba(245, 158, 11, 0.08);
       border-radius: var(--radius-md);
       padding: 1.25rem;
       margin-top: 1.5rem;
       text-align: left;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .pranayama-mudra-guide img {
+      width: 100px;
+      height: 100px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 2px solid var(--card-border);
+      flex-shrink: 0;
     }
 
     /* Interactive Vedic Finger Japa Counter */
@@ -710,10 +890,22 @@
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
       color: var(--text-muted);
       font-size: 0.85rem;
       border-top: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-chibi {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      object-fit: cover;
     }
 
     /* Audio Mute Button */
@@ -737,7 +929,7 @@
   <header>
     <div class="header-container">
       <div class="logo-block">
-        <div class="logo-symbol">ॐ</div>
+        <img src="assets/chibi_sandhya_meditation.jpg" alt="Chibi Brahmachari Mascot" class="chibi-header-avatar" onclick="switchTab('walkthrough')">
         <div class="logo-text">
           <h1>Sandhyā-Vandanam</h1>
           <span>Young Brahmachāri Interactive Companion</span>
@@ -784,6 +976,35 @@
   </div>
 
   <main>
+    <!-- HERO COMPANION WELCOME SECTION -->
+    <div class="chibi-hero-card">
+      <div class="chibi-avatar-wrapper">
+        <img src="assets/chibi_sandhya_meditation.jpg" alt="Little Brahmachāri" class="chibi-hero-img" id="heroChibiImg">
+        <div class="chibi-pose-switcher">
+          <button class="chibi-pose-btn active" id="poseBtn-meditation" onclick="switchChibiPose('meditation')" title="Meditation Pose">🧘 Dhyāna</button>
+          <button class="chibi-pose-btn" id="poseBtn-arghya" onclick="switchChibiPose('arghya')" title="Arghya Pose">💧 Arghya</button>
+          <button class="chibi-pose-btn" id="poseBtn-motto" onclick="switchChibiPose('motto')" title="Motto Pose">🌟 Motto</button>
+        </div>
+      </div>
+      <div class="chibi-hero-speech">
+        <div class="speech-bubble-tag">✨ Your Friendly Brahmachāri Guide</div>
+        <h2 class="chibi-hero-title">नमस्ते! I am your companion for Sandhyāvandanam!</h2>
+        <p class="chibi-hero-text">
+          Learning the sacred rites after your Upanayanam is a joyous superpower. Together, we will practice every mantra, rhythmically regulate our breath, count our Gāyatrī japa on our fingers, and master each sacred mudrā!
+        </p>
+        <div class="chibi-motto-strip">
+          <div class="motto-line">
+            <span class="sanskrit-motto">लोकाः समस्ताः सुखिनो भवन्तु</span>
+            <span class="motto-meaning">Loka Samasta Sukhino Bhavantu — May the whole world be happy</span>
+          </div>
+          <div class="motto-line">
+            <span class="sanskrit-motto">सर्वे जनाः सुखिनो भवन्तु</span>
+            <span class="motto-meaning">Sarve Janah Sukhino Bhavantu — May all people be happy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB 1: STEP-BY-STEP GUIDED PRACTICE -->
     <section id="tab-walkthrough" class="tab-content active">
       <div class="walkthrough-grid">
@@ -798,10 +1019,13 @@
         <!-- Main Step Display -->
         <div class="active-step-container">
           <div class="step-header-banner">
-            <h2 id="stepTitle" style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--text-main);">1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)</h2>
-            <div class="badge-strip" id="badgeStrip">
-              <!-- Rendered by JS -->
+            <div>
+              <h2 id="stepTitle" style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--text-main);">1. शरीर-शुद्धिः (Śarīra-śuddhiḥ)</h2>
+              <div class="badge-strip" id="badgeStrip">
+                <!-- Rendered by JS -->
+              </div>
             </div>
+            <img src="assets/chibi_sandhya_meditation.jpg" alt="Chibi Brahmachāri Step Guide" class="step-character-thumb" id="stepThumbImg">
           </div>
 
           <div class="mantra-box">
@@ -819,9 +1043,9 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
             </div>
 
             <div class="kid-wisdom-box">
-              <span style="font-size: 1.3rem;">💡</span>
+              <img src="assets/chibi_sandhya_meditation.jpg" alt="Chibi Friend" id="wisdomThumbImg">
               <div>
-                <strong style="color: #2563eb;">Brahmachāri Secret Power:</strong>
+                <strong style="color: #2563eb;">Little Brahmachāri's Secret Power:</strong>
                 <p id="stepWisdom" style="font-size: 0.9rem; margin-top: 0.2rem; color: var(--text-main);">
                   Before entering the sacred ritual, this mantra reminds you that remembering the Lord clears away all tiredness and mental fog instantly!
                 </p>
@@ -861,14 +1085,17 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         </div>
 
         <div class="pranayama-mudra-guide">
-          <h4 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 0.4rem;">🖐️ Finger Grip for Prāṇāyāma (Prāṇāyāma Mudrā):</h4>
-          <p style="font-size: 0.9rem; color: var(--text-main);">
-            • <strong>Right Thumb</strong> gently closes the right nostril.<br>
-            • <strong>Ring & Little fingers</strong> gently close the left nostril.<br>
-            • <strong>Inhale (Pūraka)</strong> through the left nostril while mentally chanting the sacred Vyāhṛtis.<br>
-            • <strong>Hold (Kumbhaka)</strong> closing both nostrils while reciting Gāyatrī with Śiras.<br>
-            • <strong>Exhale (Recaka)</strong> slowly releasing the right nostril.
-          </p>
+          <img src="assets/chibi_sandhya_meditation.jpg" alt="Brahmachāri Breathing" style="border-radius: 14px;">
+          <div>
+            <h4 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 0.4rem;">🖐️ Finger Grip for Prāṇāyāma (Prāṇāyāma Mudrā):</h4>
+            <p style="font-size: 0.88rem; color: var(--text-main);">
+              • <strong>Right Thumb</strong> gently closes the right nostril.<br>
+              • <strong>Ring & Little fingers</strong> gently close the left nostril.<br>
+              • <strong>Inhale (Pūraka)</strong> through left nostril mentally chanting the 7 Vyāhṛtis.<br>
+              • <strong>Hold (Kumbhaka)</strong> closing both nostrils while reciting Gāyatrī with Śiras.<br>
+              • <strong>Exhale (Recaka)</strong> slowly releasing right nostril.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1026,8 +1253,10 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
   </main>
 
   <footer>
-    <p>Krishna Yajurvedīya Sandhyāvandanam Manual & Interactive Companion</p>
-    <p style="margin-top: 0.3rem;">Dedicated to young brahmachāris preserving Sanātana Dharma.</p>
+    <img src="assets/chibi_sandhya_meditation.jpg" alt="Chibi Mascot" class="footer-chibi">
+    <p><strong>Krishna Yajurvedīya Sandhyāvandanam Manual & Interactive Companion</strong></p>
+    <p style="margin-top: 0.2rem;">Dedicated with love to young brahmachāris preserving Sanātana Dharma.</p>
+    <p style="font-style: italic; color: var(--primary-dark); font-size: 0.8rem;">लोकाः समस्ताः सुखिनो भवन्तु — May all beings everywhere be happy and free.</p>
   </footer>
 
   <script>
@@ -1069,6 +1298,24 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
       if (soundEnabled) playChime(660, 0.5);
     }
 
+    // Chibi Mascot Pose Switcher
+    const POSES = {
+      meditation: "assets/chibi_sandhya_meditation.jpg",
+      arghya: "assets/chibi_sandhya_arghya.jpg",
+      motto: "assets/chibi_brahmachari.jpg"
+    };
+
+    function switchChibiPose(poseKey) {
+      const imgEl = document.getElementById('heroChibiImg');
+      if (POSES[poseKey]) {
+        imgEl.src = POSES[poseKey];
+      }
+      document.querySelectorAll('.chibi-pose-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('poseBtn-' + poseKey);
+      if (activeBtn) activeBtn.classList.add('active');
+      playChime(660, 0.3);
+    }
+
     // Sandhyā period state: 'morning' | 'noon' | 'evening'
     let currentSandhya = 'morning';
 
@@ -1108,7 +1355,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा ।\nयः स्मरेत् पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥",
         iast: "apavitraḥ pavitro vā sarvāvasthāṃ gato'pi vā |\nyaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||",
         action: "Take a spoon of water with uddharaṇe, sprinkle on your head while reciting.",
-        wisdom: "Before entering the sacred practice, this reminder washes away tiredness, sleepiness, and mental clutter!"
+        wisdom: "Before entering the sacred practice, this reminder washes away tiredness, sleepiness, and mental clutter!",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 2,
@@ -1120,7 +1368,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ केशवाय स्वाहा । ॐ नारायणाय स्वाहा । ॐ माधवाय स्वाहा ।\nॐ गोविन्दाय नमः ... ॐ विष्णवे नमः ...",
         iast: "om keśavāya svāhā | om nārāyaṇāya svāhā | om mādhavāya svāhā |\nom govindāya namaḥ ... om viṣṇave namaḥ ...",
         action: "Sip water 3 times from palm root (Brahmatīrtha) for the first 3 names. Then touch lips, eyes, nostrils, ears, shoulders, navel, chest, and head.",
-        wisdom: "By touching your sense organs (eyes, ears, tongue), you awaken them to divine alertness and sacred speech."
+        wisdom: "By touching your sense organs (eyes, ears, tongue), you awaken them to divine alertness and sacred speech.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 3,
@@ -1132,7 +1381,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "उत्तिष्ठन्तु भूतपिशाचाः ये ते भूमिसंस्थिताः ।\nये तेषामविरोधेन ब्रह्मकर्म समारभे ॥",
         iast: "uttiṣṭhantu bhūtapiśācāḥ ye te bhūmisaṃsthitāḥ |\nye teṣāmavirodhena brahmakarma samārabhe ||",
         action: "Take a drop of water with uddharaṇe, sprinkle it towards your left rear side.",
-        wisdom: "Creates a peaceful protective bubble around your seat so your concentration remains unshakeable."
+        wisdom: "Creates a peaceful protective bubble around your seat so your concentration remains unshakeable.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 4,
@@ -1144,7 +1394,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ भूः ॐ भुवः ॐ सुवः ॐ महः ॐ जनः ॐ तपः ॐ सत्यम् ।\nॐ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ।\nॐ आपो ज्योति रसोऽमृतं ब्रह्म भूर्भुवस्सुवरोम् ॥",
         iast: "om bhūḥ om bhuvaḥ om suvaḥ om mahaḥ om janaḥ om tapaḥ om satyam |\nom tatsaviturvareṇyaṃ bhargo devasya dhīmahi dhiyo yo naḥ pracodayāt |\nom āpo jyoti raso'mṛtaṃ brahma bhūrbhuvassuvarom ||",
         action: "Hold nostrils with thumb and ring finger. Pūraka (inhale), Kumbhaka (hold), Recaka (exhale).",
-        wisdom: "Calms your heart rate and powers up your brain with oxygen and prāṇa energy for sharp focus."
+        wisdom: "Calms your heart rate and powers up your brain with oxygen and prāṇa energy for sharp focus.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 5,
@@ -1156,7 +1407,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ममोपात्त-समस्त-दुरितक्षयद्वारा श्रीपरमेश्वरप्रीत्यर्थं ... सन्ध्याम् उपासिष्ये ॥",
         iast: "mamopātta-samasta-duritakṣayadvarā śrī-parameśvara-prītyarthaṃ ... sandhyām upāsiṣye ||",
         action: "Place left palm facing up on right knee; cover with right palm facing down. Declare Morning/Noon/Evening Sandhyā.",
-        wisdom: "A superhero pledge! You declare your exact time, place, and dedication to align with cosmic harmony."
+        wisdom: "A superhero pledge! You declare your exact time, place, and dedication to align with cosmic harmony.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 6,
@@ -1168,7 +1420,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "आपो हि ष्ठा मयोभुवः । ता न ऊर्जे दधातन । महे रणाय चक्षसे ...",
         iast: "āpo hi ṣṭhā mayobhuvaḥ | tā na ūrje dadhātana | mahe raṇāya cakṣase ...",
         action: "Using darbha grass or ring finger, sprinkle water drops on head for 7 padas, on earth for 8th, on head for 9th.",
-        wisdom: "The sacred waters refresh you like a loving mother, bestowing vitality, radiant eyesight, and spiritual strength."
+        wisdom: "The sacred waters refresh you like a loving mother, bestowing vitality, radiant eyesight, and spiritual strength.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 7,
@@ -1180,7 +1433,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "Morning: सूर्यश्च मा मन्युश्च... स्वाहा\nNoon: आपः पुनन्तु पृथिवीं... स्वाहा\nEvening: अग्निश्च मा मन्युश्च... स्वाहा",
         iast: "Morning: sūryaśca mā manyuśca... svāhā\nNoon: āpaḥ punantu pṛthivīṃ... svāhā\nEvening: agniśca mā manyuśca... svāhā",
         action: "Take a single sip of water consecrated with the specific mantra of Morning (Sun), Noon (Water purity), or Evening (Fire).",
-        wisdom: "Inner detox! Destroys any mistakes, careless thoughts, or anger accumulated since the previous sandhyā."
+        wisdom: "Inner detox! Destroys any mistakes, careless thoughts, or anger accumulated since the previous sandhyā.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 8,
@@ -1192,7 +1446,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "दधिक्राव्णो अकारिषं जिष्णोरश्वस्य वाजिनः ।\nसुरभि नो मुखा करत्प्र ण आयूंषि तारिषत् ॥",
         iast: "dadhikrāvṇo akāriṣaṃ jiṣṇoraśvasya vājinaḥ |\nsurabhi no mukhā karatpra ṇa āyūṃṣi tāriṣat ||",
         action: "Sprinkle water on head, breathing in the fragrance of vitality and courage.",
-        wisdom: "Invokes the swift, victorious divine horse (Dadhikrāvan) to grant stamina and fragrant purity."
+        wisdom: "Invokes the swift, victorious divine horse (Dadhikrāvan) to grant stamina and fragrant purity.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 9,
@@ -1204,7 +1459,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "हिरण्यवर्णाः शुचयः पावका यासु जातः कश्यपो यास्विन्द्रः ...",
         iast: "hiraṇyavarṇāḥ śucayaḥ pāvakā yāsu jātaḥ kaśyapo yāsvindraḥ ...",
         action: "Recite the 4 sacred ṛks while gently sprinkling water on head.",
-        wisdom: "These four verses invoke the heavenly waters in which celestial sages and kings were consecrated."
+        wisdom: "These four verses invoke the heavenly waters in which celestial sages and kings were consecrated.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 10,
@@ -1216,7 +1472,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ऋतं च सत्यं चाभीद्धात्तपसोऽध्यजायते ...",
         iast: "ṛtaṃ ca satyaṃ cābhīddhāttapaso'dhyajāyate ...",
         action: "Hold water in right palm, visualize sins expelled through right nostril into water, cast water down to left side without looking.",
-        wisdom: "A scientific visualization technique that purges lingering guilt and negative energy into water and discards it."
+        wisdom: "A scientific visualization technique that purges lingering guilt and negative energy into water and discards it.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 11,
@@ -1228,7 +1485,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "पूर्वसङ्कल्पित ... सन्ध्याङ्ग-अर्घ्यप्रदानं करिष्ये ॥",
         iast: "pūrvasaṅkalpita ... sandhyāṅga-arghyapradānaṃ kariṣye ||",
         action: "Touch water, declare the upcoming sacred Arghya offering.",
-        wisdom: "Prepares your focus for the most crucial water-offering of the entire ritual."
+        wisdom: "Prepares your focus for the most crucial water-offering of the entire ritual.",
+        chibiImage: "assets/chibi_sandhya_arghya.jpg"
       },
       {
         id: 12,
@@ -1240,7 +1498,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥ (×3)",
         iast: "om bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt || (×3)",
         action: "Fill both palms joined with water, elbows lifted, cast water upwards towards Sun (Morning/Noon) or downward into vessel (Evening).",
-        wisdom: "Legend tells of the Mandeha demons opposing the Sun; your sacred water offerings act as radiant thunderbolts empowering the Sun to shine!"
+        wisdom: "Legend tells of the Mandeha demons opposing the Sun; your sacred water offerings act as radiant thunderbolts empowering the Sun to shine!",
+        chibiImage: "assets/chibi_sandhya_arghya.jpg"
       },
       {
         id: 13,
@@ -1252,7 +1511,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "कालातिक्रम-दोष-प्रायश्चित्तार्थं तुरीयार्घ्यप्रदानं करिष्ये ॥",
         iast: "kālātīkrama-doṣa-prāyaścittārthaṃ turīyārghyapradānaṃ kariṣye ||",
         action: "Offer a 4th Arghya if Sandhyā was started late after sunrise, midday, or sunset.",
-        wisdom: "Teaches accountability! If school or travel delayed your practice, this remedy restores harmony."
+        wisdom: "Teaches accountability! If school or travel delayed your practice, this remedy restores harmony.",
+        chibiImage: "assets/chibi_sandhya_arghya.jpg"
       },
       {
         id: 14,
@@ -1264,7 +1524,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ उद्यन्तमस्तं यन्तमादित्यमभिध्यायन् कुर्वन् ब्राह्मणो विद्वान् सकलं भद्रमश्नुते असावादित्यो ब्रह्म ॥",
         iast: "om udyantamastaṃ yantamādityamabhidhyāyan kurvan brāhmaṇo vidvān sakalaṃ bhadramaśnute asāvādityo brahma ||",
         action: "Pour water continuously around yourself while making one complete clockwise circle.",
-        wisdom: "'Asāvādityo Brahma' — That radiant sun in the sky and the divine spark in my own heart are one and the same!"
+        wisdom: "'Asāvādityo Brahma' — That radiant sun in the sky and the divine spark in my own heart are one and the same!",
+        chibiImage: "assets/chibi_sandhya_arghya.jpg"
       },
       {
         id: 15,
@@ -1276,7 +1537,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "सन्ध्यां तर्पयामि । गायत्रीं तर्पयामि । ब्राह्मीं तर्पयामि । निमृजीं तर्पयामि ॥",
         iast: "sandhyāṃ tarpayāmi | gāyatrīṃ tarpayāmi | brāhmīṃ tarpayāmi | nimṛjīṃ tarpayāmi ||",
         action: "Offer water spoons through Deva-tīrtha (tips of four fingers) into vessel.",
-        wisdom: "Honors the divine presiding deities who protect time, light, and knowledge."
+        wisdom: "Honors the divine presiding deities who protect time, light, and knowledge.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 16,
@@ -1288,7 +1550,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "आयातु वरदा देवी अक्षरं ब्रह्म सम्मितम् ।\nगायत्रीं छन्दसां मातेदं ब्रह्म जुषस्व नः ॥",
         iast: "āyātu varadā devī akṣaraṃ brahma sammitam |\ngāyatrīṃ chandasāṃ mātedaṃ brahma juṣasva naḥ ||",
         action: "Hold hands in prayer at chest, welcoming the Mother of all Vedic meters into your heart.",
-        wisdom: "Like welcoming an honored, radiant guest into your home, you invite the highest wisdom into your intellect."
+        wisdom: "Like welcoming an honored, radiant guest into your home, you invite the highest wisdom into your intellect.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 17,
@@ -1300,7 +1563,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ममोपात्त-समस्त-दुरितक्षयद्वारा ... गायत्री-महामन्त्र-जपं करिष्ये ॥",
         iast: "mamopātta-samasta-duritakṣayadvarā ... gāyatrī-mahāmantra-japaṃ kariṣye ||",
         action: "Declare intention to chant the Gāyatrī Mahāmantra 108 (or 28) times.",
-        wisdom: "Sharpens your dedication so your mind will not wander during the sacred chant."
+        wisdom: "Sharpens your dedication so your mind will not wander during the sacred chant.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 18,
@@ -1312,7 +1576,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "तत्सवितुः अङ्गुष्ठाभ्यां नमः । वरेण्यं तर्जनीभ्यां नमः ...",
         iast: "tatsavituḥ aṅguṣṭhābhyāṃ namaḥ | vareṇyaṃ tarjanībhyāṃ namaḥ ...",
         action: "Slide thumbs over index, middle, ring, little fingers, and palms/backs of hands.",
-        wisdom: "Charges your fingertips with spiritual warmth and sensitivity like turning on divine circuits."
+        wisdom: "Charges your fingertips with spiritual warmth and sensitivity like turning on divine circuits.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 19,
@@ -1324,7 +1589,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "हृदयाय नमः । शिरसे स्वाहा । शिखायै वषट् । कवचाय हुम् । नेत्रत्रयाय वौषट् । अस्त्राय फट् ॥",
         iast: "hṛdayāya namaḥ | śirase svāhā | śikhāyai vaṣaṭ | kavacāya hum | netratrayāya vauṣaṭ | astrāya phaṭ ||",
         action: "Touch heart (palm), head (fingertips), śikhā (thumb), arms crossed (kavaca), 3 eyes, snap fingers around head (astra).",
-        wisdom: "Puts on an invisible Vedic armor! Shields your heart, intellect, intuition, and aura from distraction."
+        wisdom: "Puts on an invisible Vedic armor! Shields your heart, intellect, intuition, and aura from distraction.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 20,
@@ -1336,7 +1602,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "मुक्ताविद्रुमहेमनीलधवलच्छायैर्मुखैस्त्रीक्षणैः ... ध्यायेद्गायत्रीमन्त्रमध्यगाम् ॥",
         iast: "muktāvidrumahemanīladhavalacchāyairmukhaistrīkṣaṇaiḥ ... dhyāyedgāyatrīmantramadhyagām ||",
         action: "Visualize the five radiant faces (pearl, coral, gold, sapphire, diamond) of Mother Gāyatrī seated on a lotus.",
-        wisdom: "A vivid mental painting that stills all anxious thoughts and fills the mind with peaceful rainbow radiance."
+        wisdom: "A vivid mental painting that stills all anxious thoughts and fills the mind with peaceful rainbow radiance.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 21,
@@ -1348,7 +1615,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "सुमुखं सम्पुटं चैव विततं विस्तृतं तथा ...",
         iast: "sumukhaṃ sampuṭaṃ caiva vitataṃ vistṛtaṃ tathā ...",
         action: "Form the 24 gestures (Sumukha, Sampuṭa, Vitata, etc.) sequentially before beginning Japa.",
-        wisdom: "Ancient sacred hand gymnastics that activate neural pathways and lock in full meditative absorption."
+        wisdom: "Ancient sacred hand gymnastics that activate neural pathways and lock in full meditative absorption.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 22,
@@ -1360,7 +1628,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ भूर्भुवस्सुवः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥",
         iast: "om bhūrbhuvassuvaḥ | tatsaviturvareṇyaṃ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||",
         action: "Chant mentally or with slight lip movement, counting on the 10 joints of the right hand fingers.",
-        wisdom: "The crown jewel of all mantras! 'May the divine light of the Sun illuminate and sharpen our intellect.'"
+        wisdom: "The crown jewel of all mantras! 'May the divine light of the Sun illuminate and sharpen our intellect.'",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 23,
@@ -1372,7 +1641,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "प्राणायामं कृत्वा ...",
         iast: "prāṇāyāmaṃ kṛtvā ...",
         action: "Perform one calm Prāṇāyāma to seal the spiritual energy of the chant.",
-        wisdom: "Locks the immense energy of the Gāyatrī Mahāmantra deep inside your heart and brain."
+        wisdom: "Locks the immense energy of the Gāyatrī Mahāmantra deep inside your heart and brain.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 24,
@@ -1384,7 +1654,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "सुरभिर्ज्ञानवैराग्ये योनिः शङ्खोऽथ पङ्कजम् । लिङ्गं निर्वाणमुद्रा चेत्यष्टमुद्राः प्रकीर्तिताः ॥",
         iast: "surabhirjñānavairāgye yoniḥ śaṅkho'tha paṅkajam | liṅgaṃ nirvāṇamudrā cetyaṣṭamudrāḥ prakīrtitāḥ ||",
         action: "Form Surabhi, Jñāna, Vairāgya, Yoni, Śaṅkha, Paṅkaja, Liṅga, and Nirvāṇa mudrās.",
-        wisdom: "Seals the practice with divine wish-fulfilment, wisdom, detachment, and supreme peace."
+        wisdom: "Seals the practice with divine wish-fulfilment, wisdom, detachment, and supreme peace.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 25,
@@ -1396,7 +1667,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "उत्तमे शिखरे जाते भूम्यां पर्वतमुर्धनि ।\nब्राह्मणेभ्योऽभ्यनुज्ञाता गच्छ देवि यथासुखम् ॥",
         iast: "uttame śikhare jāte bhūmyāṃ parvatamurdhani |\nbrāhmaṇebhyo'bhyanujñātā gaccha devi yathāsukham ||",
         action: "Offer salutations, thanking Mother Gāyatrī and bidding her joyful farewell until the next Sandhyā.",
-        wisdom: "Teaches gratitude and graceful closure to the most sacred meditation."
+        wisdom: "Teaches gratitude and graceful closure to the most sacred meditation.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 26,
@@ -1408,7 +1680,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "जातरूपं... चक्षुः... श्रोत्रम्...",
         iast: "jātarūpaṃ... cakṣuḥ... śrotram...",
         action: "Touch eyes and ears with moistened fingers to ground the vibrant spiritual energy into physical senses.",
-        wisdom: "Grounds high meditation voltage safely into your physical body so you are energetic all day!"
+        wisdom: "Grounds high meditation voltage safely into your physical body so you are energetic all day!",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 27,
@@ -1420,7 +1693,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "Morning: मित्रस्य चर्षणीधृतः... (TS 3.4.11)\nNoon: आ सत्येन रजसा... (TS 3.4.11)\nEvening: इमं मे वरुण श्रुधी हवम्... (TS 2.1.11)",
         iast: "Morning: mitrasya carṣaṇīdhṛtaḥ...\nNoon: ā satyena rajasā...\nEvening: imaṃ me varuṇa śrudhī havam...",
         action: "Stand facing the Sun's direction, arms raised towards the sky in total surrender.",
-        wisdom: "Morning Mitra protects all people; Midday Surya lights the entire cosmos; Evening Varuna forgives all shortcomings."
+        wisdom: "Morning Mitra protects all people; Midday Surya lights the entire cosmos; Evening Varuna forgives all shortcomings.",
+        chibiImage: "assets/chibi_sandhya_arghya.jpg"
       },
       {
         id: 28,
@@ -1432,7 +1706,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ नमः प्राच्यै दिशे । ॐ नमः दक्षिणायै दिशे । ॐ नमः प्रतीच्यै दिशे । ॐ नमः उदीच्यै दिशे ...",
         iast: "om namaḥ prācyai diśe | om namaḥ dakṣiṇāyai diśe | om namaḥ pratīcyai diśe | om namaḥ udīcyai diśe ...",
         action: "Bow slightly to East (Indra), South (Yama), West (Varuṇa), North (Kubera), Zenith, and Nadir.",
-        wisdom: "Establishes peace and friendliness with the entire surrounding world in every direction."
+        wisdom: "Establishes peace and friendliness with the entire surrounding world in every direction.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 29,
@@ -1444,7 +1719,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ नमो गङ्गायै यमुनायै सरस्वत्यै ... ॐ नमो मुनिभ्यः ॥",
         iast: "om namo gaṅgāyai yamunāyai sarasvatyai ... om namo munibhyaḥ ||",
         action: "Bow to sacred rivers and the unbroken lineage of enlightened sages.",
-        wisdom: "Connects you to thousands of years of lineage knowledge and river wisdom."
+        wisdom: "Connects you to thousands of years of lineage knowledge and river wisdom.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 30,
@@ -1456,7 +1732,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "सन्ध्यायै नमः । सावित्र्यै नमः । सरस्वत्यै नमः ।",
         iast: "sandhyāyai namaḥ | sāvitryai namaḥ | sarasvatyai namaḥ |",
         action: "Offer reverence to Sandhyā in all three periods of the day.",
-        wisdom: "Reminds you of the sacred transition points connecting morning, midday, and twilight."
+        wisdom: "Reminds you of the sacred transition points connecting morning, midday, and twilight.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 31,
@@ -1468,7 +1745,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "नमो ब्रह्मण्यदेवाय गोब्राह्मणहिताय च ।\nजगद्धिताय कृष्णाय गोविन्दाय नमो नमः ॥",
         iast: "namo brahmaṇyadevāya gobrāhmaṇahitāya ca |\njagaddhitāya kṛṣṇāya govindāya namo namaḥ ||",
         action: "Fold hands in deep gratitude for the welfare of all living beings and the cosmos.",
-        wisdom: "A prayer for world peace: May all beings, nature, cows, and seekers of truth be protected."
+        wisdom: "A prayer for world peace: May all beings, nature, cows, and seekers of truth be protected.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 32,
@@ -1480,7 +1758,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "शिवाय विष्णुरूपाय शिवरूपाय विष्णवे ।\nशिवस्य हृदयं विष्णुर्विष्णोश्च हृदयं शिवः ॥",
         iast: "śivāya viṣṇurūpāya śivarūpāya viṣṇave |\nśivasya hṛdayaṃ viṣṇurviṣṇośca hṛdayaṃ śivaḥ ||",
         action: "Fold hands, contemplating that Lord Shiva lives in Vishnu's heart and Lord Vishnu lives in Shiva's heart.",
-        wisdom: "Removes sectarian division! Teaches that the supreme reality expresses itself in all divine names."
+        wisdom: "Removes sectarian division! Teaches that the supreme reality expresses itself in all divine names.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 33,
@@ -1492,7 +1771,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "यानि कानि च पापानि जन्मान्तरकृतानि च ।\nतानि तानि प्रणश्यन्ति प्रदक्षिणपदे पदे ॥",
         iast: "yāni kāni ca pāpāni janmāntarakṛtāni ca |\ntāni tāni praṇaśyanti pradakṣiṇapade pade ||",
         action: "Turn around clockwise 3 times reciting, then prostrate fully with chest and forehead to ground.",
-        wisdom: "Surrenders all ego, tiredness, and pride, filling you with humility and joy."
+        wisdom: "Surrenders all ego, tiredness, and pride, filling you with humility and joy.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 34,
@@ -1504,7 +1784,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "अभिवादये [प्रवर ऋषयः] ... [गोत्रः] ... [सूत्रः] ... [नाम] शर्मा अहम् भोः ॥",
         iast: "abhivādaye [pravara-ṛṣayaḥ] ... [gotraḥ] ... [sūtraḥ] ... [nāma] śarmā aham bhoḥ ||",
         action: "Cross right arm over left, hold right ear with right fingers, left ear with left fingers, bend forward.",
-        wisdom: "Your traditional spiritual passport! Introduces who you are, your ancestral sages, and your teacher's lineage."
+        wisdom: "Your traditional spiritual passport! Introduces who you are, your ancestral sages, and your teacher's lineage.",
+        chibiImage: "assets/chibi_brahmachari.jpg"
       },
       {
         id: 35,
@@ -1516,7 +1797,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "ॐ केशवाय स्वाहा । ॐ नारायणाय स्वाहा । ॐ माधवाय स्वाहा ...",
         iast: "om keśavāya svāhā | om nārāyaṇāya svāhā | om mādhavāya svāhā ...",
         action: "Take 3 sips of water with Keśavāya, Nārāyaṇāya, Mādhavāya.",
-        wisdom: "Refreshes your throat and locks in the serene state."
+        wisdom: "Refreshes your throat and locks in the serene state.",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       },
       {
         id: 36,
@@ -1528,7 +1810,8 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
         sanskrit: "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥",
         iast: "kāyena vācā manasendriyairvā buddhyātmanā vā prakṛteḥ svabhāvāt |\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi ||",
         action: "Release a spoonful of water onto the ground with humility.",
-        wisdom: "The essence of Karma Yoga: You perform the ritual with love and offer the results entirely to God without pride!"
+        wisdom: "The essence of Karma Yoga: You perform the ritual with love and offer the results entirely to God without pride!",
+        chibiImage: "assets/chibi_sandhya_meditation.jpg"
       }
     ];
 
@@ -1582,6 +1865,11 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
       document.getElementById('stepAction').textContent = step.action;
       document.getElementById('stepWisdom').textContent = step.wisdom;
       document.getElementById('stepCounterLabel').textContent = `Step ${step.id} of ${RITUAL_STEPS.length}`;
+
+      if (step.chibiImage) {
+        document.getElementById('stepThumbImg').src = step.chibiImage;
+        document.getElementById('wisdomThumbImg').src = step.chibiImage;
+      }
 
       // Badges
       const badgesContainer = document.getElementById('badgeStrip');
@@ -1726,7 +2014,7 @@ yaḥ smaret puṇḍarīkākṣaṃ sa bāhyābhyantaraḥ śuciḥ ||</div>
 
     // MUDRĀ DATASET (24 Pūrva + 8 Uttara)
     const MUDRAS_24 = [
-      { name: "1. Sumukha", desc: "Both palms joined facing face with fingers upright in pleasant smiling countanence." },
+      { name: "1. Sumukha", desc: "Both palms joined facing face with fingers upright in pleasant smiling countenance." },
       { name: "2. Sampuṭa", desc: "Fingers interlocked like a hollow treasure chest concealing the inner jewel." },
       { name: "3. Vitata", desc: "Fingers extended wide apart with palms facing downwards." },
       { name: "4. Vistṛta", desc: "Fingers spread outwards radiating divine illumination." },
